@@ -1,0 +1,5 @@
+iAnimBlend
+- Needed for animation transitions and jaw data
+
+_iAnimSKBAdjustTranslate, _iAnimSKBExtractTranslate
+- Needed for player ledge grab and bash animations

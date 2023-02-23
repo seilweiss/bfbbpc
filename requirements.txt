@@ -1,0 +1,3 @@
+RenderWare SDK 3.4 for D3D8 - https://archive.org/details/rw34sdk
+DirectX SDK August 2007 - https://archive.org/details/dxsdk_aug2007
+SDL 2.0.16 - https://github.com/libsdl-org/SDL/releases/tag/release-2.0.16
