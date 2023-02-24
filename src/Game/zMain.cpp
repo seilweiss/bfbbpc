@@ -39,6 +39,9 @@ xGlobals* xglobals = &globals;
 
 static S32 sShowMenuOnBoot = 1;
 
+F32 gSkipTimeCutscene = 1.0f;
+F32 gSkipTimeFlythrough = 1.0f;
+
 static SERIAL_PERCID_SIZE g_xser_sizeinfo[3] = {
     { 'PLYR', 328 },
     { 'CNTR', 480 },

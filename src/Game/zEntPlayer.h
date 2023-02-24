@@ -134,3 +134,26 @@ enum _zPlayerWallJumpState
     k_WALLJUMP_LAND
 };
 typedef enum _zPlayerWallJumpState zPlayerWallJumpState;
+
+enum zControlOwner
+{
+    CONTROL_OWNER_GLOBAL        = (1<<0),
+    CONTROL_OWNER_EVENT         = (1<<1),
+    CONTROL_OWNER_OOB           = (1<<2),
+    CONTROL_OWNER_BOSS          = (1<<3),
+    CONTROL_OWNER_TALK_BOX      = (1<<4),
+    CONTROL_OWNER_TAXI          = (1<<5),
+    CONTROL_OWNER_BUS_STOP      = (1<<6),
+    CONTROL_OWNER_TELEPORT_BOX  = (1<<7),
+    CONTROL_OWNER_CRUISE_BUBBLE = (1<<8),
+    CONTROL_OWNER_FLY_CAM       = (1<<9),
+    CONTROL_OWNER_FROZEN        = (1<<10),
+    CONTROL_OWNER_TURRET        = (1<<11),
+    CONTROL_OWNER_REWARDANIM    = (1<<12),
+    CONTROL_OWNER_BUNGEE        = (1<<13),
+    CONTROL_OWNER_SPRINGBOARD   = (1<<14),
+    CONTROL_OWNER_CUTSCENE      = (1<<15)
+};
+
+void zEntPlayerControlOn(zControlOwner owner);
+void zEntPlayerControlOff(zControlOwner owner);

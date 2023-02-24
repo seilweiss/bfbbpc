@@ -366,6 +366,15 @@
     <ClInclude Include="src\Game\zCamMarker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\zCameraFly.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\x\xCutscene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\x\xCutsceneMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\win\iFile.cpp">
@@ -624,6 +633,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Core\x\xJSP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\zEntPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\x\xCutscene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\zCameraFly.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

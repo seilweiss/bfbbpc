@@ -274,3 +274,5 @@ struct zGlobals : xGlobals
 };
 
 extern zGlobals globals;
+extern F32 gSkipTimeCutscene;
+extern F32 gSkipTimeFlythrough;

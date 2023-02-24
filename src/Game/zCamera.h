@@ -2,6 +2,20 @@
 
 #include "xCamera.h"
 
+#define ZCAM_DEFAULT_FOV 75.0f
+
+enum camera_owner_enum
+{
+    CO_BOULDER       = (1<<0),
+    CO_CRUISE_BUBBLE = (1<<1),
+    CO_BUNGEE        = (1<<2),
+    CO_BOSS          = (1<<3),
+    CO_OOB           = (1<<4),
+    CO_ZIPLINE       = (1<<5),
+    CO_TURRET        = (1<<6),
+    CO_REWARDANIM    = (1<<7)
+};
+
 struct xCamAsset;
 
 extern F32 zcam_pad_pyaw_scale;
@@ -62,3 +76,28 @@ extern F32 zcam_fovcurr;
 extern F32 zcam_fovdest;
 
 void zCameraReset(xCamera* cam);
+void zCameraFlyStart(U32 assetID);
+void zCameraUpdate(xCamera* cam, F32 dt);
+void zCameraSetBbounce(S32 bbouncing);
+void zCameraSetLongbounce(S32 lbounce);
+void zCameraSetHighbounce(S32 hbounce);
+void zCameraSetPlayerVel(xVec3* vel);
+void zCameraDisableTracking(camera_owner_enum owner);
+void zCameraEnableTracking(camera_owner_enum owner);
+U32 zCameraIsTrackingDisabled();
+void zCameraDisableInput();
+void zCameraEnableInput();
+void zCameraDisableLassoCam();
+void zCameraEnableLassoCam();
+void zCameraSetLassoCamFactor(F32 factor);
+F32 zCameraGetLassoCamFactor();
+S32 zCameraGetConvers();
+void zCameraSetConvers(S32 on);
+void zCameraDoTrans(xCamAsset* asset, F32 ttime);
+void zCameraTranslate(xCamera* cam, F32 dposx, F32 dposy, F32 dposz);
+void zCameraEnableWallJump(xCamera* cam, const xVec3& collNormal);
+void zCameraDisableWallJump(xCamera* cam);
+void zCameraSetReward(S32 on);
+void zCameraMinTargetHeightSet(F32 height);
+void zCameraMinTargetHeightClear();
+U32 zCamera_FlyOnly();

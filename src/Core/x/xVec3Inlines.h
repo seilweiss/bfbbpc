@@ -10,6 +10,14 @@ MACROSTART                                                                      
     *(dist) = xsqrt(xsqr(dx__) + xsqr(dy__) + xsqr(dz__));                                         \
 MACROEND
 
+#define xVec3Dist2Macro(a, b, dist)                                                                \
+MACROSTART                                                                                         \
+    F32 dx__ = (a)->x - (b)->x;                                                                    \
+    F32 dy__ = (a)->y - (b)->y;                                                                    \
+    F32 dz__ = (a)->z - (b)->z;                                                                    \
+    *(dist) = xsqr(dx__) + xsqr(dy__) + xsqr(dz__);                                                \
+MACROEND
+
 #define xVec3NormalizeMacro(o, v, len)                                                             \
 MACROSTART                                                                                         \
     F32 len2 = xsqr((v)->x) + xsqr((v)->y) + xsqr((v)->z);                                         \
@@ -91,6 +99,36 @@ MACROSTART                                                                      
         (o)->x = dx__ * dist_inv;                                                                  \
         (o)->y = dy__ * dist_inv;                                                                  \
         (o)->z = dz__ * dist_inv;                                                                  \
+    }                                                                                              \
+MACROEND
+
+#define xVec3NormalizeDistMacro2(ox, oy, oz, a, b, dist)                                                     \
+MACROSTART                                                                                         \
+    F32 dx__ = (b)->x - (a)->x;                                                                    \
+    F32 dy__ = (b)->y - (a)->y;                                                                    \
+    F32 dz__ = (b)->z - (a)->z;                                                                    \
+    F32 dist2 = xsqr(dx__) + xsqr(dy__) + xsqr(dz__);                                              \
+    if (xeq(dist2, 1.0f, 1e-5f))                                                                   \
+    {                                                                                              \
+        *(ox) = dx__;                                                                             \
+        *(oy) = dy__;                                                                             \
+        *(oz) = dz__;                                                                             \
+        *(dist) = 1.0f;                                                                            \
+    }                                                                                              \
+    else if (xeq(dist2, 0.0f, 1e-5f))                                                              \
+    {                                                                                              \
+        *(ox) = 0.0f;                                                                             \
+        *(oy) = 1.0f;                                                                             \
+        *(oz) = 0.0f;                                                                             \
+        *(dist) = 0.0f;                                                                            \
+    }                                                                                              \
+    else                                                                                           \
+    {                                                                                              \
+        *(dist) = xsqrt(dist2);                                                                    \
+        F32 dist_inv = 1.0f / *(dist);                                                             \
+        *(ox) = dx__ * dist_inv;                                                                  \
+        *(oy) = dy__ * dist_inv;                                                                  \
+        *(oz) = dz__ * dist_inv;                                                                  \
     }                                                                                              \
 MACROEND
 
@@ -203,6 +241,13 @@ inline F32 xVec3Dist(const xVec3* a, const xVec3* b)
 {
     F32 d;
     xVec3DistMacro(a, b, &d);
+    return d;
+}
+
+inline F32 xVec3Dist2(const xVec3* a, const xVec3* b)
+{
+    F32 d;
+    xVec3Dist2Macro(a, b, &d);
     return d;
 }
 

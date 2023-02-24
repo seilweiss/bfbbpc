@@ -81,6 +81,26 @@ struct _tagxPad
     analog_data analog[2];
 };
 
+// NOTE: Probably wrong. These are from Ratatouille Proto
+#define k_XPAD_START  ((U32)(1 << 0))  // 0x1
+#define k_XPAD_SELECT ((U32)(1 << 1))  // 0x2
+#define k_XPAD_UP     ((U32)(1 << 4))  // 0x10
+#define k_XPAD_RIGHT  ((U32)(1 << 5))  // 0x20
+#define k_XPAD_DOWN   ((U32)(1 << 6))  // 0x40
+#define k_XPAD_LEFT   ((U32)(1 << 7))  // 0x80
+#define k_XPAD_L1     ((U32)(1 << 8))  // 0x100
+#define k_XPAD_L2     ((U32)(1 << 9))  // 0x200
+#define k_XPAD_L3     ((U32)(1 << 10)) // 0x400
+#define k_XPAD_R1     ((U32)(1 << 12)) // 0x1000
+#define k_XPAD_R2     ((U32)(1 << 13)) // 0x2000
+#define k_XPAD_R3     ((U32)(1 << 14)) // 0x4000
+#define k_XPAD_A      ((U32)(1 << 16)) // 0x10000
+#define k_XPAD_B      ((U32)(1 << 17)) // 0x20000
+#define k_XPAD_C      ((U32)(1 << 18)) // 0x40000
+#define k_XPAD_D      ((U32)(1 << 19)) // 0x80000
+#define k_XPAD_E      ((U32)(1 << 20)) // 0x100000
+#define k_XPAD_F      ((U32)(1 << 21)) // 0x200000
+
 extern xPad* gDebugPad;
 extern xPad* gPlayerPad;
 

@@ -192,6 +192,8 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xCollide.h" />
     <ClInclude Include="src\Core\x\xCollideFast.h" />
     <ClInclude Include="src\Core\x\xColor.h" />
+    <ClInclude Include="src\Core\x\xCutscene.h" />
+    <ClInclude Include="src\Core\x\xCutsceneMgr.h" />
     <ClInclude Include="src\Core\x\xDebug.h" />
     <ClInclude Include="src\Core\x\xDebugTweak.h" />
     <ClInclude Include="src\Core\x\xDraw.h" />
@@ -246,6 +248,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Game\zAssetTypes.h" />
     <ClInclude Include="src\Game\zBase.h" />
     <ClInclude Include="src\Game\zCamera.h" />
+    <ClInclude Include="src\Game\zCameraFly.h" />
     <ClInclude Include="src\Game\zCameraTweak.h" />
     <ClInclude Include="src\Game\zCamMarker.h" />
     <ClInclude Include="src\Game\zCollGeom.h" />
@@ -306,6 +309,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xCollide.cpp" />
     <ClCompile Include="src\Core\x\xCollideFast.cpp" />
     <ClCompile Include="src\Core\x\xColor.cpp" />
+    <ClCompile Include="src\Core\x\xCutscene.cpp" />
     <ClCompile Include="src\Core\x\xDebug.cpp" />
     <ClCompile Include="src\Core\x\xDebugTweak.cpp" />
     <ClCompile Include="src\Core\x\xEnt.cpp" />
@@ -346,11 +350,13 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xVec3.cpp" />
     <ClCompile Include="src\Game\zAssetTypes.cpp" />
     <ClCompile Include="src\Game\zCamera.cpp" />
+    <ClCompile Include="src\Game\zCameraFly.cpp" />
     <ClCompile Include="src\Game\zCameraTweak.cpp" />
     <ClCompile Include="src\Game\zCollGeom.cpp" />
     <ClCompile Include="src\Game\zCutsceneMgr.cpp" />
     <ClCompile Include="src\Game\zDispatcher.cpp" />
     <ClCompile Include="src\Game\zEntPickup.cpp" />
+    <ClCompile Include="src\Game\zEntPlayer.cpp" />
     <ClCompile Include="src\Game\zGame.cpp" />
     <ClCompile Include="src\Game\zGameState.cpp" />
     <ClCompile Include="src\Game\zGrid.cpp" />

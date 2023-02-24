@@ -1,5 +1,9 @@
 #pragma once
 
-#include "types.h"
+#include "xCutsceneMgr.h"
+
+struct zCutsceneMgr : xCutsceneMgr
+{
+};
 
 void zCutSceneNamesTable_clearAll();
