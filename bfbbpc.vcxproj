@@ -195,6 +195,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xDebug.h" />
     <ClInclude Include="src\Core\x\xDebugTweak.h" />
     <ClInclude Include="src\Core\x\xDraw.h" />
+    <ClInclude Include="src\Core\x\xDynAsset.h" />
     <ClInclude Include="src\Core\x\xEnt.h" />
     <ClInclude Include="src\Core\x\xEntDrive.h" />
     <ClInclude Include="src\Core\x\xEnv.h" />
@@ -246,6 +247,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Game\zBase.h" />
     <ClInclude Include="src\Game\zCamera.h" />
     <ClInclude Include="src\Game\zCameraTweak.h" />
+    <ClInclude Include="src\Game\zCamMarker.h" />
     <ClInclude Include="src\Game\zCollGeom.h" />
     <ClInclude Include="src\Game\zCutsceneMgr.h" />
     <ClInclude Include="src\Game\zDispatcher.h" />

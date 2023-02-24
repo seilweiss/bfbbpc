@@ -4,7 +4,7 @@
 
 struct xBase;
 
-typedef void(*xBaseEventCallback)(xBase*, xBase*, U32, const F32*, xBase*);
+typedef S32(*xBaseEventCallback)(xBase* from, xBase* to, U32 toEvent, const F32* toParam, xBase* toParamWidget);
 
 struct xLinkAsset
 {
