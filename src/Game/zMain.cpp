@@ -397,7 +397,8 @@ void zMainFirstScreen(S32 mode) NONMATCH("https://decomp.me/scratch/i0iOC")
                           "Heavy Iron and the THQ logo are trademarks and/or "
                           "registered trademarks of THQ Inc. All rights reserved.\n\n"
                           "All other trademarks, logos and copyrights are property "
-                          "of their respective owners.\n\n";
+                          "of their respective owners.\n\n"
+                          "Unofficial PC port by Heavy Iron Modding";
             
             xColor color = { 255, 230, 0, 200 };
             xtextbox tb = xtextbox::create(
