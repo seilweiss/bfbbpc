@@ -1,7 +1,6 @@
 #include "xEnt.h"
 
 #include "xDebug.h"
-#include "xEvent.h"
 #include "xString.h"
 #include "xScene.h"
 #include "xSurface.h"
@@ -19,6 +18,7 @@
 #include "zScene.h"
 #include "zLight.h"
 #include "zGrid.h"
+#include "zEvent.h"
 
 struct xEnt::anim_coll_data
 {

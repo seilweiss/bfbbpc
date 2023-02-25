@@ -259,6 +259,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Game\zEntPickup.h" />
     <ClInclude Include="src\Game\zEntPlayer.h" />
     <ClInclude Include="src\Game\zEnv.h" />
+    <ClInclude Include="src\Game\zEvent.h" />
     <ClInclude Include="src\Game\zGame.h" />
     <ClInclude Include="src\Game\zGameState.h" />
     <ClInclude Include="src\Game\zGlobals.h" />
@@ -314,6 +315,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xDebugTweak.cpp" />
     <ClCompile Include="src\Core\x\xEnt.cpp" />
     <ClCompile Include="src\Core\x\xEnv.cpp" />
+    <ClCompile Include="src\Core\x\xEvent.cpp" />
     <ClCompile Include="src\Core\x\xFFX.cpp" />
     <ClCompile Include="src\Core\x\xFont.cpp" />
     <ClCompile Include="src\Core\x\xFX.cpp" />
@@ -357,6 +359,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Game\zDispatcher.cpp" />
     <ClCompile Include="src\Game\zEntPickup.cpp" />
     <ClCompile Include="src\Game\zEntPlayer.cpp" />
+    <ClCompile Include="src\Game\zEvent.cpp" />
     <ClCompile Include="src\Game\zGame.cpp" />
     <ClCompile Include="src\Game\zGameState.cpp" />
     <ClCompile Include="src\Game\zGrid.cpp" />
