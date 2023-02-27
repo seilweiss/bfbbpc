@@ -218,6 +218,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xMathInlines.h" />
     <ClInclude Include="src\Core\x\xMemMgr.h" />
     <ClInclude Include="src\Core\x\xModel.h" />
+    <ClInclude Include="src\Core\x\xModelAsset.h" />
     <ClInclude Include="src\Core\x\xModelBucket.h" />
     <ClInclude Include="src\Core\x\xMorph.h" />
     <ClInclude Include="src\Core\x\xordarray.h" />
@@ -245,6 +246,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xutil.h" />
     <ClInclude Include="src\Core\x\xVec3.h" />
     <ClInclude Include="src\Core\x\xVec3Inlines.h" />
+    <ClInclude Include="src\Game\zAnimList.h" />
     <ClInclude Include="src\Game\zAssetTypes.h" />
     <ClInclude Include="src\Game\zBase.h" />
     <ClInclude Include="src\Game\zCamera.h" />
@@ -350,6 +352,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xTRC.cpp" />
     <ClCompile Include="src\Core\x\xutil.cpp" />
     <ClCompile Include="src\Core\x\xVec3.cpp" />
+    <ClCompile Include="src\Game\zAnimList.cpp" />
     <ClCompile Include="src\Game\zAssetTypes.cpp" />
     <ClCompile Include="src\Game\zCamera.cpp" />
     <ClCompile Include="src\Game\zCameraFly.cpp" />
@@ -357,6 +360,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Game\zCollGeom.cpp" />
     <ClCompile Include="src\Game\zCutsceneMgr.cpp" />
     <ClCompile Include="src\Game\zDispatcher.cpp" />
+    <ClCompile Include="src\Game\zEnt.cpp" />
     <ClCompile Include="src\Game\zEntPickup.cpp" />
     <ClCompile Include="src\Game\zEntPlayer.cpp" />
     <ClCompile Include="src\Game\zEvent.cpp" />

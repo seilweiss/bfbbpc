@@ -589,7 +589,7 @@ xAnimTable* xAnimTableNew(const char* name, xAnimTable** linkedList, U32 userFla
     return table;
 }
 
-void xAnimDefaultBeforeEnter(xAnimPlay*, xAnimState* state, void*)
+void xAnimDefaultBeforeEnter(xAnimPlay*, xAnimState* state)
 {
     if (state->MultiFile != NULL) {
         U32 entry = rand() % state->MultiFile->Count;

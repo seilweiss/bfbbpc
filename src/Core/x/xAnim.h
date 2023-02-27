@@ -289,7 +289,7 @@ void xAnimFileSetTime(xAnimFile* data, F32 duration, F32 timeOffset);
 void xAnimFileEval(xAnimFile* data, F32 time, F32* bilinear, U32 flags, xVec3* tran, xQuat* quat, F32*);
 xAnimEffect* xAnimStateNewEffect(xAnimState* state, U32 flags, F32 startTime, F32 endTime, xAnimEffectCallback callback, U32 userDataSize);
 xAnimTable* xAnimTableNew(const char* name, xAnimTable** linkedList, U32 userFlags);
-void xAnimDefaultBeforeEnter(xAnimPlay*, xAnimState* state, void*);
+void xAnimDefaultBeforeEnter(xAnimPlay*, xAnimState* state);
 xAnimState* xAnimTableNewState(xAnimTable* table, const char* name, U32 flags, U32 userFlags, F32 speed, F32* boneBlend, F32* timeSnap, F32 fadeRecip, U16* fadeOffset, void* callbackData, xAnimBeforeEnterCallback beforeEnter, xAnimStateCallback stateCallback, xAnimBeforeAnimMatricesCallback beforeAnimMatrices);
 void xAnimTableAddTransition(xAnimTable* table, xAnimTransition* tran, const char* source);
 xAnimTransition* xAnimTableNewTransition(xAnimTable* table, const char* source, const char* dest, xAnimTransitionConditionalCallback conditional, xAnimTransitionCallback callback, U32 flags, U32 userFlags, F32 srcTime, F32 destTime, U16 priority, U16 queuePriority, F32 fBlendTime, U16* blendOffset);
@@ -317,3 +317,6 @@ inline F32 xAnimFileRawTime(xAnimFile* afile, F32 time)
     }
     return afile->TimeOffset + time;
 }
+
+#define xAnimTableNewStateDefault(table, name, flags, userFlags) xAnimTableNewState((table), (name), (flags), (userFlags), 1.0f, NULL, NULL, 0.0f, NULL, NULL, xAnimDefaultBeforeEnter, NULL, NULL)
+#define xAnimTableNewTransitionDefault(table, source, dest, priority, blendRecip) xAnimTableNewTransition((table), (source), (dest), NULL, NULL, 0x10, 0, 0.0f, 0.0f, (priority), 0, (blendRecip), NULL)

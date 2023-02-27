@@ -72,6 +72,13 @@ struct xEntCollis
 
 struct xEntShadow
 {
+    enum radius_enum
+    {
+        RADIUS_CACHE,
+        RADIUS_RASTER,
+        MAX_RADIUS
+    };
+
     xVec3 pos;
     xVec3 vec;
     RpAtomic* shadowModel;
