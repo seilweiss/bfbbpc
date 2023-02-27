@@ -48,6 +48,7 @@ inline void checkpoint_collision_hack(zEnt* ent) NONMATCH("https://decomp.me/scr
 
     lower = upper = xEntGetFrame(ent)->pos;
     lower.x += xlower;
+    lower.y += ylower;
     lower.z += xlower;
     upper.x += xupper;
     upper.y += yupper;
