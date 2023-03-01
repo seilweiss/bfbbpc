@@ -32,3 +32,6 @@ typedef struct xJSPHeaderGC xJSPHeaderEx;
 #else
 typedef struct xJSPHeader xJSPHeaderEx;
 #endif
+
+void xJSP_MultiStreamRead(void* data, U32 size, xJSPHeader** jsp);
+void xJSP_Destroy(xJSPHeader* jsp);

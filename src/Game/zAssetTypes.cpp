@@ -1,9 +1,23 @@
 #include "zAssetTypes.h"
 
 #include "xstransvc.h"
+#include "xJSP.h"
 
 #include <rwcore.h>
 #include <rpworld.h>
+#include <string.h>
+
+static xJSPHeader* sTempJSP;
+static xJSPHeader sDummyEmptyJSP;
+
+static const char* jsp_shadow_hack_textures[] = {
+    "beach_towel",
+    "wood_board_Nails_singleV2",
+    "wood_board_Nails_singleV3",
+    "glass_broken",
+    "ground_path_alpha"
+};
+static const char** jsp_shadow_hack_end_textures = jsp_shadow_hack_textures + sizeof(jsp_shadow_hack_textures) / sizeof(jsp_shadow_hack_textures[0]);
 
 static void* Model_Read(void* userdata, U32 assetid, void* indata, U32 insize, U32* outsize);
 static void* Curve_Read(void* userdata, U32 assetid, void* indata, U32 insize, U32* outsize);
@@ -138,13 +152,96 @@ static void BSP_Unload(void* userdata, U32 assetid) WIP
 {
 }
 
-static void* JSP_Read(void* userdata, U32 assetid, void* indata, U32 insize, U32* outsize) WIP
+inline bool jsp_shadow_hack_match(RpAtomic* atomic)
 {
-    return NULL;
+    RpGeometry* geom = RpAtomicGetGeometry(atomic);
+    S32 num = RpGeometryGetNumMaterials(geom);
+    const char** cur = jsp_shadow_hack_textures;
+    const char** end = jsp_shadow_hack_end_textures;
+    while (cur != end) {
+        const char* name = *cur;
+        for (S32 i = 0; i < num; i++) {
+            RpMaterial* mat = RpGeometryGetMaterial(geom, i);
+            RwTexture* tex = RpMaterialGetTexture(mat);
+            if (tex) {
+                const char* texname = RwTextureGetName(tex);
+                if (texname && !stricmp(texname, name)) {
+                    return 1;
+                }
+            }
+        }
+        cur++;
+    }
+    return 0;
 }
 
-static void JSP_Unload(void* userdata, U32 assetid) WIP
+struct jsp_shadow_hack_atomic_context
 {
+    xJSPHeader* jsp;
+    S32 index;
+    S32 last_material;
+};
+
+static RpAtomic* jsp_shadow_hack_atomic_cb(RpAtomic* atomic, void* data)
+{
+    jsp_shadow_hack_atomic_context& context = *(jsp_shadow_hack_atomic_context*)data;
+    S32 index = context.index++;
+    
+    if (!jsp_shadow_hack_match(atomic)) {
+        return atomic;
+    }
+
+    xClumpCollBSPTree* colltree = context.jsp->colltree;
+    
+    S32 material_index = context.jsp->jspNodeList[index].originalMatIndex;
+    if (material_index == context.last_material) {
+        return atomic;
+    }
+    context.last_material = material_index;
+    
+    xClumpCollBSPTriangle* tri = colltree->triangles;
+    xClumpCollBSPTriangle* end_tri = tri + colltree->numTriangles;
+    while (tri != end_tri) {
+        if (tri->matIndex == material_index) {
+            tri->flags |= 0x20;
+        }
+        tri++;
+    }
+
+    return atomic;
+}
+
+static void jsp_shadow_hack(xJSPHeader* jsp)
+{
+    if (!jsp || !jsp->clump || !jsp->colltree) return;
+
+    jsp_shadow_hack_atomic_context context = { jsp, 0, -1 };
+    RpClumpForAllAtomics(jsp->clump, jsp_shadow_hack_atomic_cb, &context);
+}
+
+static void* JSP_Read(void* userdata, U32 assetid, void* indata, U32 insize, U32* outsize)
+{
+    xJSPHeader* retjsp = &sDummyEmptyJSP;
+    *outsize = sizeof(xJSPHeaderEx);
+
+    xJSP_MultiStreamRead(indata, insize, &sTempJSP);
+
+    if (sTempJSP->jspNodeList) {
+        retjsp = sTempJSP;
+        sTempJSP = NULL;
+        *outsize = sizeof(xJSPHeader*); // is this correct?
+    }
+
+    jsp_shadow_hack(retjsp);
+
+    return retjsp;
+}
+
+static void JSP_Unload(void* userdata, U32 assetid)
+{
+    if (userdata != &sDummyEmptyJSP) {
+        xJSP_Destroy((xJSPHeader*)userdata);
+    }
 }
 
 static RwTexture* TexCB(RwTexture* texture, void* data)
