@@ -109,4 +109,6 @@ struct zSurfaceProps
 #define UVANIM_FLAG_ON (1<<0)
 #define UVANIM_FLAG_ON2 (1<<1)
 
+void zSurfaceRegisterMapper(U32 assetId);
+xSurface* zSurfaceGetSurface(U32 mat_id);
 U32 zSurfaceGetStandOn(const xSurface* surf);

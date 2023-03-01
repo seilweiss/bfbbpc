@@ -170,6 +170,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\win\iEnv.h" />
     <ClInclude Include="src\Core\win\iFile.h" />
     <ClInclude Include="src\Core\win\iFog.h" />
+    <ClInclude Include="src\Core\win\iLight.h" />
     <ClInclude Include="src\Core\win\iMath.h" />
     <ClInclude Include="src\Core\win\iMath3.h" />
     <ClInclude Include="src\Core\win\iMemMgr.h" />
@@ -189,6 +190,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xbinio.h" />
     <ClInclude Include="src\Core\x\xBound.h" />
     <ClInclude Include="src\Core\x\xCamera.h" />
+    <ClInclude Include="src\Core\x\xClimate.h" />
     <ClInclude Include="src\Core\x\xClumpColl.h" />
     <ClInclude Include="src\Core\x\xCollide.h" />
     <ClInclude Include="src\Core\x\xCollideFast.h" />
@@ -310,6 +312,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\win\iDraw.cpp" />
     <ClCompile Include="src\Core\win\iEnv.cpp" />
     <ClCompile Include="src\Core\win\iFile.cpp" />
+    <ClCompile Include="src\Core\win\iLight.cpp" />
     <ClCompile Include="src\Core\win\iMath.cpp" />
     <ClCompile Include="src\Core\win\iMath3.cpp" />
     <ClCompile Include="src\Core\win\iMemMgr.cpp" />
@@ -325,6 +328,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xbinio.cpp" />
     <ClCompile Include="src\Core\x\xBound.cpp" />
     <ClCompile Include="src\Core\x\xCamera.cpp" />
+    <ClCompile Include="src\Core\x\xClimate.cpp" />
     <ClCompile Include="src\Core\x\xClumpColl.cpp" />
     <ClCompile Include="src\Core\x\xCollide.cpp" />
     <ClCompile Include="src\Core\x\xCollideFast.cpp" />
@@ -381,6 +385,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Game\zEnt.cpp" />
     <ClCompile Include="src\Game\zEntPickup.cpp" />
     <ClCompile Include="src\Game\zEntPlayer.cpp" />
+    <ClCompile Include="src\Game\zEnv.cpp" />
     <ClCompile Include="src\Game\zEvent.cpp" />
     <ClCompile Include="src\Game\zGame.cpp" />
     <ClCompile Include="src\Game\zGameState.cpp" />

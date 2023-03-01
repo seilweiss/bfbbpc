@@ -1,7 +1,9 @@
 #pragma once
 
-#include "types.h"
+#include "iLight.h"
 
+struct xEnv;
 struct xEnt;
 
+void zLightResetAll(xEnv* env);
 void zLightAddLocal(xEnt* ent);

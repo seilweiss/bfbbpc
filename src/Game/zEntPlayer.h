@@ -157,3 +157,4 @@ enum zControlOwner
 
 void zEntPlayerControlOn(zControlOwner owner);
 void zEntPlayerControlOff(zControlOwner owner);
+void zEntPlayer_StoreCheckPoint(xVec3* pos, F32 rot, U32 initCamID);
