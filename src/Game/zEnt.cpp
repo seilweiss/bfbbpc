@@ -9,12 +9,12 @@
 #include "zAnimList.h"
 #include "zGlobals.h"
 #include "zEvent.h"
+#include "zBase.h"
+#include "zNPCTypeCommon.h"
 
-#define XENT_ANIMTABLE_NUMANIMS 5
+U32 g_hash_xentanim[XENT_AUTOANIM_COUNT] = {};
 
-U32 g_hash_xentanim[XENT_ANIMTABLE_NUMANIMS] = {};
-
-char* g_strz_xentanim[XENT_ANIMTABLE_NUMANIMS] = {
+char* g_strz_xentanim[XENT_AUTOANIM_COUNT] = {
     "Idle01",
     "Anim02",
     "Anim03",
@@ -22,7 +22,7 @@ char* g_strz_xentanim[XENT_ANIMTABLE_NUMANIMS] = {
     "Anim05"
 };
 
-ShadowParams gShadowParams[5] = {
+ShadowParams gShadowParams[ZENT_NPC_SHADOW_COUNT] = {
     { 'NTR0', 0.33f, 2.0f },
     { 'NTR3', 0.0f, 1.25f },
     { 'NTFA', -0.25f, 0.75f },
@@ -465,13 +465,13 @@ xAnimTable* xEnt_AnimTable_AutoEventSmall() NONMATCH("https://decomp.me/scratch/
     xAnimTable* table;
 
     if (g_hash_xentanim[0] == 0) {
-        for (i = 0; i < XENT_ANIMTABLE_NUMANIMS; i++) {
+        for (i = 0; i < XENT_AUTOANIM_COUNT; i++) {
             g_hash_xentanim[i] = xStrHash(g_strz_xentanim[i]);
         }
     }
 
     table = xAnimTableNew("xEntAutoEventSimple", NULL, 0);
-    for (i = 0; i < XENT_ANIMTABLE_NUMANIMS; i++) {
+    for (i = 0; i < XENT_AUTOANIM_COUNT; i++) {
         if (i == 0) {
             xAnimTableNewStateDefault(table, names[i], 0x10, 0x1);
         } else {
@@ -569,7 +569,7 @@ void zEntAnimEvent_AutoAnim(zEnt* ent, U32 animEvent, const F32* animParam) NONM
         if (anum1 < 0) break;
         if (anum2 < 0) break;
         if (anum1 > anum2) break;
-        if (anum2 >= XENT_ANIMTABLE_NUMANIMS) break;
+        if (anum2 >= XENT_AUTOANIM_COUNT) break;
 
         S32 anum = anum1 + ((S32)xrand() % (anum2 - anum1 + 1));
         
@@ -706,6 +706,41 @@ S32 zParamGetVector(xModelAssetParam* param, U32 size, char* tok, xVec3 def, xVe
     return act;
 }
 
-void zEntGetShadowParams(xEnt* ent, xVec3* center, F32* radius, xEntShadow::radius_enum rtype) WIP
+void zEntGetShadowParams(xEnt* ent, xVec3* center, F32* radius, xEntShadow::radius_enum rtype)
 {
+    *center = *xBoundCenter(&ent->bound);
+
+    if (ent->entShadow && ent->entShadow->radius[rtype] > 0.0f) {
+        *radius = ent->entShadow->radius[rtype];
+        return;
+    }
+
+    F32 r;
+    if (ent->bound.type == k_XBOUNDTYPE_SPHERE) {
+        r = ent->bound.sph.r;
+    } else {
+        xVec3* lower = &ent->bound.box.box.lower;
+        xVec3* upper = &ent->bound.box.box.upper;
+        r = 0.167f * (upper->x + upper->y + upper->z - lower->x - lower->y - lower->z);
+    }
+
+    *radius = (r < 0.01f) ? 2.0f : 2.4f * r;
+
+    if (ent == &globals.player.ent) {
+        *radius *= 1.5f;
+        return;
+    }
+
+    if (ent->baseType == eBaseTypeNPC) {
+        zNPCCommon* zp = (zNPCCommon*)ent;
+        ShadowParams* sp = gShadowParams;
+        for (S32 i = 0; i < ZENT_NPC_SHADOW_COUNT; i++, sp++) {
+            if (sp->type == zp->SelfType()) {
+                xVec3* at = (xVec3*)&ent->model->Mat->at;
+                xVec3AddScaled(center, at, sp->at);
+                *radius *= sp->rad;
+                break;
+            }
+        }
+    }
 }

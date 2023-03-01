@@ -185,6 +185,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xAnim.h" />
     <ClInclude Include="src\Core\x\xBase.h" />
     <ClInclude Include="src\Core\x\xBehaveMgr.h" />
+    <ClInclude Include="src\Core\x\xBehaviour.h" />
     <ClInclude Include="src\Core\x\xbinio.h" />
     <ClInclude Include="src\Core\x\xBound.h" />
     <ClInclude Include="src\Core\x\xCamera.h" />
@@ -202,6 +203,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xEntDrive.h" />
     <ClInclude Include="src\Core\x\xEnv.h" />
     <ClInclude Include="src\Core\x\xEvent.h" />
+    <ClInclude Include="src\Core\x\xFactory.h" />
     <ClInclude Include="src\Core\x\xFFX.h" />
     <ClInclude Include="src\Core\x\xFile.h" />
     <ClInclude Include="src\Core\x\xFont.h" />
@@ -212,6 +214,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xhipio.h" />
     <ClInclude Include="src\Core\x\xJSP.h" />
     <ClInclude Include="src\Core\x\xLightKit.h" />
+    <ClInclude Include="src\Core\x\xListItem.h" />
     <ClInclude Include="src\Core\x\xMath.h" />
     <ClInclude Include="src\Core\x\xMath2.h" />
     <ClInclude Include="src\Core\x\xMath3.h" />
@@ -221,12 +224,15 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xModelAsset.h" />
     <ClInclude Include="src\Core\x\xModelBucket.h" />
     <ClInclude Include="src\Core\x\xMorph.h" />
+    <ClInclude Include="src\Core\x\xMovePoint.h" />
+    <ClInclude Include="src\Core\x\xNPCBasic.h" />
     <ClInclude Include="src\Core\x\xordarray.h" />
     <ClInclude Include="src\Core\x\xOutputMgr.h" />
     <ClInclude Include="src\Core\x\xPad.h" />
     <ClInclude Include="src\Core\x\xParMgr.h" />
     <ClInclude Include="src\Core\x\xpkrsvc.h" />
     <ClInclude Include="src\Core\x\xQuickCull.h" />
+    <ClInclude Include="src\Core\x\xRMemData.h" />
     <ClInclude Include="src\Core\x\xsavegame.h" />
     <ClInclude Include="src\Core\x\xScene.h" />
     <ClInclude Include="src\Core\x\xScrFx.h" />
@@ -235,6 +241,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xShadow.h" />
     <ClInclude Include="src\Core\x\xShadowSimple.h" />
     <ClInclude Include="src\Core\x\xSnd.h" />
+    <ClInclude Include="src\Core\x\xSpline.h" />
     <ClInclude Include="src\Core\x\xstransvc.h" />
     <ClInclude Include="src\Core\x\xString.h" />
     <ClInclude Include="src\Core\x\xSurface.h" />
@@ -270,8 +277,18 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Game\zLight.h" />
     <ClInclude Include="src\Game\zMain.h" />
     <ClInclude Include="src\Game\zMenu.h" />
+    <ClInclude Include="src\Game\zMovePoint.h" />
     <ClInclude Include="src\Game\zMusic.h" />
+    <ClInclude Include="src\Game\zNPCCarry.h" />
+    <ClInclude Include="src\Game\zNPCConfig.h" />
+    <ClInclude Include="src\Game\zNPCDamage.h" />
+    <ClInclude Include="src\Game\zNPCGoalCommon.h" />
+    <ClInclude Include="src\Game\zNPCLasso.h" />
+    <ClInclude Include="src\Game\zNPCMessenger.h" />
     <ClInclude Include="src\Game\zNPCMgr.h" />
+    <ClInclude Include="src\Game\zNPCSndTable.h" />
+    <ClInclude Include="src\Game\zNPCSpawner.h" />
+    <ClInclude Include="src\Game\zNPCTypeCommon.h" />
     <ClInclude Include="src\Game\zParCmd.h" />
     <ClInclude Include="src\Game\zParEmitter.h" />
     <ClInclude Include="src\Game\zPickupTable.h" />
@@ -333,6 +350,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xModel.cpp" />
     <ClCompile Include="src\Core\x\xModelBucket.cpp" />
     <ClCompile Include="src\Core\x\xMorph.cpp" />
+    <ClCompile Include="src\Core\x\xNPCBasic.cpp" />
     <ClCompile Include="src\Core\x\xordarray.cpp" />
     <ClCompile Include="src\Core\x\xOutputMgr.cpp" />
     <ClCompile Include="src\Core\x\xPad.cpp" />
@@ -372,6 +390,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Game\zMenu.cpp" />
     <ClCompile Include="src\Game\zMusic.cpp" />
     <ClCompile Include="src\Game\zNPCMgr.cpp" />
+    <ClCompile Include="src\Game\zNPCTypeCommon.cpp" />
     <ClCompile Include="src\Game\zParCmd.cpp" />
     <ClCompile Include="src\Game\zPickupTable.cpp" />
     <ClCompile Include="src\Game\zScene.cpp" />
