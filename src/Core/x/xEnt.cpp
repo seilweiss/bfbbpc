@@ -185,7 +185,7 @@ static void hack_receive_shadow(xEnt* ent) NONMATCH("https://decomp.me/scratch/Y
         xStrHash("db03_path_p")
     };
 
-    const U32* end_receive_models = receive_models + sizeof(receive_models) / sizeof(U32);
+    const U32* end_receive_models = receive_models + ARRAY_LENGTH(receive_models);
     for (U32* id = receive_models; id != end_receive_models; id++) {
         if (ent->asset->modelInfoID == *id) {
             ent->baseFlags |= k_XBASE_RECEIVES_SHADOWS;

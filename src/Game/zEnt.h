@@ -3,7 +3,6 @@
 #include "xEnt.h"
 
 #define XENT_AUTOANIM_COUNT 5
-#define ZENT_NPC_SHADOW_COUNT (U32)5
 
 struct xModelAssetParam;
 struct zScene;
@@ -23,7 +22,7 @@ struct _ShadowParams
 
 extern U32 g_hash_xentanim[XENT_AUTOANIM_COUNT];
 extern char* g_strz_xentanim[XENT_AUTOANIM_COUNT];
-extern ShadowParams gShadowParams[ZENT_NPC_SHADOW_COUNT];
+extern ShadowParams gShadowParams[];
 
 void zEntInit(zEnt* ent, xEntAsset* asset, U32 type);
 void zEntSetup(zEnt* ent);

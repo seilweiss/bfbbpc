@@ -12,6 +12,8 @@
 #include "xShadow.h"
 #include "xFX.h"
 #include "xGlobals.h"
+#include "xString.h"
+#include "xstransvc.h"
 
 #include <SDL.h>
 #include <SDL_syswm.h>
@@ -178,9 +180,41 @@ static void RenderWareExit()
     RwEngineTerm();
 }
 
-static RwTexture* TextureRead(const char* name, const char* maskName) WIP
+static RwTexture* TextureRead(const RwChar* name, const RwChar* maskName)
 {
-    return NULL;
+    char tmpname[256];
+    S32 npWidth = 0;
+    S32 npHeight = 0;
+    S32 npDepth = 0;
+    S32 npFormat = 0;
+    RwImage* img = NULL;
+    RwRaster* rast = NULL;
+    RwTexture* result;
+#ifdef GAMECUBE
+    RwGameCubeRasterExtension* ext = NULL;
+#endif
+    U32 assetid;
+    U32 tmpsize;
+
+    sprintf(tmpname, "%s.rw3", name);
+    assetid = xStrHash(tmpname);
+    result = (RwTexture*)xSTFindAsset(assetid, &tmpsize);
+
+#ifdef GAMECUBE
+    if (result && result->raster && result->raster->depth < 8) {
+        ext = RwGameCubeRasterGetExtension(result->raster);
+        if (!ext || ext->format != 14) {
+            result = NULL;
+        }
+    }
+#endif
+
+    if (result) {
+        strcpy(result->name, name);
+        strcpy(result->mask, maskName);
+    }
+
+    return result;
 }
 
 void iSystemPollEvents()
@@ -190,6 +224,9 @@ void iSystemPollEvents()
         switch (e.type) {
         case SDL_QUIT:
             shouldQuit = 1;
+#if 1
+            exit(0);
+#endif
             break;
         }
     }

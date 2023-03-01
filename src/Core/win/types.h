@@ -42,6 +42,8 @@ typedef double F64;
 #define MACROSTART do {
 #define MACROEND } while (0)
 
+#define ARRAY_LENGTH(a) (sizeof(a) / sizeof(a[0]))
+
 // Decomp-related annotations
 // (these don't do anything to the code, but they can be Ctrl+F'd easily)
 #define WIP // Function is not fully implemented/decomped yet

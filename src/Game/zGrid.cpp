@@ -40,7 +40,7 @@ static void hack_flag_shadows(zScene* s) NONMATCH("https://decomp.me/scratch/HF4
         xStrHash("db03_path_p"),
     };
     
-    const U32* end_special_models = special_models + sizeof(special_models) / sizeof(special_models[0]);
+    const U32* end_special_models = special_models + ARRAY_LENGTH(special_models);
     
     for (zEnt** it = s->ents, **end = it + s->num_ents; it != end; it++) {
         xEnt* ent = *it;

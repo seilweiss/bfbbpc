@@ -1,23 +1,12 @@
 #include "zAssetTypes.h"
 
+#include "iModel.h"
 #include "xstransvc.h"
 #include "xJSP.h"
 
 #include <rwcore.h>
 #include <rpworld.h>
 #include <string.h>
-
-static xJSPHeader* sTempJSP;
-static xJSPHeader sDummyEmptyJSP;
-
-static const char* jsp_shadow_hack_textures[] = {
-    "beach_towel",
-    "wood_board_Nails_singleV2",
-    "wood_board_Nails_singleV3",
-    "glass_broken",
-    "ground_path_alpha"
-};
-static const char** jsp_shadow_hack_end_textures = jsp_shadow_hack_textures + sizeof(jsp_shadow_hack_textures) / sizeof(jsp_shadow_hack_textures[0]);
 
 static void* Model_Read(void* userdata, U32 assetid, void* indata, U32 insize, U32* outsize);
 static void* Curve_Read(void* userdata, U32 assetid, void* indata, U32 insize, U32* outsize);
@@ -116,6 +105,30 @@ static PKRAssetType assetTypeHandlers[] WIP =
     { 0 },
 };
 
+struct HackModelRadius
+{
+    U32 assetid;
+    F32 radius;
+};
+
+static HackModelRadius hackRadiusTable[] = {
+    { 0xFA77E6FA, 20.0f },
+    { 0x5BD0EDAC, 1000.0f },
+    { 0xED21A1C6, 50.0f }
+};
+
+static xJSPHeader* sTempJSP;
+static xJSPHeader sDummyEmptyJSP;
+
+static const char* jsp_shadow_hack_textures[] = {
+    "beach_towel",
+    "wood_board_Nails_singleV2",
+    "wood_board_Nails_singleV3",
+    "glass_broken",
+    "ground_path_alpha"
+};
+static const char** jsp_shadow_hack_end_textures = jsp_shadow_hack_textures + ARRAY_LENGTH(jsp_shadow_hack_textures);
+
 static void ATBL_Init();
 
 void zAssetStartup()
@@ -129,9 +142,27 @@ void zAssetShutdown()
     xSTShutdown();
 }
 
-static void* Model_Read(void* userdata, U32 assetid, void* indata, U32 insize, U32* outsize) WIP
+static void* Model_Read(void* userdata, U32 assetid, void* indata, U32 insize, U32* outsize) NONMATCH("https://decomp.me/scratch/RHvJ7")
 {
-    return NULL;
+    RpAtomic* model = iModelFileNew(indata, insize);
+    *outsize = sizeof(RpAtomic);
+
+    for (U32 i = 0; i < ARRAY_LENGTH(hackRadiusTable); i++) {
+        if (assetid == hackRadiusTable[i].assetid) {
+            RpAtomic* tmpModel = model;
+            while (tmpModel) {
+                tmpModel->boundingSphere.radius = hackRadiusTable[i].radius;
+                tmpModel->boundingSphere.center.x = 0.0f;
+                tmpModel->boundingSphere.center.y = 0.0f;
+                tmpModel->boundingSphere.center.z = 0.0f;
+                tmpModel->interpolator.flags &= ~rpINTERPOLATORDIRTYSPHERE;
+                tmpModel = iModelFile_RWMultiAtomic(tmpModel);
+            }
+            break;
+        }
+    }
+    
+    return model;
 }
 
 static void* Curve_Read(void* userdata, U32 assetid, void* indata, U32 insize, U32* outsize) WIP
@@ -139,8 +170,11 @@ static void* Curve_Read(void* userdata, U32 assetid, void* indata, U32 insize, U
     return NULL;
 }
 
-static void Model_Unload(void* userdata, U32 assetid) WIP
+static void Model_Unload(void* userdata, U32 assetid)
 {
+    if (userdata) {
+        iModelUnload((RpAtomic*)userdata);
+    }
 }
 
 static void* BSP_Read(void* userdata, U32 assetid, void* indata, U32 insize, U32* outsize) WIP
