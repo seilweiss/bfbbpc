@@ -211,3 +211,6 @@ public:
     virtual zNPCLassoInfo* PRIV_GetLassoData() { return NULL; }
     virtual S32 LassoSetup();
 };
+
+xAnimTable* ZNPC_AnimTable_Common();
+xAnimTable* ZNPC_AnimTable_LassoGuide();

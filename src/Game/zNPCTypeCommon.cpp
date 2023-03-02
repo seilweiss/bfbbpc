@@ -92,3 +92,13 @@ S32 zNPCCommon::LassoSetup() WIP
 {
     return 1;
 }
+
+xAnimTable* ZNPC_AnimTable_Common() WIP
+{
+    return NULL;
+}
+
+xAnimTable* ZNPC_AnimTable_LassoGuide() WIP
+{
+    return NULL;
+}

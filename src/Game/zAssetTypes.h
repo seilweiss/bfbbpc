@@ -4,3 +4,4 @@
 
 void zAssetStartup();
 void zAssetShutdown();
+void FootstepHackSceneEnter();

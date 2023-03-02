@@ -30,6 +30,7 @@ typedef U32(*xAnimTransitionConditionalCallback)(xAnimTransition*, xAnimSingle*,
 typedef U32(*xAnimTransitionCallback)(xAnimTransition*, xAnimSingle*, void*);
 typedef void(*xAnimBeforeEnterCallback)(xAnimPlay*, xAnimState*);
 typedef void(*xAnimBeforeAnimMatricesCallback)(xAnimPlay*, xQuat*, xVec3*, S32);
+typedef xAnimTable*(*xAnimTableConstructor)();
 
 struct xAnimAssetFile
 {

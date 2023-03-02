@@ -1,5 +1,10 @@
 #include "xMorph.h"
 
+xMorphSeqFile* xMorphSeqSetup(void* data, xMorphFindAssetCallback FindAssetCB) WIP
+{
+    return NULL;
+}
+
 void xMorphRender(xMorphSeqFile* seq, RwMatrix* mat, F32 time) WIP
 {
 }

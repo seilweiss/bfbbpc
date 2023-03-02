@@ -3,6 +3,29 @@
 #include "iModel.h"
 #include "xstransvc.h"
 #include "xJSP.h"
+#include "xAnim.h"
+#include "xHudModel.h"
+#include "xString.h"
+#include "zEnt.h"
+#include "zEntPlayerAnimationTables.h"
+#include "zNPCTypeCommon.h"
+#include "zNPCTypeVillager.h"
+#include "zNPCTypeRobot.h"
+#include "zNPCTypeAmbient.h"
+#include "zNPCTypeTiki.h"
+#include "zNPCTypeDuplotron.h"
+#include "zNPCTypeTest.h"
+#include "zNPCTypeKingJelly.h"
+#include "zNPCTypeDutchman.h"
+#include "zNPCTypePrawn.h"
+#include "zNPCTypeBossSandy.h"
+#include "zNPCTypeBossPatrick.h"
+#include "zNPCTypeBossSB1.h"
+#include "zNPCTypeBossSB2.h"
+#include "zNPCTypeBoss.h"
+#include "zNPCTypeBossPlankton.h"
+#include "zNPCHazard.h"
+#include "zEntCruiseBubble.h"
 
 #include <rwcore.h>
 #include <rpworld.h>
@@ -128,6 +151,117 @@ static const char* jsp_shadow_hack_textures[] = {
     "ground_path_alpha"
 };
 static const char** jsp_shadow_hack_end_textures = jsp_shadow_hack_textures + ARRAY_LENGTH(jsp_shadow_hack_textures);
+
+struct AnimTableList
+{
+    const char* name;
+    xAnimTableConstructor constructor;
+    U32 id;
+};
+
+#define ANIMTABLE(name) { #name, name, 0 }
+
+AnimTableList animTable[] = {
+    ANIMTABLE(ZNPC_AnimTable_Test),
+    ANIMTABLE(ZNPC_AnimTable_Dutchman),
+    ANIMTABLE(ZNPC_AnimTable_Duplotron),
+    ANIMTABLE(ZNPC_AnimTable_Common),
+    ANIMTABLE(ZNPC_AnimTable_BossPlankton),
+    ANIMTABLE(ZNPC_AnimTable_BossSandy),
+    ANIMTABLE(ZNPC_AnimTable_SleepyTime),
+    ANIMTABLE(ZNPC_AnimTable_BossSandyHead),
+    ANIMTABLE(ZNPC_AnimTable_Hammer),
+    ANIMTABLE(ZNPC_AnimTable_TTSauce),
+    ANIMTABLE(ZNPC_AnimTable_KingJelly),
+    ANIMTABLE(ZNPC_AnimTable_Slick),
+    ANIMTABLE(ZNPC_AnimTable_TarTar),
+    ANIMTABLE(ZNPC_AnimTable_Villager),
+    ANIMTABLE(ZNPC_AnimTable_BalloonBoy),
+    ANIMTABLE(ZNPC_AnimTable_Fodder),
+    ANIMTABLE(ZNPC_AnimTable_Prawn),
+    ANIMTABLE(ZNPC_AnimTable_Neptune),
+    ANIMTABLE(ZNPC_AnimTable_BossSB1),
+    ANIMTABLE(ZNPC_AnimTable_BossSBobbyArm),
+    ANIMTABLE(ZNPC_AnimTable_Monsoon),
+    ANIMTABLE(ZNPC_AnimTable_ArfDog),
+    ANIMTABLE(ZNPC_AnimTable_ArfArf),
+    ANIMTABLE(ZNPC_AnimTable_BossSB2),
+    ANIMTABLE(ZNPC_AnimTable_Tiki),
+    ANIMTABLE(ZNPC_AnimTable_Tubelet),
+    ANIMTABLE(ZNPC_AnimTable_Ambient),
+    ANIMTABLE(ZNPC_AnimTable_GLove),
+    ANIMTABLE(ZNPC_AnimTable_LassoGuide),
+    ANIMTABLE(ZNPC_AnimTable_Chuck),
+    ANIMTABLE(ZNPC_AnimTable_Jelly),
+    ANIMTABLE(ZNPC_AnimTable_SuperFriend),
+    ANIMTABLE(ZNPC_AnimTable_BossPatrick),
+};
+
+static xAnimTableConstructor tableFuncList[] = {
+    zEntPlayer_AnimTable,
+    ZNPC_AnimTable_Common,
+    zPatrick_AnimTable,
+    zSandy_AnimTable,
+    ZNPC_AnimTable_Villager,
+    zSpongeBobTongue_AnimTable,
+    ZNPC_AnimTable_LassoGuide,
+    ZNPC_AnimTable_Hammer,
+    ZNPC_AnimTable_TarTar,
+    ZNPC_AnimTable_GLove,
+    ZNPC_AnimTable_Monsoon,
+    ZNPC_AnimTable_SleepyTime,
+    ZNPC_AnimTable_ArfDog,
+    ZNPC_AnimTable_ArfArf,
+    ZNPC_AnimTable_Chuck,
+    ZNPC_AnimTable_Tubelet,
+    ZNPC_AnimTable_Slick,
+    ZNPC_AnimTable_Ambient,
+    ZNPC_AnimTable_Tiki,
+    ZNPC_AnimTable_Fodder,
+    ZNPC_AnimTable_Duplotron,
+    ZNPC_AnimTable_Jelly,
+    ZNPC_AnimTable_Test,
+    ZNPC_AnimTable_Neptune,
+    ZNPC_AnimTable_KingJelly,
+    ZNPC_AnimTable_Dutchman,
+    ZNPC_AnimTable_Prawn,
+    ZNPC_AnimTable_BossSandy,
+    ZNPC_AnimTable_BossPatrick,
+    ZNPC_AnimTable_BossSB1,
+    ZNPC_AnimTable_BossSB2,
+    ZNPC_AnimTable_BossSBobbyArm,
+    ZNPC_AnimTable_BossPlankton,
+    zEntPlayer_BoulderVehicleAnimTable,
+    ZNPC_AnimTable_BossSandyHead,
+    ZNPC_AnimTable_BalloonBoy,
+    xEnt_AnimTable_AutoEventSmall,
+    ZNPC_AnimTable_SlickShield,
+    ZNPC_AnimTable_SuperFriend,
+    ZNPC_AnimTable_ThunderCloud,
+    XHUD_AnimTable_Idle,
+    ZNPC_AnimTable_NightLight,
+    ZNPC_AnimTable_HazardStd,
+    ZNPC_AnimTable_FloatDevice,
+    cruise_bubble::anim_table,
+    ZNPC_AnimTable_BossSandyScoreboard,
+    zEntPlayer_TreeDomeSBAnimTable,
+    NULL
+};
+
+static U32 s_sbFootSoundA;
+static U32 s_sbFootSoundB;
+static U32 s_scFootSoundA;
+static U32 s_scFootSoundB;
+static U32 s_patFootSoundA;
+static U32 s_patFootSoundB;
+
+static U32 dummyEffectCB(U32, xAnimActiveEffect*, xAnimSingle*, void*);
+static U32 soundEffectCB(U32 cbenum, xAnimActiveEffect* acteffect, xAnimSingle*, void* object);
+
+static xAnimEffectCallback effectFuncList[] = {
+    dummyEffectCB,
+    soundEffectCB,
+};
 
 static void ATBL_Init();
 
@@ -345,21 +479,176 @@ static void TextureRW3_Unload(void* userdata, U32 assetid) WIP
     }
 }
 
-static void ATBL_Init() WIP
+static void ATBL_Init()
 {
+    for (S32 i = 0; i < (S32)ARRAY_LENGTH(animTable); i++) {
+        animTable[i].id = xStrHash(animTable[i].name);
+    }
 }
 
-static void* ATBL_Read(void* userdata, U32 assetid, void* indata, U32 insize, U32* outsize) WIP
+void FootstepHackSceneEnter()
 {
-    return NULL;
+    s_sbFootSoundA = xStrHash("SB_run1L");
+    s_sbFootSoundB = xStrHash("SB_run1R");
+    s_scFootSoundA = xStrHash("SC_run_kelpL");
+    s_scFootSoundB = xStrHash("SC_run_kelpL");
+    s_patFootSoundA = xStrHash("Pat_run_rock_dryL");
+    s_patFootSoundB = xStrHash("Pat_run_rock_dryR");
 }
 
-static void Anim_Unload(void* userdata, U32 assetid) WIP
+static U32 dummyEffectCB(U32, xAnimActiveEffect*, xAnimSingle*, void*)
+{
+    return 0;
+}
+
+static U32 soundEffectCB(U32 cbenum, xAnimActiveEffect* acteffect, xAnimSingle*, void* object) WIP
+{
+    return 0;
+}
+
+static void* FindAssetCB(U32 ID, char*)
+{
+    U32 size;
+    return xSTFindAsset(ID, &size);
+}
+
+static xAnimTable* Anim_ATBL_getTable(xAnimTableConstructor func);
+
+static void* ATBL_Read(void* userdata, U32 assetid, void* indata, U32 insize, U32* outsize) NONMATCH("https://decomp.me/scratch/IEjPg")
+{
+    U32 i, j;
+    U32 debugNum = 0;
+    U32 tmpsize;
+    xAnimTable* table;
+    xAnimState* astate;
+    xAnimTransition* atran;
+    U8* zaBytes = (U8*)indata;
+    xAnimAssetTable* zaTbl = (xAnimAssetTable*)indata;
+    void** zaRaw = (void**)(zaTbl + 1);
+    xAnimAssetFile* zaFile = (xAnimAssetFile*)(zaRaw + zaTbl->NumRaw);
+    xAnimAssetState* zaState = (xAnimAssetState*)(zaFile + zaTbl->NumFiles);
+    
+    for (i = 0; i < zaTbl->NumRaw; i++) {
+        zaRaw[i] = xSTFindAsset((U32)zaRaw[i], &tmpsize);
+    }
+
+    for (i = 0; i < zaTbl->NumRaw; i++) {
+        if (!zaRaw[i]) {
+            for (j = 0; j < zaTbl->NumRaw; j++) {
+                if (zaRaw[j]) {
+                    zaRaw[i] = zaRaw[j];
+                    break;
+                }
+            }
+        }
+    }
+
+    for (i = 0; i < zaTbl->NumRaw; i++) {
+        if (*(U32*)zaRaw[i] == 'QSPM') {
+            xMorphSeqSetup(zaRaw[i], FindAssetCB);
+        }
+    }
+
+    for (i = 0; i < zaTbl->NumFiles; i++) {
+        zaFile[i].RawData = (void**)(zaBytes + (U32)zaFile[i].RawData);
+        for (S32 k = 0; k < zaFile[i].NumAnims[0] * zaFile[i].NumAnims[1]; k++) {
+            zaFile[i].RawData[k] = zaRaw[(U32)zaFile[i].RawData[k]];
+        }
+    }
+
+    xAnimFile** fList = (xAnimFile**)zaFile;
+    for (i = 0; i < zaTbl->NumFiles; i++) {
+        fList[i] = xAnimFileNewBilinear(
+            zaFile[i].RawData, "", zaFile[i].FileFlags, NULL,
+            zaFile[i].NumAnims[0], zaFile[i].NumAnims[1]);
+        if (zaFile[i].TimeOffset >= 0.0f) {
+            xAnimFileSetTime(fList[i], zaFile[i].Duration, zaFile[i].TimeOffset);
+        }
+    }
+
+    xAnimTableConstructor constructor = NULL;
+    if (zaTbl->ConstructFunc < ARRAY_LENGTH(tableFuncList)) {
+        constructor = tableFuncList[zaTbl->ConstructFunc];
+    } else {
+        for (S32 i = 0; i < (S32)ARRAY_LENGTH(animTable); i++) {
+            if (zaTbl->ConstructFunc == animTable[i].id) {
+                constructor = animTable[i].constructor;
+                break;
+            }
+        }
+    }
+
+    gxAnimUseGrowAlloc = 1;
+    table = Anim_ATBL_getTable(constructor);
+
+    for (i = 0; i < zaTbl->NumStates; i++) {
+        astate = xAnimTableAddFileID(
+            table, fList[zaState[i].FileIndex],
+            zaState[i].StateID, zaState[i].SubStateID, zaState[i].SubStateCount);
+        if (!astate) {
+            char tmpstr[32];
+            sprintf(tmpstr, "Debug%02d", debugNum++);
+            astate = xAnimTableNewStateDefault(table, tmpstr, 0x20, 0x80000000);
+            atran = xAnimTableNewTransitionDefault(table, tmpstr, NULL, 0, 0.2f);
+            atran->Dest = table->StateList;
+            xAnimTableAddFileID(table, fList[zaState[i].FileIndex], astate->ID, 0, 0);
+        }
+        astate->Speed = zaState[i].Speed;
+    }
+
+    xAnimFile* foundFile = NULL;
+    astate = table->StateList;
+    while (astate) {
+        if (!foundFile && astate->Data) {
+            foundFile = astate->Data;
+        }
+        astate = astate->Next;
+    }
+
+    astate = table->StateList;
+    while (astate) {
+        if (!astate->Data) {
+            astate->Data = foundFile;
+            astate->UserFlags |= 0x40000000;
+        }
+        astate = astate->Next;
+    }
+
+    for (i = 0; i < zaTbl->NumStates; i++) {
+        if (zaState[i].EffectCount) {
+            xAnimState* state = xAnimTableGetStateID(table, zaState[i].StateID);
+            xAnimAssetEffect* zaEffect = (xAnimAssetEffect*)(zaBytes + zaState[i].EffectOffset);
+            if (state) {
+                for (j = 0; j < zaState[i].EffectCount; j++) {
+                    xAnimEffect* effect = xAnimStateNewEffect(
+                        state, zaEffect->Flags,
+                        zaEffect->StartTime, zaEffect->EndTime,
+                        effectFuncList[zaEffect->EffectType],
+                        zaEffect->UserDataSize);
+                    memcpy((void*)(effect + 1), (void*)(zaEffect + 1), zaEffect->UserDataSize);
+                    zaEffect = (xAnimAssetEffect*)((U8*)zaEffect + zaEffect->UserDataSize + sizeof(xAnimAssetEffect));
+                }
+            }
+        }
+    }
+
+    gxAnimUseGrowAlloc = 0;
+    *outsize = sizeof(xAnimTable);
+    
+    return table;
+}
+
+static void Anim_Unload(void* userdata, U32 assetid)
 {
 }
 
 static void LightKit_Unload(void* userdata, U32 assetid) WIP
 {
+}
+
+static xAnimTable* Anim_ATBL_getTable(xAnimTableConstructor func)
+{
+    return func();
 }
 
 static void MovePoint_Unload(void* userdata, U32 assetid) WIP
