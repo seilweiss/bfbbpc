@@ -7,7 +7,7 @@
 #include "xHudModel.h"
 #include "xString.h"
 #include "zEnt.h"
-#include "zEntPlayerAnimationTables.h"
+#include "zEntPlayer.h"
 #include "zNPCTypeCommon.h"
 #include "zNPCTypeVillager.h"
 #include "zNPCTypeRobot.h"
@@ -580,6 +580,10 @@ static void* ATBL_Read(void* userdata, U32 assetid, void* indata, U32 insize, U3
 
     gxAnimUseGrowAlloc = 1;
     table = Anim_ATBL_getTable(constructor);
+
+#if 1
+    if (!table) return NULL;
+#endif
 
     for (i = 0; i < zaTbl->NumStates; i++) {
         astate = xAnimTableAddFileID(

@@ -158,3 +158,10 @@ enum zControlOwner
 void zEntPlayerControlOn(zControlOwner owner);
 void zEntPlayerControlOff(zControlOwner owner);
 void zEntPlayer_StoreCheckPoint(xVec3* pos, F32 rot, U32 initCamID);
+
+xAnimTable* zSandy_AnimTable();
+xAnimTable* zPatrick_AnimTable();
+xAnimTable* zEntPlayer_AnimTable();
+xAnimTable* zSpongeBobTongue_AnimTable();
+xAnimTable* zEntPlayer_BoulderVehicleAnimTable();
+xAnimTable* zEntPlayer_TreeDomeSBAnimTable();
