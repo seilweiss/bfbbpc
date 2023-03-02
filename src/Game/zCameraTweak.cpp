@@ -1,5 +1,7 @@
 #include "zCameraTweak.h"
 
+#include "zCameraTweakAsset.h"
+
 #include "xMath3.h"
 #include "zCamera.h"
 #include "zEvent.h"

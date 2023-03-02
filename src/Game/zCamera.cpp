@@ -3,7 +3,7 @@
 #include "xutil.h"
 #include "xstransvc.h"
 #include "xScrFx.h"
-#include "zCamMarker.h"
+#include "xCamAsset.h"
 #include "zCameraTweak.h"
 #include "zCameraFly.h"
 #include "zMusic.h"

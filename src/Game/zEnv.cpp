@@ -1,5 +1,6 @@
 #include "zEnv.h"
 
+#include "xEnvAsset.h"
 #include "xstransvc.h"
 #include "xClimate.h"
 #include "zGlobals.h"

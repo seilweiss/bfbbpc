@@ -3,7 +3,7 @@
 #include "iModel.h"
 #include "xstransvc.h"
 #include "xJSP.h"
-#include "xAnim.h"
+#include "xAnimAsset.h"
 #include "xHudModel.h"
 #include "xString.h"
 #include "zEnt.h"

@@ -3,26 +3,10 @@
 #include "xserializer.h"
 
 struct xBase;
+struct xBaseAsset;
+struct xLinkAsset;
 
 typedef S32(*xBaseEventCallback)(xBase* from, xBase* to, U32 toEvent, const F32* toParam, xBase* toParamWidget);
-
-struct xLinkAsset
-{
-    U16 srcEvent;
-    U16 dstEvent;
-    U32 dstAssetID;
-    F32 param[4];
-    U32 paramWidgetAssetID;
-    U32 chkAssetID;
-};
-
-struct xBaseAsset
-{
-    U32 id;
-    U8 baseType;
-    U8 linkCount;
-    U16 baseFlags;
-};
 
 struct xBase
 {

@@ -2,6 +2,7 @@
 
 #include "xString.h"
 #include "xstransvc.h"
+#include "xLinkAsset.h"
 #include "zScene.h"
 #include "zEvent.h"
 

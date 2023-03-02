@@ -1,7 +1,7 @@
 #pragma once
 
-#include "xBase.h"
-#include "xMath3.h"
+#include "xBaseAsset.h"
+#include "xVec3.h"
 
 struct xSFXAsset : xBaseAsset
 {

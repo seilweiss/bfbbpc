@@ -1,5 +1,6 @@
 #include "zEnt.h"
 
+#include "xEntAsset.h"
 #include "xModelAsset.h"
 #include "xString.h"
 #include "xEvent.h"

@@ -1,5 +1,6 @@
 #include "zGrid.h"
 
+#include "xEntAsset.h"
 #include "xString.h"
 #include "zBase.h"
 #include "zScene.h"

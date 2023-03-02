@@ -1,5 +1,7 @@
 #include "xEnt.h"
 
+#include "xEntAsset.h"
+#include "xLinkAsset.h"
 #include "xDebug.h"
 #include "xString.h"
 #include "xScene.h"
@@ -15,6 +17,7 @@
 #include "zEntDestructObj.h"
 #include "zCollGeom.h"
 #include "zSurface.h"
+#include "zSurfAsset.h"
 #include "zScene.h"
 #include "zLight.h"
 #include "zGrid.h"

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "xBase.h"
+#include "xBaseAsset.h"
 
 struct xDynAsset : xBaseAsset
 {

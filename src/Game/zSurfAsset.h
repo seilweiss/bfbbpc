@@ -1,0 +1,69 @@
+#pragma once
+
+#include "xBaseAsset.h"
+#include "xVec3.h"
+
+struct zSurfMatFX
+{
+    U32 flags;
+    U32 bumpmapID;
+    U32 envmapID;
+    F32 shininess;
+    F32 bumpiness;
+    U32 dualmapID;
+};
+
+struct zSurfColorFX
+{
+    U16 flags;
+    U16 mode;
+    F32 speed;
+};
+
+struct zSurfTextureAnim
+{
+    U16 pad;
+    U16 mode;
+    U32 group;
+    F32 speed;
+};
+
+struct zSurfUVFX
+{
+    S32 mode;
+    F32 rot;
+    F32 rot_spd;
+    xVec3 trans;
+    xVec3 trans_spd;
+    xVec3 scale;
+    xVec3 scale_spd;
+    xVec3 min;
+    xVec3 max;
+    xVec3 minmax_spd;
+};
+
+struct zSurfAssetBase : xBaseAsset
+{
+    U8 game_damage_type;
+    U8 game_sticky;
+    U8 game_damage_flags;
+    U8 surf_type;
+    U8 phys_pad;
+    U8 sld_start;
+    U8 sld_stop;
+    U8 phys_flags;
+    F32 friction;
+    zSurfMatFX matfx;
+    zSurfColorFX colorfx;
+    U32 texture_anim_flags;
+    zSurfTextureAnim texture_anim[2];
+    U32 uvfx_flags;
+    zSurfUVFX uvfx[2];
+    U8 on;
+    U8 surf_pad[3];
+    F32 oob_delay;
+    F32 walljump_scale_xz;
+    F32 walljump_scale_y;
+    F32 damage_timer;
+    F32 damage_bounce;
+};

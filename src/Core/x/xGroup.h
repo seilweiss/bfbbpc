@@ -2,11 +2,7 @@
 
 #include "xBase.h"
 
-struct xGroupAsset : xBaseAsset
-{
-    U16 itemCount;
-    U16 groupFlags;
-};
+struct xGroupAsset;
 
 struct xGroup : xBase
 {

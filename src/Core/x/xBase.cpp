@@ -1,5 +1,7 @@
 #include "xBase.h"
 
+#include "xBaseAsset.h"
+
 void xBaseInit(xBase* xb, xBaseAsset* asset)
 {
     xb->id = asset->id;

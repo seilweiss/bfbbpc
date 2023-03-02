@@ -1,14 +1,9 @@
 #pragma once
 
-#include "xDynAsset.h"
+#include "xBase.h"
 
-struct CameraTweak_asset : xDynAsset
-{
-    S32 priority;
-    F32 time;
-    F32 pitch_adjust;
-    F32 dist_adjust;
-};
+struct xDynAsset;
+struct CameraTweak_asset;
 
 struct zCameraTweak : xBase
 {
