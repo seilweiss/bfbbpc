@@ -334,6 +334,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Game\zShrapnel.h" />
     <ClInclude Include="src\Game\zSurface.h" />
     <ClInclude Include="src\Game\zSurfAsset.h" />
+    <ClInclude Include="src\Game\zTalkBox.h" />
     <ClInclude Include="src\Game\zVar.h" />
     <ClInclude Include="res\resource.h" />
     <ClInclude Include="src\Core\win\rpcollbsptree.h" />
@@ -407,6 +408,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xSnd.cpp" />
     <ClCompile Include="src\Core\x\xstransvc.cpp" />
     <ClCompile Include="src\Core\x\xString.cpp" />
+    <ClCompile Include="src\Core\x\xTimer.cpp" />
     <ClCompile Include="src\Core\x\xTimestamp.cpp" />
     <ClCompile Include="src\Core\x\xTRC.cpp" />
     <ClCompile Include="src\Core\x\xutil.cpp" />
@@ -455,6 +457,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Game\zScene.cpp" />
     <ClCompile Include="src\Game\zShrapnel.cpp" />
     <ClCompile Include="src\Game\zSurface.cpp" />
+    <ClCompile Include="src\Game\zTalkBox.cpp" />
     <ClCompile Include="src\Game\zVar.cpp" />
   </ItemGroup>
   <ItemGroup>
