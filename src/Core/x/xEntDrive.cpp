@@ -117,7 +117,7 @@ void xEntDriveUpdate(xEntDrive* drv, xScene*, F32 dt, const xCollis*) NONMATCH("
     if (!drv->odriver && !drv->driver) return;
 
     if (!drv->driven || !drv->driven->frame || (drv->odriver && !drv->odriver->frame)) {
-        xEntDriveInit(drv, drv->odriver);
+        xEntDriveInit(drv, drv->driven);
         return;
     }
 
