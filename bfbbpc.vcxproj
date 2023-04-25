@@ -198,6 +198,8 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xCollide.h" />
     <ClInclude Include="src\Core\x\xCollideFast.h" />
     <ClInclude Include="src\Core\x\xColor.h" />
+    <ClInclude Include="src\Core\x\xCounter.h" />
+    <ClInclude Include="src\Core\x\xCounterAsset.h" />
     <ClInclude Include="src\Core\x\xCutscene.h" />
     <ClInclude Include="src\Core\x\xCutsceneMgr.h" />
     <ClInclude Include="src\Core\x\xCutsceneMgrAsset.h" />
@@ -366,6 +368,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xCollide.cpp" />
     <ClCompile Include="src\Core\x\xCollideFast.cpp" />
     <ClCompile Include="src\Core\x\xColor.cpp" />
+    <ClCompile Include="src\Core\x\xCounter.cpp" />
     <ClCompile Include="src\Core\x\xCutscene.cpp" />
     <ClCompile Include="src\Core\x\xDebug.cpp" />
     <ClCompile Include="src\Core\x\xDebugTweak.cpp" />
