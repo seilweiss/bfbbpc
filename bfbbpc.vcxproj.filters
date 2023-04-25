@@ -908,6 +908,9 @@
     <ClCompile Include="src\Game\zTalkBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Core\x\xEntDrive.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="res\bfbbpc.rc">

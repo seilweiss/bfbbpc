@@ -374,6 +374,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xDebug.cpp" />
     <ClCompile Include="src\Core\x\xDebugTweak.cpp" />
     <ClCompile Include="src\Core\x\xEnt.cpp" />
+    <ClCompile Include="src\Core\x\xEntDrive.cpp" />
     <ClCompile Include="src\Core\x\xEnv.cpp" />
     <ClCompile Include="src\Core\x\xEvent.cpp" />
     <ClCompile Include="src\Core\x\xFFX.cpp" />
