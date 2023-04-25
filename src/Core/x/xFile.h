@@ -7,13 +7,12 @@
 
 #define XFILE_RELNAME_MAX 32
 
-typedef struct tag_xFile xFile;
-struct tag_xFile
+typedef struct tag_xFile
 {
     char relname[XFILE_RELNAME_MAX];
     iFile ps;
     void* user_data;
-};
+} xFile;
 
 enum XFILE_READSECTOR_STATUS
 {

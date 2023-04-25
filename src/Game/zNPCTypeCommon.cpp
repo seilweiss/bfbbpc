@@ -62,7 +62,7 @@ void zNPCCommon::SelfDestroy() WIP
 {
 }
 
-void zNPCCommon::Damage(NPC_DAMAGE_TYPE damtype, xBase* who, const xVec3* vec_hit) WIP
+void zNPCCommon::Damage(en_NPC_DAMAGE_TYPE damtype, xBase* who, const xVec3* vec_hit) WIP
 {
 }
 
@@ -71,15 +71,15 @@ S32 zNPCCommon::Respawn(const xVec3* pos, zMovePoint* mvptFirst, zMovePoint* mvp
     return 1;
 }
 
-void zNPCCommon::DuploNotice(SM_NOTICES note, void* data) WIP
+void zNPCCommon::DuploNotice(en_SM_NOTICES note, void* data) WIP
 {
 }
 
-void zNPCCommon::LassoNotify(LASSO_EVENT event) WIP
+void zNPCCommon::LassoNotify(en_LASSO_EVENT event) WIP
 {
 }
 
-void zNPCCommon::GetParm(npcparm pid, void* val) WIP
+void zNPCCommon::GetParm(en_npcparm pid, void* val) WIP
 {
 }
 

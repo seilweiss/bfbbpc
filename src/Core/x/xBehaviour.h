@@ -18,7 +18,6 @@ enum en_GOALSTATE
     GOAL_STAT_NOMORE,
     GOAL_STAT_FORCE = FORCEENUMSIZEINT
 };
-typedef enum en_GOALSTATE GOALSTATE;
 
 enum en_trantype
 {
@@ -34,16 +33,15 @@ enum en_trantype
     GOAL_TRAN_NOMORE,
     GOAL_TRAN_FORCE = FORCEENUMSIZEINT
 };
-typedef enum en_trantype trantype;
 
 struct xGoal : xListItem<xGoal>, xFactoryInst
 {
     xPsyche* psyche;
     S32 goalID;
-    GOALSTATE stat;
+    en_GOALSTATE stat;
     S32 flg_able;
-    S32(*fun_process)(xGoal*, void*, trantype*, F32, void*);
+    S32(*fun_process)(xGoal*, void*, en_trantype*, F32, void*);
     S32(*fun_precalc)(xGoal*, void*, F32, void*);
-    S32(*fun_chkRule)(xGoal*, void*, trantype*, F32, void*);
+    S32(*fun_chkRule)(xGoal*, void*, en_trantype*, F32, void*);
     void* cbdata;
 };

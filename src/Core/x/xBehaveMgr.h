@@ -12,12 +12,11 @@ enum en_psynote
     PSY_NOTE_NOMORE,
     PSY_NOTE_FORCE = FORCEENUMSIZEINT
 };
-typedef enum en_psynote psynote;
 
 struct xPSYNote
 {
     xPSYNote() {}
-    virtual void Notice(psynote note, xGoal* goal, void*) {}
+    virtual void Notice(en_psynote note, xGoal* goal, void*) {}
 };
 
 enum en_pendtype
@@ -32,7 +31,6 @@ enum en_pendtype
     PEND_TRAN_INPROG,
     PEND_TRAN_NOMORE
 };
-typedef enum en_pendtype pendtype;
 
 enum PSY_BRAIN_STATUS
 {
@@ -54,9 +52,9 @@ struct xPsyche : RyzMemData
     F32 tmr_stack[5][1];
     S32 staktop;
     xGoal* pendgoal;
-    pendtype pendtype;
+    en_pendtype pendtype;
     S32 gid_safegoal;
-    void(*fun_remap)(S32*, trantype*);
+    void(*fun_remap)(S32*, en_trantype*);
     void* userContext;
     S32 cnt_transLastTimestep;
     PSY_BRAIN_STATUS psystat;

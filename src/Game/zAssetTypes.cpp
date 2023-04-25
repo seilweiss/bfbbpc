@@ -46,7 +46,7 @@ static void LightKit_Unload(void* userdata, U32 assetid);
 static void MovePoint_Unload(void* userdata, U32 assetid);
 static void* SndInfoRead(void* userdata, U32 assetid, void* indata, U32 insize, U32* outsize);
 
-static PKRAssetType assetTypeHandlers[] WIP =
+static st_PACKER_ASSETTYPE assetTypeHandlers[] WIP =
 {
     { 'BSP ', 0, 0, BSP_Read, NULL, NULL, NULL, NULL, BSP_Unload, NULL },
     { 'JSP ', 0, 0, JSP_Read, NULL, NULL, NULL, NULL, JSP_Unload, NULL },

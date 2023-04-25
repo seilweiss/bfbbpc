@@ -14,13 +14,12 @@ enum
     XMEM_MAX_HEAPS
 };
 
-typedef struct xMemArea_tag xMemArea;
-struct xMemArea_tag
+typedef struct xMemArea_tag
 {
     xMemAddr addr;
     U32 size;
     U32 flags;
-};
+} xMemArea;
 
 #define XMEMAREA_0x20 0x20
 #define XMEMAREA_0x40 0x40
@@ -28,35 +27,31 @@ struct xMemArea_tag
 #define XMEMAREA_0x400 0x400
 #define XMEMAREA_0x800 0x800
 
-typedef struct xMemInfo_tag xMemInfo;
-struct xMemInfo_tag
+typedef struct xMemInfo_tag
 {
     xMemArea system;
     xMemArea stack;
     xMemArea DRAM;
     xMemArea SRAM;
-};
+} xMemInfo;
 
-typedef struct xHeapState_tag xHeapState;
-struct xHeapState_tag
+typedef struct xHeapState_tag
 {
     xMemAddr curr;
     U16 blk_ct;
     U16 pad;
     U32 used;
     U32 wasted;
-};
+} xHeapState;
 
-typedef struct xMemBlock_tag xMemBlock;
-struct xMemBlock_tag
+typedef struct xMemBlock_tag
 {
     xMemAddr addr;
     U32 size;
     S32 align;
-};
+} xMemBlock;
 
-typedef struct xMemHeap_tag xMemHeap;
-struct xMemHeap_tag
+typedef struct xMemHeap_tag
 {
     U32 flags;
     xMemAddr hard_base;
@@ -67,7 +62,7 @@ struct xMemHeap_tag
     U16 max_blks;
     xMemBlock* blk;
     xMemBlock* lastblk;
-};
+} xMemHeap;
 
 #define XMEMHEAP_0x1 0x1
 #define XMEMHEAP_0x2 0x2
@@ -83,7 +78,7 @@ struct xMemHeap_tag
 #define XMEMHEAP_GET_0x4000(flags) (S32)(((flags) >> 14) & 0x1)
 #define XMEMHEAP_GET_0x8000(flags) (S32)(((flags) >> 15) & 0x1)
 
-typedef struct xMemPool xMemPool;
+struct xMemPool;
 typedef void(*xMemPoolInitCallback)(xMemPool*, void*);
 
 struct xMemPool

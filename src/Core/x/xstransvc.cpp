@@ -11,42 +11,40 @@
 
 #define STRAN_MAX_SCENES 16
 
-typedef struct st_STRAN_SCENE STRAN_SCENE;
 struct st_STRAN_SCENE
 {
     U32 scnid;
     S32 lockid;
-    PKRReadData* spkg;
+    st_PACKER_READ_DATA* spkg;
     S32 isHOP;
     void* userdata;
     char fnam[256];
 };
 
-typedef struct st_STRAN_DATA STRAN_DATA;
 struct st_STRAN_DATA
 {
-    STRAN_SCENE hipscn[STRAN_MAX_SCENES];
+    st_STRAN_SCENE hipscn[STRAN_MAX_SCENES];
     U32 loadlock;
 };
 
 static S32 g_straninit = 0;
-static STRAN_DATA g_xstdata = {};
-static PKRReadFuncs* g_pkrf = NULL;
-static PKRAssetType* g_typeHandlers = NULL;
+static st_STRAN_DATA g_xstdata = {};
+static st_PACKER_READ_FUNCS* g_pkrf = NULL;
+static st_PACKER_ASSETTYPE* g_typeHandlers = NULL;
 
-static S32 XST_PreLoadScene(STRAN_SCENE* sdata, const char* sfile);
+static S32 XST_PreLoadScene(st_STRAN_SCENE* sdata, const char* sfile);
 static char* XST_translate_sid(U32 sid, char* exten);
 static char* XST_translate_sid_path(U32 sid, char* exten);
 static void XST_reset_raw();
-static STRAN_SCENE* XST_lock_next();
-static void XST_unlock(STRAN_SCENE* sdata);
+static st_STRAN_SCENE* XST_lock_next();
+static void XST_unlock(st_STRAN_SCENE* sdata);
 static void XST_unlock_all();
-static STRAN_SCENE* XST_get_rawinst(S32 idx);
+static st_STRAN_SCENE* XST_get_rawinst(S32 idx);
 static S32 XST_cnt_locked();
-static STRAN_SCENE* XST_nth_locked(S32 nth);
-static STRAN_SCENE* XST_find_bySID(U32 sid, S32 findTheHOP);
+static st_STRAN_SCENE* XST_nth_locked(S32 nth);
+static st_STRAN_SCENE* XST_find_bySID(U32 sid, S32 findTheHOP);
 
-S32 xSTStartup(PKRAssetType* handlers)
+S32 xSTStartup(st_PACKER_ASSETTYPE* handlers)
 {
     if (!g_straninit++) {
         g_typeHandlers = handlers;
@@ -70,7 +68,7 @@ S32 xSTShutdown()
 S32 xSTPreLoadScene(U32 sid, void* userdata, S32 flg_hiphop)
 {
     S32 result = 1;
-    STRAN_SCENE* sdata = NULL;
+    st_STRAN_SCENE* sdata = NULL;
     const char* sfile = NULL;
     S32 cltver = 0;
 
@@ -137,7 +135,7 @@ S32 xSTPreLoadScene(U32 sid, void* userdata, S32 flg_hiphop)
 S32 xSTQueueSceneAssets(U32 sid, S32 flg_hiphop)
 {
     S32 result = 1;
-    STRAN_SCENE* sdata = NULL;
+    st_STRAN_SCENE* sdata = NULL;
     S32 doTheHOP = ((flg_hiphop & XST_OPTS_MASKHH) == XST_OPTS_HOP) ? 1 : 0;
 
     sdata = XST_find_bySID(sid, doTheHOP);
@@ -152,7 +150,7 @@ S32 xSTQueueSceneAssets(U32 sid, S32 flg_hiphop)
 
 void xSTUnLoadScene(U32 sid, S32 flg_hiphop)
 {
-    STRAN_SCENE* sdata = NULL;
+    st_STRAN_SCENE* sdata = NULL;
     S32 cnt = 0;
     S32 i = 0;
 
@@ -197,7 +195,7 @@ F32 xSTLoadStep(U32)
 
 void xSTDisconnect(U32 sid, S32 flg_hiphop)
 {
-    STRAN_SCENE* sdata = NULL;
+    st_STRAN_SCENE* sdata = NULL;
     S32 doTheHOP = ((flg_hiphop & XST_OPTS_MASKHH) == XST_OPTS_HOP) ? 1 : 0;
 
     sdata = XST_find_bySID(sid, doTheHOP);
@@ -208,7 +206,7 @@ void xSTDisconnect(U32 sid, S32 flg_hiphop)
 
 S32 xSTSwitchScene(U32 sid, void* userdata, xSTProgressMonitorCallback progmon)
 {
-    STRAN_SCENE* sdata = NULL;
+    st_STRAN_SCENE* sdata = NULL;
     S32 rc = 0;
     S32 i = 0;
 
@@ -232,7 +230,7 @@ const char* xSTAssetName(U32 aid)
     const char* aname = NULL;
     S32 scncnt = 0;
     S32 i = 0;
-    STRAN_SCENE* sdata = NULL;
+    st_STRAN_SCENE* sdata = NULL;
 
     scncnt = XST_cnt_locked();
     for (i = 0; i < scncnt; i++) {
@@ -251,7 +249,7 @@ const char* xSTAssetName(void* raw_HIP_asset)
     S32 scncnt = XST_cnt_locked();
 
     for (S32 i = 0; i < scncnt; i++) {
-        STRAN_SCENE* sdata = XST_nth_locked(i);
+        st_STRAN_SCENE* sdata = XST_nth_locked(i);
         U32 aid = PKRAssetIDFromInst(raw_HIP_asset);
         aname = g_pkrf->AssetName(sdata->spkg, aid);
         if (aname) break;
@@ -268,7 +266,7 @@ void* xSTFindAsset(U32 aid, U32* size)
     S32 ready;
     S32 scncnt = XST_cnt_locked();
     for (S32 i = 0; i < scncnt; i++) {
-        STRAN_SCENE* sdata = XST_nth_locked(i);
+        st_STRAN_SCENE* sdata = XST_nth_locked(i);
         S32 rc = g_pkrf->PkgHasAsset(sdata->spkg, aid);
         if (!rc) continue;
 
@@ -291,7 +289,7 @@ S32 xSTAssetCountByType(U32 type)
 {
     S32 sum = 0;
     S32 cnt = 0;
-    STRAN_SCENE* sdata = NULL;
+    st_STRAN_SCENE* sdata = NULL;
     S32 scncnt = 0;
     S32 i = 0;
 
@@ -307,7 +305,7 @@ S32 xSTAssetCountByType(U32 type)
 
 void* xSTFindAssetByType(U32 type, S32 idx, U32* size)
 {
-    STRAN_SCENE* sdata = NULL;
+    st_STRAN_SCENE* sdata = NULL;
     void* memptr = NULL;
     S32 scncnt = 0;
     S32 i = 0;
@@ -328,13 +326,13 @@ void* xSTFindAssetByType(U32 type, S32 idx, U32* size)
     return memptr;
 }
 
-S32 xSTGetAssetInfo(U32 aid, PKRAssetTOCInfo* tocainfo)
+S32 xSTGetAssetInfo(U32 aid, st_PKR_ASSET_TOCINFO* tocainfo)
 {
     S32 found = 0;
     S32 scncnt = XST_cnt_locked();
 
     for (S32 i = 0; i < scncnt; i++) {
-        STRAN_SCENE* sdata = XST_nth_locked(i);
+        st_STRAN_SCENE* sdata = XST_nth_locked(i);
         S32 rc = g_pkrf->PkgHasAsset(sdata->spkg, aid);
         if (!rc) continue;
 
@@ -349,18 +347,18 @@ S32 xSTGetAssetInfo(U32 aid, PKRAssetTOCInfo* tocainfo)
     return found;
 }
 
-S32 xSTGetAssetInfoByType(U32 type, S32 idx, PKRAssetTOCInfo* ainfo)
+S32 xSTGetAssetInfoByType(U32 type, S32 idx, st_PKR_ASSET_TOCINFO* ainfo)
 {
     S32 found = 0;
-    PKRAssetTOCInfo tocinfo = {};
+    st_PKR_ASSET_TOCINFO tocinfo = {};
     S32 rc = 0;
     S32 scncnt = 0;
     S32 i = 0;
-    STRAN_SCENE* sdata = NULL;
+    st_STRAN_SCENE* sdata = NULL;
     S32 sum = 0;
     S32 cnt = 0;
     
-    memset(ainfo, 0, sizeof(PKRAssetTOCInfo));
+    memset(ainfo, 0, sizeof(st_PKR_ASSET_TOCINFO));
 
     scncnt = XST_cnt_locked();
     for (i = 0; i < scncnt; i++) {
@@ -387,13 +385,13 @@ S32 xSTGetAssetInfoByType(U32 type, S32 idx, PKRAssetTOCInfo* ainfo)
     return found;
 }
 
-S32 xSTGetAssetInfoInHxP(U32 aid, PKRAssetTOCInfo* ainfo, U32 scnhash)
+S32 xSTGetAssetInfoInHxP(U32 aid, st_PKR_ASSET_TOCINFO* ainfo, U32 scnhash)
 {
     S32 found = 0;
     S32 scncnt = XST_cnt_locked();
 
     for (S32 i = 0; i < scncnt; i++) {
-        STRAN_SCENE* sdata = XST_nth_locked(i);
+        st_STRAN_SCENE* sdata = XST_nth_locked(i);
         U32 hash = xStrHash(sdata->fnam);
         if (scnhash != hash) continue;
 
@@ -419,7 +417,7 @@ const char* xST_xAssetID_HIPFullPath(U32 aid)
 const char* xST_xAssetID_HIPFullPath(U32 aid, U32* sceneID)
 {
     const char* da_hipname = NULL;
-    STRAN_SCENE* sdata = NULL;
+    st_STRAN_SCENE* sdata = NULL;
     S32 rc = 0;
     S32 scncnt = 0;
     S32 i = 0;
@@ -441,7 +439,7 @@ const char* xST_xAssetID_HIPFullPath(U32 aid, U32* sceneID)
     return da_hipname;
 }
 
-static S32 XST_PreLoadScene(STRAN_SCENE* sdata, const char* sfile) NONMATCH("https://decomp.me/scratch/iRJmZ")
+static S32 XST_PreLoadScene(st_STRAN_SCENE* sdata, const char* sfile) NONMATCH("https://decomp.me/scratch/iRJmZ")
 {
     S32 cltver = 0;
     sdata->spkg = g_pkrf->Init(sdata->userdata, (char*)sfile, 0x2E, &cltver, g_typeHandlers);
@@ -475,9 +473,9 @@ static void XST_reset_raw()
     memset(&g_xstdata, 0, sizeof(g_xstdata));
 }
 
-static STRAN_SCENE* XST_lock_next()
+static st_STRAN_SCENE* XST_lock_next()
 {
-    STRAN_SCENE* sdata = NULL;
+    st_STRAN_SCENE* sdata = NULL;
     S32 i = 0;
     S32 uselock = -1;
 
@@ -486,7 +484,7 @@ static STRAN_SCENE* XST_lock_next()
             g_xstdata.loadlock |= (1<<i);
             
             sdata = &g_xstdata.hipscn[i];
-            memset(sdata, 0, sizeof(STRAN_SCENE));
+            memset(sdata, 0, sizeof(st_STRAN_SCENE));
 
             uselock = i;
             break;
@@ -500,19 +498,19 @@ static STRAN_SCENE* XST_lock_next()
     return sdata;
 }
 
-static void XST_unlock(STRAN_SCENE* sdata) NONMATCH("https://decomp.me/scratch/nn8wn")
+static void XST_unlock(st_STRAN_SCENE* sdata) NONMATCH("https://decomp.me/scratch/nn8wn")
 {
     if (!sdata) return;
 
     if (g_xstdata.loadlock & (1<<sdata->lockid)) {
         g_xstdata.loadlock &= ~(1<<sdata->lockid);
-        memset(sdata, 0, sizeof(STRAN_SCENE));
+        memset(sdata, 0, sizeof(st_STRAN_SCENE));
     }
 }
 
 static void XST_unlock_all()
 {
-    STRAN_SCENE* sdata = NULL;
+    st_STRAN_SCENE* sdata = NULL;
     S32 i = 0;
     
     if (g_xstdata.loadlock == 0) return;
@@ -525,7 +523,7 @@ static void XST_unlock_all()
     }
 }
 
-static STRAN_SCENE* XST_get_rawinst(S32 idx)
+static st_STRAN_SCENE* XST_get_rawinst(S32 idx)
 {
     return &g_xstdata.hipscn[idx];
 }
@@ -544,9 +542,9 @@ static S32 XST_cnt_locked()
     return cnt;
 }
 
-static STRAN_SCENE* XST_nth_locked(S32 nth)
+static st_STRAN_SCENE* XST_nth_locked(S32 nth)
 {
-    STRAN_SCENE* sdata = NULL;
+    st_STRAN_SCENE* sdata = NULL;
     S32 cnt = 0;
     S32 i = 0;
 
@@ -563,11 +561,11 @@ static STRAN_SCENE* XST_nth_locked(S32 nth)
     return sdata;
 }
 
-static STRAN_SCENE* XST_find_bySID(U32 sid, S32 findTheHOP)
+static st_STRAN_SCENE* XST_find_bySID(U32 sid, S32 findTheHOP)
 {
-    STRAN_SCENE* da_sdata = NULL;
+    st_STRAN_SCENE* da_sdata = NULL;
     S32 i = 0;
-    STRAN_SCENE* tmp_sdata = NULL;
+    st_STRAN_SCENE* tmp_sdata = NULL;
 
     for (i = 0; i < STRAN_MAX_SCENES; i++) {
         if (g_xstdata.loadlock & (1<<i)) {

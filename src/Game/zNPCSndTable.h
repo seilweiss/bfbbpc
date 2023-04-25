@@ -34,11 +34,10 @@ enum en_NPC_SOUND
     NPC_STYP_NOMORE,
     NPC_STYP_FORCE = FORCEENUMSIZEINT
 };
-typedef enum en_NPC_SOUND NPC_SOUND;
 
 struct NPCSndTrax
 {
-    NPC_SOUND typ_sound;
+    en_NPC_SOUND typ_sound;
     char* nam_sound;
     U32 aid_sound;
 };
@@ -46,7 +45,7 @@ struct NPCSndTrax
 struct NPCSndQueue
 {
     U32 sndDirect;
-    NPC_SOUND sndtype;
+    en_NPC_SOUND sndtype;
     S32 flg_snd;
     F32 tmr_delay;
     F32 radius;

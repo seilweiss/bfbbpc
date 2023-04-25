@@ -4,8 +4,7 @@
 
 struct xPortalAsset;
 
-typedef struct _zPortal zPortal;
-struct _zPortal : xBase
+typedef struct _zPortal : xBase
 {
     xPortalAsset* passet;
-};
+} zPortal;

@@ -3,7 +3,7 @@
 #include "iPad.h"
 #include "xMath2.h"
 
-enum _tagRumbleType
+typedef enum _tagRumbleType
 {
     eRumble_Off,
     eRumble_Hi,
@@ -19,38 +19,33 @@ enum _tagRumbleType
     eRumble_VeryHeavy,
     eRumble_Total,
     eRumbleForceU32 = FORCEENUMSIZEINT
-};
-typedef enum _tagRumbleType xRumbleType;
+} xRumbleType;
 
-typedef struct _tagxRumble xRumble;
-struct _tagxRumble
+typedef struct _tagxRumble
 {
     xRumbleType type;
     F32 seconds;
-    xRumble* next;
+    _tagxRumble* next;
     S16 active;
     U16 fxflags;
-};
+} xRumble;
 
-typedef struct _tagPadAnalog xPadAnalog;
-struct _tagPadAnalog
+typedef struct _tagPadAnalog
 {
     S8 x;
     S8 y;
-};
+} xPadAnalog;
 
-enum _tagPadState
+typedef enum _tagPadState
 {
     ePad_Disabled,
     ePad_DisabledError,
     ePad_Enabled,
     ePad_Missing,
     ePad_Total
-};
-typedef enum _tagPadState xPadState;
+} xPadState;
 
-typedef struct _tagxPad xPad;
-struct _tagxPad
+typedef struct _tagxPad
 {
     struct analog_data
     {
@@ -79,7 +74,7 @@ struct _tagxPad
     F32 up_tmr[22];
     F32 down_tmr[22];
     analog_data analog[2];
-};
+} xPad;
 
 // NOTE: Probably wrong. These are from Ratatouille Proto
 #define k_XPAD_START  ((U32)(1 << 0))  // 0x1

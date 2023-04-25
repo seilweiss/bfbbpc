@@ -36,14 +36,13 @@ struct zLedgeGrabParams
     F32 endrot;
 };
 
-enum _zPlayerType
+typedef enum _zPlayerType
 {
     ePlayer_SB,
     ePlayer_Patrick,
     ePlayer_Sandy,
     ePlayer_MAXTYPES
-};
-typedef enum _zPlayerType zPlayerType;
+} zPlayerType;
 
 struct zPlayerSettings
 {
@@ -126,14 +125,13 @@ struct zPlayerLassoInfo
     xAnimState* zeroAnim;
 };
 
-enum _zPlayerWallJumpState
+typedef enum _zPlayerWallJumpState
 {
     k_WALLJUMP_NOT,
     k_WALLJUMP_LAUNCH,
     k_WALLJUMP_FLIGHT,
     k_WALLJUMP_LAND
-};
-typedef enum _zPlayerWallJumpState zPlayerWallJumpState;
+} zPlayerWallJumpState;
 
 enum zControlOwner
 {

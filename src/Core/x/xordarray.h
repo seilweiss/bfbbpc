@@ -5,7 +5,6 @@
 typedef S32(*XOrdTestCallback)(const void*, void*);
 typedef S32(*XOrdCompareCallback)(void*, void*);
 
-typedef struct st_XORDEREDARRAY XORDEREDARRAY;
 struct st_XORDEREDARRAY
 {
     void** list;
@@ -14,11 +13,11 @@ struct st_XORDEREDARRAY
     S32 warnlvl;
 };
 
-void XOrdInit(XORDEREDARRAY* array, S32 size, S32 tempAlloc);
-void XOrdReset(XORDEREDARRAY* array);
-void XOrdDone(XORDEREDARRAY* array, S32 wasTempAlloc);
-void XOrdAppend(XORDEREDARRAY* array, void* elt);
-void XOrdInsert(XORDEREDARRAY* array, void* elt, XOrdCompareCallback compare);
-void* XOrdRemove(XORDEREDARRAY* array, void* elt, S32 index);
-S32 XOrdLookup(XORDEREDARRAY* array, const void* key, XOrdTestCallback test);
-void XOrdSort(XORDEREDARRAY* array, XOrdCompareCallback test);
+void XOrdInit(st_XORDEREDARRAY* array, S32 size, S32 tempAlloc);
+void XOrdReset(st_XORDEREDARRAY* array);
+void XOrdDone(st_XORDEREDARRAY* array, S32 wasTempAlloc);
+void XOrdAppend(st_XORDEREDARRAY* array, void* elt);
+void XOrdInsert(st_XORDEREDARRAY* array, void* elt, XOrdCompareCallback compare);
+void* XOrdRemove(st_XORDEREDARRAY* array, void* elt, S32 index);
+S32 XOrdLookup(st_XORDEREDARRAY* array, const void* key, XOrdTestCallback test);
+void XOrdSort(st_XORDEREDARRAY* array, XOrdCompareCallback test);

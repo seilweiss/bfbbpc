@@ -3,7 +3,7 @@
 #include "xMemMgr.h"
 #include "xMath.h"
 
-void XOrdInit(XORDEREDARRAY* array, S32 size, S32 tempAlloc) NONMATCH("https://decomp.me/scratch/JVhIL")
+void XOrdInit(st_XORDEREDARRAY* array, S32 size, S32 tempAlloc) NONMATCH("https://decomp.me/scratch/JVhIL")
 {
     size = (size >= 1) ? size : 1;
     if (tempAlloc) {
@@ -19,12 +19,12 @@ void XOrdInit(XORDEREDARRAY* array, S32 size, S32 tempAlloc) NONMATCH("https://d
     }
 }
 
-void XOrdReset(XORDEREDARRAY* array)
+void XOrdReset(st_XORDEREDARRAY* array)
 {
     array->cnt = 0;
 }
 
-void XOrdDone(XORDEREDARRAY* array, S32 wasTempAlloc)
+void XOrdDone(st_XORDEREDARRAY* array, S32 wasTempAlloc)
 {
     if (array->max && wasTempAlloc) {
         xMemPopTemp(array->list);
@@ -35,13 +35,13 @@ void XOrdDone(XORDEREDARRAY* array, S32 wasTempAlloc)
     array->warnlvl = 0;
 }
 
-void XOrdAppend(XORDEREDARRAY* array, void* elt)
+void XOrdAppend(st_XORDEREDARRAY* array, void* elt)
 {
     if (array->cnt >= array->max) return;
     array->list[array->cnt++] = elt;
 }
 
-void XOrdInsert(XORDEREDARRAY* array, void* elt, XOrdCompareCallback compare)
+void XOrdInsert(st_XORDEREDARRAY* array, void* elt, XOrdCompareCallback compare)
 {
     S32 i = 0;
     
@@ -59,7 +59,7 @@ void XOrdInsert(XORDEREDARRAY* array, void* elt, XOrdCompareCallback compare)
     array->list[0] = elt;
 }
 
-void* XOrdRemove(XORDEREDARRAY* array, void* elt, S32 index)
+void* XOrdRemove(st_XORDEREDARRAY* array, void* elt, S32 index)
 {
     S32 i = 0;
 
@@ -90,7 +90,7 @@ void* XOrdRemove(XORDEREDARRAY* array, void* elt, S32 index)
     return elt;
 }
 
-S32 XOrdLookup(XORDEREDARRAY* array, const void* key, XOrdTestCallback test)
+S32 XOrdLookup(st_XORDEREDARRAY* array, const void* key, XOrdTestCallback test)
 {
     S32 da_idx = -1;
     S32 k0 = 0;
@@ -114,7 +114,7 @@ S32 XOrdLookup(XORDEREDARRAY* array, const void* key, XOrdTestCallback test)
     return da_idx;
 }
 
-void XOrdSort(XORDEREDARRAY* array, XOrdCompareCallback test)
+void XOrdSort(st_XORDEREDARRAY* array, XOrdCompareCallback test)
 {
     void** list = array->list;
     S32 num = array->cnt;

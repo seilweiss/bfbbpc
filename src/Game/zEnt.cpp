@@ -23,7 +23,7 @@ char* g_strz_xentanim[XENT_AUTOANIM_COUNT] = {
     "Anim05"
 };
 
-ShadowParams gShadowParams[] = {
+zShadowParams gShadowParams[] = {
     { 'NTR0', 0.33f, 2.0f },
     { 'NTR3', 0.0f, 1.25f },
     { 'NTFA', -0.25f, 0.75f },
@@ -734,7 +734,7 @@ void zEntGetShadowParams(xEnt* ent, xVec3* center, F32* radius, xEntShadow::radi
 
     if (ent->baseType == eBaseTypeNPC) {
         zNPCCommon* zp = (zNPCCommon*)ent;
-        ShadowParams* sp = gShadowParams;
+        zShadowParams* sp = gShadowParams;
         for (S32 i = 0; i < ARRAY_LENGTH(gShadowParams); i++, sp++) {
             if (sp->type == zp->SelfType()) {
                 xVec3* at = (xVec3*)&ent->model->Mat->at;

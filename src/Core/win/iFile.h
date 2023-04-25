@@ -16,13 +16,12 @@ typedef struct tag_xFile xFile;
 #define IFILE_SEEK_CUR 1
 #define IFILE_SEEK_END 2
 
-typedef struct tag_iFile iFile;
-struct tag_iFile
+typedef struct tag_iFile
 {
     U32 flags;
     char path[IFILE_NAMELEN_MAX];
     S32 fd;
-};
+} iFile;
 
 enum IFILE_READSECTOR_STATUS
 {

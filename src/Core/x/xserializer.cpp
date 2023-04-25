@@ -14,29 +14,28 @@ struct st_SERIAL_CLIENTINFO
     S32 actsize;
 };
 
-typedef struct st_XSERIAL_DATA_PRIV XSERIAL_DATA_PRIV;
 struct st_XSERIAL_DATA_PRIV
 {
     S32 flg_info;
     S32* bitbuf;
     S32 buf_bytcnt;
-    SERIAL_CLIENTINFO* cltbuf;
-    SERIAL_CLIENTINFO* cltnext;
-    XORDEREDARRAY cltlist;
+    st_SERIAL_CLIENTINFO* cltbuf;
+    st_SERIAL_CLIENTINFO* cltnext;
+    st_XORDEREDARRAY cltlist;
 };
 
 static S32 g_serinit;
-static XSERIAL_DATA_PRIV g_xserdata = {};
+static st_XSERIAL_DATA_PRIV g_xserdata = {};
 static S32 g_tbl_onbit[32] = {};
 static S32 g_tbl_clear[32] = {};
 
 static void xSER_init_tables();
-static void xSER_init_buffers(S32 count, SERIAL_PERCID_SIZE* sizeinfo);
+static void xSER_init_buffers(S32 count, st_SERIAL_PERCID_SIZE* sizeinfo);
 static S32 xSER_ord_compare(void* e1, void* e2);
 static S32 xSER_ord_test(const void* key, void* elt);
-static SERIAL_CLIENTINFO* XSER_get_client(U32 idtag);
+static st_SERIAL_CLIENTINFO* XSER_get_client(U32 idtag);
 
-S32 xSerialStartup(S32 count, SERIAL_PERCID_SIZE* sizeinfo)
+S32 xSerialStartup(S32 count, st_SERIAL_PERCID_SIZE* sizeinfo)
 {
     if (!g_serinit++) {
         memset(&g_xserdata, 0, sizeof(g_xserdata));
@@ -55,13 +54,13 @@ S32 xSerialShutdown()
 void xSerialTraverse(xSerialTraverseCallback func)
 {
     S32 i = 0;
-    XSERIAL_DATA_PRIV* xsd = &g_xserdata;
-    SERIAL_CLIENTINFO* clt = NULL;
+    st_XSERIAL_DATA_PRIV* xsd = &g_xserdata;
+    st_SERIAL_CLIENTINFO* clt = NULL;
     xSerial xser;
     S32 rc = 0;
 
     for (i = 0; i < xsd->cltlist.cnt; i++) {
-        clt = (SERIAL_CLIENTINFO*)xsd->cltlist.list[i];
+        clt = (st_SERIAL_CLIENTINFO*)xsd->cltlist.list[i];
         xser.setClient(clt->idtag);
         rc = func(clt->idtag, &xser);
         if (!rc) break;
@@ -264,7 +263,7 @@ S32 xSerial::Read(F32* buf)
 
 void xSerial::wrbit(S32 is_on)
 {
-    SERIAL_CLIENTINFO* clt = (SERIAL_CLIENTINFO*)this->ctxtdata;
+    st_SERIAL_CLIENTINFO* clt = (st_SERIAL_CLIENTINFO*)this->ctxtdata;
     
     if (this->bittally + 1 > clt->actsize * 8) {
         this->warned = 1;
@@ -286,7 +285,7 @@ void xSerial::wrbit(S32 is_on)
 
 S32 xSerial::rdbit()
 {
-    SERIAL_CLIENTINFO* clt = (SERIAL_CLIENTINFO*)this->ctxtdata;
+    st_SERIAL_CLIENTINFO* clt = (st_SERIAL_CLIENTINFO*)this->ctxtdata;
     S32 is_on = 0;
 
     if (this->bittally + 1 > clt->actsize * 8) {
@@ -308,7 +307,7 @@ S32 xSerial::rdbit()
 
 void xSerial::prepare(U32 idtag)
 {
-    SERIAL_CLIENTINFO* clt = NULL;
+    st_SERIAL_CLIENTINFO* clt = NULL;
     clt = XSER_get_client(idtag);
     this->idtag = clt->idtag;
     this->baseoff = clt->trueoff;
@@ -321,7 +320,7 @@ void xSerial::prepare(U32 idtag)
 
 void xSerialWipeMainBuffer()
 {
-    XSERIAL_DATA_PRIV* xser = &g_xserdata;
+    st_XSERIAL_DATA_PRIV* xser = &g_xserdata;
     memset(xser->bitbuf, 0, xser->buf_bytcnt);
 }
 
@@ -333,19 +332,19 @@ static void xSER_init_tables()
     }
 }
 
-static void xSER_init_buffers(S32 count, SERIAL_PERCID_SIZE* sizeinfo) NONMATCH("https://decomp.me/scratch/uex0C")
+static void xSER_init_buffers(S32 count, st_SERIAL_PERCID_SIZE* sizeinfo) NONMATCH("https://decomp.me/scratch/uex0C")
 {
-    XSERIAL_DATA_PRIV* xsd = &g_xserdata;
+    st_XSERIAL_DATA_PRIV* xsd = &g_xserdata;
     S32 i = 0;
     S32 tally = 0;
     S32 sicnt = 0;
-    SERIAL_PERCID_SIZE* sitmp = NULL;
-    SERIAL_CLIENTINFO* tmp_clt = NULL;
+    st_SERIAL_PERCID_SIZE* sitmp = NULL;
+    st_SERIAL_CLIENTINFO* tmp_clt = NULL;
 
     XOrdInit(&g_xserdata.cltlist, count, 0);
     
-    xsd->cltbuf = (SERIAL_CLIENTINFO*)xMALLOC(count * sizeof(SERIAL_CLIENTINFO));
-    memset(xsd->cltbuf, 0, count * sizeof(SERIAL_CLIENTINFO));
+    xsd->cltbuf = (st_SERIAL_CLIENTINFO*)xMALLOC(count * sizeof(st_SERIAL_CLIENTINFO));
+    memset(xsd->cltbuf, 0, count * sizeof(st_SERIAL_CLIENTINFO));
     xsd->cltnext = xsd->cltbuf;
 
     sitmp = sizeinfo;
@@ -390,8 +389,8 @@ static void xSER_init_buffers(S32 count, SERIAL_PERCID_SIZE* sizeinfo) NONMATCH(
 static S32 xSER_ord_compare(void* e1, void* e2)
 {
     S32 rc = 0;
-    SERIAL_CLIENTINFO* clt_a = (SERIAL_CLIENTINFO*)e1;
-    SERIAL_CLIENTINFO* clt_b = (SERIAL_CLIENTINFO*)e2;
+    st_SERIAL_CLIENTINFO* clt_a = (st_SERIAL_CLIENTINFO*)e1;
+    st_SERIAL_CLIENTINFO* clt_b = (st_SERIAL_CLIENTINFO*)e2;
     if (clt_a->idtag < clt_b->idtag) rc = -1;
     else if (clt_a->idtag > clt_b->idtag) rc = 1;
     else rc = 0;
@@ -402,17 +401,17 @@ static S32 xSER_ord_test(const void* key, void* elt)
 {
     S32 rc = 0;
     U32 idtag = (U32)key;
-    SERIAL_CLIENTINFO* clt = (SERIAL_CLIENTINFO*)elt;
+    st_SERIAL_CLIENTINFO* clt = (st_SERIAL_CLIENTINFO*)elt;
     if (idtag < clt->idtag) rc = -1;
     else if (idtag > clt->idtag) rc = 1;
     else rc = 0;
     return rc;
 }
 
-static SERIAL_CLIENTINFO* XSER_get_client(U32 idtag)
+static st_SERIAL_CLIENTINFO* XSER_get_client(U32 idtag)
 {
-    XSERIAL_DATA_PRIV* xsd = &g_xserdata;
-    SERIAL_CLIENTINFO* clt = NULL;
+    st_XSERIAL_DATA_PRIV* xsd = &g_xserdata;
+    st_SERIAL_CLIENTINFO* clt = NULL;
     S32 idx = -1;
 
     idx = XOrdLookup(&xsd->cltlist, (void*)idtag, xSER_ord_test);
@@ -422,7 +421,7 @@ static SERIAL_CLIENTINFO* XSER_get_client(U32 idtag)
         clt->idtag = idtag;
         XOrdInsert(&xsd->cltlist, clt, xSER_ord_compare);
     } else {
-        clt = (SERIAL_CLIENTINFO*)xsd->cltlist.list[idx];
+        clt = (st_SERIAL_CLIENTINFO*)xsd->cltlist.list[idx];
     }
 
     return clt;

@@ -11,7 +11,6 @@ enum en_LASSO_STATUS
     LASS_STAT_NOMORE,
     LASS_STAT_FORCEINT = FORCEENUMSIZEINT
 };
-typedef enum en_LASSO_STATUS LASSO_STATUS;
 
 enum en_LASSO_EVENT
 {
@@ -24,11 +23,10 @@ enum en_LASSO_EVENT
     LASS_EVNT_NOMORE,
     LASS_EVNT_FORCEINT = FORCEENUMSIZEINT
 };
-typedef enum en_LASSO_EVENT LASSO_EVENT;
 
 struct zNPCLassoInfo
 {
-    LASSO_STATUS stage;
+    en_LASSO_STATUS stage;
     xEnt* lassoee;
     xAnimState* holdGuideAnim;
     xModelInstance* holdGuideModel;

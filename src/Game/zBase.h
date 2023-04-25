@@ -78,4 +78,3 @@ enum en_ZBASETYPE
     eBaseTypeHUD_text,
     eBaseTypeCount
 };
-typedef enum en_ZBASETYPE ZBASETYPE;

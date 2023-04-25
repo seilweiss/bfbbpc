@@ -5,11 +5,10 @@
 
 struct xEnvAsset;
 
-typedef struct _zEnv zEnv;
-struct _zEnv : xBase
+typedef struct _zEnv : xBase
 {
     xEnvAsset* easset;
-};
+} zEnv;
 
 void zEnvInit(void* env, void* easset);
 void zEnvInit(zEnv* env, xEnvAsset* easset);

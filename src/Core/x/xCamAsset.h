@@ -3,7 +3,7 @@
 #include "xBaseAsset.h"
 #include "xVec3.h"
 
-enum _tagTransType
+typedef enum _tagTransType
 {
     eTransType_None,
     eTransType_Interp1,
@@ -16,11 +16,9 @@ enum _tagTransType
     eTransType_Interp3Rev,
     eTransType_Interp4Rev,
     eTransType_Total
-};
-typedef enum _tagTransType TransType;
+} xTransType;
 
-typedef struct _tagxCamFollowAsset xCamFollowAsset;
-struct _tagxCamFollowAsset
+typedef struct _tagxCamFollowAsset
 {
     F32 rotation;
     F32 distance;
@@ -28,36 +26,32 @@ struct _tagxCamFollowAsset
     F32 rubber_band;
     F32 start_speed;
     F32 end_speed;
-};
+} xCamFollowAsset;
 
-typedef struct _tagxCamShoulderAsset xCamShoulderAsset;
-struct _tagxCamShoulderAsset
+typedef struct _tagxCamShoulderAsset
 {
     F32 distance;
     F32 height;
     F32 realign_speed;
     F32 realign_delay;
-};
+} xCamShoulderAsset;
 
-typedef struct _tagp2CamStaticAsset xCamStaticAsset;
-struct _tagp2CamStaticAsset
+typedef struct _tagp2CamStaticAsset
 {
     U32 unused;
-};
+} xCamStaticAsset;
 
-typedef struct _tagxCamPathAsset xCamPathAsset;
-struct _tagxCamPathAsset
+typedef struct _tagxCamPathAsset
 {
     U32 assetID;
     F32 time_end;
     F32 time_delay;
-};
+} xCamPathAsset;
 
-typedef struct _tagp2CamStaticFollowAsset xCamStaticFollowAsset;
-struct _tagp2CamStaticFollowAsset
+typedef struct _tagp2CamStaticFollowAsset
 {
     F32 rubber_band;
-};
+} xCamStaticFollowAsset;
 
 struct xCamAsset : xBaseAsset
 {
@@ -70,7 +64,7 @@ struct xCamAsset : xBaseAsset
     S16 offset_end_frames;
     F32 fov;
     F32 trans_time;
-    TransType trans_type;
+    xTransType trans_type;
     U32 flags;
     F32 fade_up;
     F32 fade_down;

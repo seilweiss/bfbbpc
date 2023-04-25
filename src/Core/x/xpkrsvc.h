@@ -17,13 +17,8 @@
 #define PKR_MAX_TYPES 128
 #define PKR_DUMBNUM 0x33333333
 
-typedef struct st_PACKER_READ_DATA PKRReadData;
-typedef struct st_PACKER_READ_FUNCS PKRReadFuncs;
-typedef struct st_PACKER_WRITE_DATA PKRWriteData;
-typedef struct st_PACKER_ASSETTYPE PKRAssetType;
-typedef struct st_PKR_ASSET_TOCINFO PKRAssetTOCInfo;
-typedef struct st_PACKER_ATOC_NODE PKRANode;
-typedef struct st_PACKER_LTOC_NODE PKRLNode;
+struct st_PACKER_READ_DATA;
+struct st_PACKER_LTOC_NODE;
 
 enum en_LAYER_TYPE
 {
@@ -41,7 +36,6 @@ enum en_LAYER_TYPE
     PKR_LTYPE_JSPINFO,
     PKR_LTYPE_NOMORE
 };
-typedef enum en_LAYER_TYPE LAYER_TYPE;
 
 struct st_PACKER_ASSETTYPE
 {
@@ -60,7 +54,7 @@ struct st_PACKER_ASSETTYPE
 struct st_PKR_ASSET_TOCINFO
 {
     U32 aid;
-    PKRAssetType* typeref;
+    st_PACKER_ASSETTYPE* typeref;
     U32 sector;
     U32 plus_offset;
     U32 size;
@@ -70,30 +64,30 @@ struct st_PKR_ASSET_TOCINFO
 struct st_PACKER_READ_FUNCS
 {
     U32 api_ver;
-    PKRReadData*(*Init)(void*, char*, U32, S32*, PKRAssetType*);
-    void(*Done)(PKRReadData*);
-    S32(*LoadLayer)(PKRReadData*, LAYER_TYPE);
-    U32(*GetAssetSize)(PKRReadData*, U32);
-    void*(*LoadAsset)(PKRReadData*, U32, const char*, void*);
-    void*(*AssetByType)(PKRReadData*, U32, S32, U32*);
-    S32(*AssetCount)(PKRReadData*, U32);
-    S32(*IsAssetReady)(PKRReadData*, U32);
-    S32(*SetActive)(PKRReadData*, LAYER_TYPE);
-    const char*(*AssetName)(PKRReadData*, U32);
-    U32(*GetBaseSector)(PKRReadData*);
-    S32(*GetAssetInfo)(PKRReadData*, U32, PKRAssetTOCInfo*);
-    S32(*GetAssetInfoByType)(PKRReadData*, U32, S32, PKRAssetTOCInfo*);
-    S32(*PkgHasAsset)(PKRReadData*, U32);
-    U32(*PkgTimeStamp)(PKRReadData*);
-    void(*PkgDisconnect)(PKRReadData*);
+    st_PACKER_READ_DATA*(*Init)(void*, char*, U32, S32*, st_PACKER_ASSETTYPE*);
+    void(*Done)(st_PACKER_READ_DATA*);
+    S32(*LoadLayer)(st_PACKER_READ_DATA*, en_LAYER_TYPE);
+    U32(*GetAssetSize)(st_PACKER_READ_DATA*, U32);
+    void*(*LoadAsset)(st_PACKER_READ_DATA*, U32, const char*, void*);
+    void*(*AssetByType)(st_PACKER_READ_DATA*, U32, S32, U32*);
+    S32(*AssetCount)(st_PACKER_READ_DATA*, U32);
+    S32(*IsAssetReady)(st_PACKER_READ_DATA*, U32);
+    S32(*SetActive)(st_PACKER_READ_DATA*, en_LAYER_TYPE);
+    const char*(*AssetName)(st_PACKER_READ_DATA*, U32);
+    U32(*GetBaseSector)(st_PACKER_READ_DATA*);
+    S32(*GetAssetInfo)(st_PACKER_READ_DATA*, U32, st_PKR_ASSET_TOCINFO*);
+    S32(*GetAssetInfoByType)(st_PACKER_READ_DATA*, U32, S32, st_PKR_ASSET_TOCINFO*);
+    S32(*PkgHasAsset)(st_PACKER_READ_DATA*, U32);
+    U32(*PkgTimeStamp)(st_PACKER_READ_DATA*);
+    void(*PkgDisconnect)(st_PACKER_READ_DATA*);
 };
 
 extern S32 pkr_sector_size;
 
-PKRReadFuncs* PKRGetReadFuncs(S32 apiver);
+st_PACKER_READ_FUNCS* PKRGetReadFuncs(S32 apiver);
 S32 PKRStartup();
 S32 PKRShutdown();
 S32 PKRLoadStep(S32 block);
-void PKR_drv_guardLayer(PKRLNode*);
-READ_ASYNC_STATUS PKR_drv_guardVerify(PKRLNode*);
+void PKR_drv_guardLayer(st_PACKER_LTOC_NODE*);
+en_READ_ASYNC_STATUS PKR_drv_guardVerify(st_PACKER_LTOC_NODE*);
 U32 PKRAssetIDFromInst(void* asset_inst);

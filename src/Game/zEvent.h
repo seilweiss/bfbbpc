@@ -547,6 +547,5 @@ enum en_xEventTags
     eEventRestoreOptions,
     eEventCount
 };
-typedef enum en_xEventTags xEvent;
 
 char* zEventName(U32 eventEnum);

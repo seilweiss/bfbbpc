@@ -20,7 +20,6 @@ enum en_VERBOSE_MSGLEVEL
     DBML_VDBG,
     DBML_SPEW
 };
-typedef enum en_VERBOSE_MSGLEVEL VERBOSE_MSGLEVEL;
 
 struct xSB
 {
@@ -30,7 +29,7 @@ struct xSB
     char* disp;
 };
 
-typedef void(*xDebugMsgNotifyCallback)(VERBOSE_MSGLEVEL, char*);
+typedef void(*xDebugMsgNotifyCallback)(en_VERBOSE_MSGLEVEL, char*);
 typedef void(*xDebugModeCallback)();
 
 void xprintf(const char* fmt, ...);
@@ -42,10 +41,10 @@ void xDebugTimestampScreen();
 
 #if defined(DEBUG) || defined(RELEASE)
 bool xDebugIDontWantYourXprintsOnMyScreen();
-void DBStartup(VERBOSE_MSGLEVEL setlvl, char* logfile, char* errfile, xDebugMsgNotifyCallback msgnotify);
+void DBStartup(en_VERBOSE_MSGLEVEL setlvl, char* logfile, char* errfile, xDebugMsgNotifyCallback msgnotify);
 void DBShutdown();
-S32 DBChkMsgLvl(VERBOSE_MSGLEVEL msglvl);
-void DBprintf(VERBOSE_MSGLEVEL msglvl, const char* fmt, ...);
+S32 DBChkMsgLvl(en_VERBOSE_MSGLEVEL msglvl);
+void DBprintf(en_VERBOSE_MSGLEVEL msglvl, const char* fmt, ...);
 void xDebugVSync();
 void xDebug_assert2_info(const char* func, const char* file, U32 line, const char* expr);
 void xDebug_assert2(const char* fmt, ...);

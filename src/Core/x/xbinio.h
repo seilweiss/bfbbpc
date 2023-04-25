@@ -10,7 +10,6 @@ enum en_FIOERRCODES
     FIOERR_SEEKFAIL,
     FIOERR_USERABORT
 };
-typedef enum en_FIOERRCODES FIOERRCODES;
 
 enum en_BIO_ASYNC_ERRCODES
 {
@@ -20,30 +19,28 @@ enum en_BIO_ASYNC_ERRCODES
     BINIO_ASYNC_DONE,
     BINIO_ASYNC_FORCEENUMSIZEINT = FORCEENUMSIZEINT
 };
-typedef enum en_BIO_ASYNC_ERRCODES BIO_ASYNC_ERRCODES;
 
-typedef struct st_FILELOADINFO FILELOADINFO;
 struct st_FILELOADINFO
 {
-    void(*destroy)(FILELOADINFO*);
-    S32(*readBytes)(FILELOADINFO*, char*, S32);
-    S32(*readMShorts)(FILELOADINFO*, S16*, S32);
-    S32(*readMLongs)(FILELOADINFO*, S32*, S32);
-    S32(*readMFloats)(FILELOADINFO*, F32*, S32);
-    S32(*readMDoubles)(FILELOADINFO*, F64*, S32);
-    S32(*readIShorts)(FILELOADINFO*, S16*, S32);
-    S32(*readILongs)(FILELOADINFO*, S32*, S32);
-    S32(*readIFloats)(FILELOADINFO*, F32*, S32);
-    S32(*readIDoubles)(FILELOADINFO*, F64*, S32);
-    S32(*skipBytes)(FILELOADINFO*, S32);
-    S32(*seekSpot)(FILELOADINFO*, S32);
-    void(*setDoubleBuf)(FILELOADINFO*, char*, S32);
-    void(*discardDblBuf)(FILELOADINFO*);
-    S32(*asyncIRead)(FILELOADINFO*, S32, char*, S32, S32);
-    S32(*asyncMRead)(FILELOADINFO*, S32, char*, S32, S32);
-    BIO_ASYNC_ERRCODES(*asyncReadStatus)(FILELOADINFO*);
+    void(*destroy)(st_FILELOADINFO*);
+    S32(*readBytes)(st_FILELOADINFO*, char*, S32);
+    S32(*readMShorts)(st_FILELOADINFO*, S16*, S32);
+    S32(*readMLongs)(st_FILELOADINFO*, S32*, S32);
+    S32(*readMFloats)(st_FILELOADINFO*, F32*, S32);
+    S32(*readMDoubles)(st_FILELOADINFO*, F64*, S32);
+    S32(*readIShorts)(st_FILELOADINFO*, S16*, S32);
+    S32(*readILongs)(st_FILELOADINFO*, S32*, S32);
+    S32(*readIFloats)(st_FILELOADINFO*, F32*, S32);
+    S32(*readIDoubles)(st_FILELOADINFO*, F64*, S32);
+    S32(*skipBytes)(st_FILELOADINFO*, S32);
+    S32(*seekSpot)(st_FILELOADINFO*, S32);
+    void(*setDoubleBuf)(st_FILELOADINFO*, char*, S32);
+    void(*discardDblBuf)(st_FILELOADINFO*);
+    S32(*asyncIRead)(st_FILELOADINFO*, S32, char*, S32, S32);
+    S32(*asyncMRead)(st_FILELOADINFO*, S32, char*, S32, S32);
+    en_BIO_ASYNC_ERRCODES(*asyncReadStatus)(st_FILELOADINFO*);
     U32 lockid;
-    FIOERRCODES error;
+    en_FIOERRCODES error;
     U32 basesector;
     void* privdata;
     void* xtradata;
@@ -53,4 +50,4 @@ struct st_FILELOADINFO
     S32 position;
 };
 
-FILELOADINFO* xBinioLoadCreate(const char* filename);
+st_FILELOADINFO* xBinioLoadCreate(const char* filename);

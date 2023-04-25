@@ -12,17 +12,16 @@ struct zEnt : xEnt
     xAnimTable* atbl;
 };
 
-typedef struct _ShadowParams ShadowParams;
-struct _ShadowParams
+typedef struct _ShadowParams
 {
     U32 type;
     F32 at;
     F32 rad;
-};
+} zShadowParams;
 
 extern U32 g_hash_xentanim[XENT_AUTOANIM_COUNT];
 extern char* g_strz_xentanim[XENT_AUTOANIM_COUNT];
-extern ShadowParams gShadowParams[];
+extern zShadowParams gShadowParams[];
 
 void zEntInit(zEnt* ent, xEntAsset* asset, U32 type);
 void zEntSetup(zEnt* ent);

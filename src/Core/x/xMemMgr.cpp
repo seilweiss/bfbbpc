@@ -9,8 +9,7 @@
 
 #define ALIGN(x, a) (((x) + ((a) - 1)) & ~((a) - 1))
 
-typedef struct xMemBlkInfo_tag xMemBlkInfo;
-struct xMemBlkInfo_tag
+typedef struct xMemBlkInfo_tag
 {
     xMemBlock* header;
     U32 pre;
@@ -19,7 +18,7 @@ struct xMemBlkInfo_tag
     U32 curr;
     U32 waste;
     U32 total;
-};
+} xMemBlkInfo;
 
 xMemInfo gMemInfo;
 U32 gActiveHeap;

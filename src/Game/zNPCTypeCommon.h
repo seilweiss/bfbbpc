@@ -35,7 +35,6 @@ enum en_npcbtyp
     NPCP_BASIS_NOMORE,
     NPCP_BASIS_FORCE = FORCEENUMSIZEINT
 };
-typedef enum en_npcbtyp npcbtyp;
 
 enum en_dupowavmod
 {
@@ -44,11 +43,10 @@ enum en_dupowavmod
     NPCP_DUPOWAVE_NOMORE,
     NPCP_DUPOWAVE_FORCE = FORCEENUMSIZEINT
 };
-typedef enum en_dupowavmod dupowavmod;
 
 struct zNPCSettings : xDynAsset
 {
-    npcbtyp basisType;
+    en_npcbtyp basisType;
     char allowDetect;
     char allowPatrol;
     char allowWander;
@@ -59,7 +57,7 @@ struct zNPCSettings : xDynAsset
     char allowAttack;
     char assumeLOS;
     char assumeFOV;
-    dupowavmod duploWaveMode;
+    en_dupowavmod duploWaveMode;
     F32 duploSpawnDelay;
     S32 duploSpawnLifeMax;
 };
@@ -136,7 +134,6 @@ enum en_npcparm
     NPC_PARM_NOMORE,
     NPC_PARM_FORCEINT = FORCEENUMSIZEINT
 };
-typedef enum en_npcparm npcparm;
 
 class zNPCCommon : public xNPCBasic
 {
@@ -191,20 +188,20 @@ public:
     virtual void SelfDestroy();
     virtual S32 IsHealthy() { return 1; }
     virtual S32 IsAlive() { return 1; }
-    virtual void Damage(NPC_DAMAGE_TYPE damtype, xBase* who, const xVec3* vec_hit);
+    virtual void Damage(en_NPC_DAMAGE_TYPE damtype, xBase* who, const xVec3* vec_hit);
     virtual S32 Respawn(const xVec3* pos, zMovePoint* mvptFirst, zMovePoint* mvptSpawnRef);
     virtual void DuploOwner(zNPCCommon* duper) { npc_duplodude = duper; }
-    virtual void DuploNotice(SM_NOTICES note, void* data);
+    virtual void DuploNotice(en_SM_NOTICES note, void* data);
     virtual S32 CanRope() WIP { return 0; }
-    virtual void LassoNotify(LASSO_EVENT event);
-    virtual S32 SetCarryState(NPC_CARRY_STATE stat) { return 0; }
+    virtual void LassoNotify(en_LASSO_EVENT event);
+    virtual S32 SetCarryState(en_NPC_CARRY_STATE stat) { return 0; }
     virtual void Stun(F32 stuntime) {}
     virtual void SpeakBegin() {}
     virtual void SpeakEnd() {}
     virtual void SpeakStart(U32 sndid, U32 sndhandle, S32 anim) {}
     virtual void SpeakStop() {}
-    virtual U32 AnimPick(S32 gid, NPC_GOAL_SPOT gspot, xGoal* rawgoal) { return 0; }
-    virtual void GetParm(npcparm pid, void* val);
+    virtual U32 AnimPick(S32 gid, en_NPC_GOAL_SPOT gspot, xGoal* rawgoal) { return 0; }
+    virtual void GetParm(en_npcparm pid, void* val);
     virtual S32 GetParmDefault(en_npcparm pid, void* val);
     virtual F32 GenShadCacheRad() { return 2.4f; }
     virtual xEntDrive* PRIV_GetDriverData() { return NULL; }

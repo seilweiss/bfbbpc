@@ -285,7 +285,7 @@ static S32 zCameraFlyUpdate(xCamera* cam, F32 dt) NONMATCH("https://decomp.me/sc
 
 void zCameraFlyStart(U32 assetID) NONMATCH("https://decomp.me/scratch/ukvlS")
 {
-    PKRAssetTOCInfo ainfo;
+    st_PKR_ASSET_TOCINFO ainfo;
     if (xSTGetAssetInfo(assetID, &ainfo)) {
         zcam_fly = 1;
         zcam_flypaused = 0;

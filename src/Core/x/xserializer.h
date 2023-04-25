@@ -2,7 +2,7 @@
 
 #include "types.h"
 
-typedef struct st_SERIAL_CLIENTINFO SERIAL_CLIENTINFO;
+struct st_SERIAL_CLIENTINFO;
 
 struct xSerial
 {
@@ -34,14 +34,13 @@ public:
 private:
     U32 idtag;
     S32 baseoff;
-    SERIAL_CLIENTINFO* ctxtdata;
+    st_SERIAL_CLIENTINFO* ctxtdata;
     S32 warned;
     S32 curele;
     S32 bitidx;
     S32 bittally;
 };
 
-typedef struct st_SERIAL_PERCID_SIZE SERIAL_PERCID_SIZE;
 struct st_SERIAL_PERCID_SIZE
 {
     U32 idtag;
@@ -50,7 +49,7 @@ struct st_SERIAL_PERCID_SIZE
 
 typedef S32(*xSerialTraverseCallback)(U32, xSerial*);
 
-S32 xSerialStartup(S32 count, SERIAL_PERCID_SIZE* sizeinfo);
+S32 xSerialStartup(S32 count, st_SERIAL_PERCID_SIZE* sizeinfo);
 S32 xSerialShutdown();
 void xSerialTraverse(xSerialTraverseCallback func);
 void xSerialWipeMainBuffer();

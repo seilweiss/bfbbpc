@@ -21,7 +21,7 @@ static FILE* g_errfp;
 static S32 g_dbinit;
 static iTime g_lasttym;
 static char g_lprbuf[2048] = {};
-static VERBOSE_MSGLEVEL g_msglvl = DBML_DBG;
+static en_VERBOSE_MSGLEVEL g_msglvl = DBML_DBG;
 static S32 g_prepend_msglevel = 1;
 static char* g_dbml_strz[] = {
     NULL,       // DBML_NONE
@@ -287,7 +287,7 @@ void xSBDestroy(xSB* sb)
 static xSB screenSB;
 static xSB relMemInfoSB;
 
-void DBStartup(VERBOSE_MSGLEVEL setlvl, char* logfile, char* errfile, xDebugMsgNotifyCallback msgnotify)
+void DBStartup(en_VERBOSE_MSGLEVEL setlvl, char* logfile, char* errfile, xDebugMsgNotifyCallback msgnotify)
 {
     if (!g_dbinit++) {
         g_msglvl = setlvl;
@@ -351,7 +351,7 @@ void DBShutdown()
 
 
 
-S32 DBChkMsgLvl(VERBOSE_MSGLEVEL msglvl)
+S32 DBChkMsgLvl(en_VERBOSE_MSGLEVEL msglvl)
 {
 
 
@@ -379,7 +379,7 @@ S32 DBChkMsgLvl(VERBOSE_MSGLEVEL msglvl)
 }
 
 
-void DBprintf(VERBOSE_MSGLEVEL msglvl, const char* fmt, ...)
+void DBprintf(en_VERBOSE_MSGLEVEL msglvl, const char* fmt, ...)
 {
     va_list marker;
     char* skipptr;

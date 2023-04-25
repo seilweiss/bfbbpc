@@ -95,7 +95,7 @@ struct xSweptSphere
     xVec3 worldPolynorm;
 };
 
-enum _xCollsIdx
+typedef enum _xCollsIdx
 {
     k_XCOLLS_IDX_FLOOR,
     k_XCOLLS_IDX_CEIL,
@@ -104,8 +104,7 @@ enum _xCollsIdx
     k_XCOLLS_IDX_REAR,
     k_XCOLLS_IDX_RIGHT,
     k_XCOLLS_IDX_COUNT
-};
-typedef enum _xCollsIdx xCollsIdx;
+} xCollsIdx;
 
 xCollsIdx xCollideGetCollsIdx(const xCollis* coll, const xVec3* tohit, const xMat3x3* mat);
 void xCollideInit(xScene* sc);
