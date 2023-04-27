@@ -311,6 +311,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Game\zNPCMgr.h" />
     <ClInclude Include="src\Game\zNPCSndTable.h" />
     <ClInclude Include="src\Game\zNPCSpawner.h" />
+    <ClInclude Include="src\Game\zNPCSupplement.h" />
     <ClInclude Include="src\Game\zNPCTypeAmbient.h" />
     <ClInclude Include="src\Game\zNPCTypeBoss.h" />
     <ClInclude Include="src\Game\zNPCTypeBossPatrick.h" />
@@ -439,9 +440,11 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Game\zLight.cpp" />
     <ClCompile Include="src\Game\zMain.cpp" />
     <ClCompile Include="src\Game\zMenu.cpp" />
+    <ClCompile Include="src\Game\zMovePoint.cpp" />
     <ClCompile Include="src\Game\zMusic.cpp" />
     <ClCompile Include="src\Game\zNPCHazard.cpp" />
     <ClCompile Include="src\Game\zNPCMgr.cpp" />
+    <ClCompile Include="src\Game\zNPCSupplement.cpp" />
     <ClCompile Include="src\Game\zNPCTypeAmbient.cpp" />
     <ClCompile Include="src\Game\zNPCTypeBoss.cpp" />
     <ClCompile Include="src\Game\zNPCTypeBossPatrick.cpp" />

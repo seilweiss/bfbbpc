@@ -555,6 +555,9 @@
     <ClInclude Include="src\Core\x\xEntMotion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\zNPCSupplement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\win\iFile.cpp">
@@ -924,6 +927,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Core\x\xSpline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\zMovePoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\zNPCSupplement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
