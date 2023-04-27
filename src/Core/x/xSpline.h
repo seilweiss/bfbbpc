@@ -29,3 +29,11 @@ struct xSpline3
     U32 arcSample;
     F32* arcLength;
 };
+
+void xSpline3_EvalSeg(xSpline3* spl, F32 u, U32 deriv, xVec3* o);
+F32 xSpline3_EvalArcApprox(xSpline3* spl, F32 s, U32 deriv, xVec3* o);
+
+inline F32 xSpline3_ArcTotal(xSpline3* spl)
+{
+    return spl->arcLength[spl->N * spl->arcSample - 1];
+}

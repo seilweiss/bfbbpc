@@ -210,6 +210,8 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xEnt.h" />
     <ClInclude Include="src\Core\x\xEntAsset.h" />
     <ClInclude Include="src\Core\x\xEntDrive.h" />
+    <ClInclude Include="src\Core\x\xEntMotion.h" />
+    <ClInclude Include="src\Core\x\xEntMotionAsset.h" />
     <ClInclude Include="src\Core\x\xEnv.h" />
     <ClInclude Include="src\Core\x\xEnvAsset.h" />
     <ClInclude Include="src\Core\x\xEvent.h" />
@@ -375,6 +377,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xDebugTweak.cpp" />
     <ClCompile Include="src\Core\x\xEnt.cpp" />
     <ClCompile Include="src\Core\x\xEntDrive.cpp" />
+    <ClCompile Include="src\Core\x\xEntMotion.cpp" />
     <ClCompile Include="src\Core\x\xEnv.cpp" />
     <ClCompile Include="src\Core\x\xEvent.cpp" />
     <ClCompile Include="src\Core\x\xFFX.cpp" />
@@ -393,6 +396,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xModel.cpp" />
     <ClCompile Include="src\Core\x\xModelBucket.cpp" />
     <ClCompile Include="src\Core\x\xMorph.cpp" />
+    <ClCompile Include="src\Core\x\xMovePoint.cpp" />
     <ClCompile Include="src\Core\x\xNPCBasic.cpp" />
     <ClCompile Include="src\Core\x\xordarray.cpp" />
     <ClCompile Include="src\Core\x\xOutputMgr.cpp" />
@@ -407,6 +411,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xShadow.cpp" />
     <ClCompile Include="src\Core\x\xShadowSimple.cpp" />
     <ClCompile Include="src\Core\x\xSnd.cpp" />
+    <ClCompile Include="src\Core\x\xSpline.cpp" />
     <ClCompile Include="src\Core\x\xstransvc.cpp" />
     <ClCompile Include="src\Core\x\xString.cpp" />
     <ClCompile Include="src\Core\x\xTimer.cpp" />
