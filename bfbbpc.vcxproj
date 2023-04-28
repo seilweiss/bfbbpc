@@ -218,6 +218,8 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xFactory.h" />
     <ClInclude Include="src\Core\x\xFFX.h" />
     <ClInclude Include="src\Core\x\xFile.h" />
+    <ClInclude Include="src\Core\x\xFog.h" />
+    <ClInclude Include="src\Core\x\xFogAsset.h" />
     <ClInclude Include="src\Core\x\xFont.h" />
     <ClInclude Include="src\Core\x\xFX.h" />
     <ClInclude Include="src\Core\x\xGlobals.h" />
@@ -382,6 +384,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xEnv.cpp" />
     <ClCompile Include="src\Core\x\xEvent.cpp" />
     <ClCompile Include="src\Core\x\xFFX.cpp" />
+    <ClCompile Include="src\Core\x\xFog.cpp" />
     <ClCompile Include="src\Core\x\xFont.cpp" />
     <ClCompile Include="src\Core\x\xFX.cpp" />
     <ClCompile Include="src\Core\x\xGrid.cpp" />
