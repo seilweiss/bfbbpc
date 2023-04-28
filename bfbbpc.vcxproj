@@ -228,6 +228,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xGroupAsset.h" />
     <ClInclude Include="src\Core\x\xhipio.h" />
     <ClInclude Include="src\Core\x\xHudModel.h" />
+    <ClInclude Include="src\Core\x\xIni.h" />
     <ClInclude Include="src\Core\x\xJSP.h" />
     <ClInclude Include="src\Core\x\xLightKit.h" />
     <ClInclude Include="src\Core\x\xLinkAsset.h" />
@@ -391,6 +392,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xGroup.cpp" />
     <ClCompile Include="src\Core\x\xhipio.cpp" />
     <ClCompile Include="src\Core\x\xHudModel.cpp" />
+    <ClCompile Include="src\Core\x\xIni.cpp" />
     <ClCompile Include="src\Core\x\xJSP.cpp" />
     <ClCompile Include="src\Core\x\xLightKit.cpp" />
     <ClCompile Include="src\Core\x\xMath.cpp" />
