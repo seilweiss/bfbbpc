@@ -23,3 +23,11 @@ struct xSurface : xBase
 #define k_XSURFACETYPE_MAT 0
 #define k_XSURFACETYPE_ENT 1
 #define k_XSURFACETYPE_OBJ 2
+
+void xSurfaceInit(U16 num_surfs);
+void xSurfaceExit();
+void xSurfaceSave(xSurface* ent, xSerial* s);
+void xSurfaceLoad(xSurface* ent, xSerial* s);
+void xSurfaceReset(xSurface* ent);
+U16 xSurfaceGetNumSurfaces();
+xSurface* xSurfaceGetByIdx(U16 n);

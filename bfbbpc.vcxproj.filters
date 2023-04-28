@@ -950,6 +950,9 @@
     <ClCompile Include="src\Core\x\xIni.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Core\x\xSurface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="res\bfbbpc.rc">
