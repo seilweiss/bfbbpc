@@ -4,6 +4,14 @@
 
 typedef iColor xColor;
 
+typedef struct _xFColor
+{
+    F32 r;
+    F32 g;
+    F32 b;
+    F32 a;
+} xFColor;
+
 extern xColor g_RED;
 extern xColor g_GREEN;
 extern xColor g_BLUE;
