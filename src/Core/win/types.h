@@ -10,6 +10,7 @@
 #define LITTLE_ENDIAN
 
 #define VBLANKS_PER_SEC 60
+#define SECS_PER_VBLANK (1.0f/VBLANKS_PER_SEC)
 #define FB_XRES 640
 #define FB_YRES 480
 #define FB_DEPTH 24

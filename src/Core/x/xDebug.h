@@ -29,6 +29,8 @@ struct xSB
     char* disp;
 };
 
+extern U32 gFrameCount;
+
 typedef void(*xDebugMsgNotifyCallback)(en_VERBOSE_MSGLEVEL, char*);
 typedef void(*xDebugModeCallback)();
 
