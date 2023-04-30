@@ -142,6 +142,7 @@ struct xEnt : xBase
 #define k_XENT_HAS_FRICTION ((U8)(1 << 4))
 
 // More ent flags (xEnt::moreFlags)
+#define k_MORE_FLAGS_0x8 ((U8)1<<3)
 #define k_MORE_FLAGS_HITTABLE ((U8)1<<4)
 #define k_MORE_FLAGS_ANIM_COLL ((U8)1<<5)
 
@@ -157,6 +158,12 @@ static const U32 k_XENT_MAX_COLL = 18;
 
 extern S32 sSetPipeline;
 extern S32 xent_entent;
+
+#define xEntBoundUpdate(ent, pos)                                                                  \
+MACROSTART                                                                                         \
+    if ((ent)->bupdate) (ent)->bupdate((ent), (pos));                                              \
+    else xEntDefaultBoundUpdate((ent), (pos));                                                     \
+MACROEND
 
 void xEntSetTimePassed(F32 sec);
 void xEntSceneInit();

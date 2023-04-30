@@ -21,3 +21,8 @@ void zGameLoop() WIP
         if (iSystemShouldQuit()) break;
     }
 }
+
+S32 zGameIsPaused() WIP
+{
+    return 0;
+}

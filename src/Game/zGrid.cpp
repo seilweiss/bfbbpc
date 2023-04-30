@@ -70,11 +70,7 @@ void zGridReset(zScene* s)
             base->baseType != eBaseTypeUIFont &&
             base->baseType != eBaseTypePlayer) {
             xEnt* ent = (xEnt*)base;
-            if (ent->bupdate) {
-                ent->bupdate(ent, (xVec3*)&ent->model->Mat->pos);
-            } else {
-                xEntDefaultBoundUpdate(ent, (xVec3*)&ent->model->Mat->pos);
-            }
+            xEntBoundUpdate(ent, (xVec3*)&ent->model->Mat->pos);
             zGridUpdateEnt(ent);
         }
     }
