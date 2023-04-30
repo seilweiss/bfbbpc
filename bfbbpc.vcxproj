@@ -272,6 +272,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xTimerAsset.h" />
     <ClInclude Include="src\Core\x\xTimestamp.h" />
     <ClInclude Include="src\Core\x\xTRC.h" />
+    <ClInclude Include="src\Core\x\xTriggerAsset.h" />
     <ClInclude Include="src\Core\x\xUpdateCull.h" />
     <ClInclude Include="src\Core\x\xutil.h" />
     <ClInclude Include="src\Core\x\xVec3.h" />
@@ -295,6 +296,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Game\zEntPlayer.h" />
     <ClInclude Include="src\Game\zEntPlayerAnimationTables.h" />
     <ClInclude Include="src\Game\zEntSimpleObj.h" />
+    <ClInclude Include="src\Game\zEntTrigger.h" />
     <ClInclude Include="src\Game\zEnv.h" />
     <ClInclude Include="src\Game\zEvent.h" />
     <ClInclude Include="src\Game\zFX.h" />
@@ -447,6 +449,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Game\zEntPickup.cpp" />
     <ClCompile Include="src\Game\zEntPlayer.cpp" />
     <ClCompile Include="src\Game\zEntSimpleObj.cpp" />
+    <ClCompile Include="src\Game\zEntTrigger.cpp" />
     <ClCompile Include="src\Game\zEnv.cpp" />
     <ClCompile Include="src\Game\zEvent.cpp" />
     <ClCompile Include="src\Game\zFX.cpp" />

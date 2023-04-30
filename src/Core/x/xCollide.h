@@ -185,3 +185,8 @@ inline bool xSphereHitsOBB(const xSphere& o, const xBox& b, const xMat4x3& mat) 
 {
     return xSphereHitsOBB(o.center, o.r, b, mat);
 }
+
+inline bool xSphereHitsVCircle(const xSphere& o, const xVec3& cc, F32 cr)
+{
+    return xSphereHitsVCircle(o.center, o.r, cc, cr);
+}
