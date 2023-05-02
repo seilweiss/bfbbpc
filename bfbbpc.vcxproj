@@ -248,8 +248,12 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xordarray.h" />
     <ClInclude Include="src\Core\x\xOutputMgr.h" />
     <ClInclude Include="src\Core\x\xPad.h" />
+    <ClInclude Include="src\Core\x\xPar.h" />
+    <ClInclude Include="src\Core\x\xParEmitter.h" />
+    <ClInclude Include="src\Core\x\xParEmitterAsset.h" />
     <ClInclude Include="src\Core\x\xParMgr.h" />
     <ClInclude Include="src\Core\x\xpkrsvc.h" />
+    <ClInclude Include="src\Core\x\xPlatformAsset.h" />
     <ClInclude Include="src\Core\x\xPortalAsset.h" />
     <ClInclude Include="src\Core\x\xQuickCull.h" />
     <ClInclude Include="src\Core\x\xRMemData.h" />
@@ -344,6 +348,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Game\zPickupTable.h" />
     <ClInclude Include="src\Game\zPlatform.h" />
     <ClInclude Include="src\Game\zPortal.h" />
+    <ClInclude Include="src\Game\zRumble.h" />
     <ClInclude Include="src\Game\zScene.h" />
     <ClInclude Include="src\Game\zShrapnel.h" />
     <ClInclude Include="src\Game\zShrapnelAsset.h" />
@@ -416,6 +421,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xordarray.cpp" />
     <ClCompile Include="src\Core\x\xOutputMgr.cpp" />
     <ClCompile Include="src\Core\x\xPad.cpp" />
+    <ClCompile Include="src\Core\x\xParEmitter.cpp" />
     <ClCompile Include="src\Core\x\xParMgr.cpp" />
     <ClCompile Include="src\Core\x\xpkrsvc.cpp" />
     <ClCompile Include="src\Core\x\xQuickCull.cpp" />
@@ -434,6 +440,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xTimer.cpp" />
     <ClCompile Include="src\Core\x\xTimestamp.cpp" />
     <ClCompile Include="src\Core\x\xTRC.cpp" />
+    <ClCompile Include="src\Core\x\xUpdateCull.cpp" />
     <ClCompile Include="src\Core\x\xutil.cpp" />
     <ClCompile Include="src\Core\x\xVec3.cpp" />
     <ClCompile Include="src\Game\zAnimList.cpp" />
@@ -483,7 +490,10 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Game\zNPCTypeTiki.cpp" />
     <ClCompile Include="src\Game\zNPCTypeVillager.cpp" />
     <ClCompile Include="src\Game\zParCmd.cpp" />
+    <ClCompile Include="src\Game\zParEmitter.cpp" />
     <ClCompile Include="src\Game\zPickupTable.cpp" />
+    <ClCompile Include="src\Game\zPlatform.cpp" />
+    <ClCompile Include="src\Game\zRumble.cpp" />
     <ClCompile Include="src\Game\zScene.cpp" />
     <ClCompile Include="src\Game\zShrapnel.cpp" />
     <ClCompile Include="src\Game\zSurface.cpp" />

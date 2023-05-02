@@ -155,6 +155,7 @@ enum zControlOwner
 
 void zEntPlayerControlOn(zControlOwner owner);
 void zEntPlayerControlOff(zControlOwner owner);
+S32 zEntPlayer_IsSneaking();
 void zEntPlayer_StoreCheckPoint(xVec3* pos, F32 rot, U32 initCamID);
 
 xAnimTable* zSandy_AnimTable();

@@ -1,5 +1,9 @@
 #pragma once
 
-#include "types.h"
+#include "xParEmitter.h"
 
-struct zParEmitter;
+struct zParEmitter : xParEmitter
+{
+};
+
+zParEmitter* zParEmitterFind(const char* asset_name);

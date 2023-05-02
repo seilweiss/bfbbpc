@@ -37,3 +37,13 @@ struct xUpdateCullMgr
     xUpdateCullMgrActivateCallback activateCB;
     xUpdateCullMgrDeactivateCallback deactivateCB;
 };
+
+union FloatAndVoid
+{
+    F32 f;
+    void* v;
+};
+
+U32 xUpdateCull_AlwaysTrueCB(void*, void*);
+U32 xUpdateCull_DistanceSquaredCB(void* ent, void* cbdata);
+void xUpdateCull_SetCB(xUpdateCullMgr* m, void* entity, xUpdateCullEntCallback cb, void* cbdata);
