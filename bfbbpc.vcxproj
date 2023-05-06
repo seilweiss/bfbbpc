@@ -293,6 +293,8 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Game\zCutsceneMgr.h" />
     <ClInclude Include="src\Game\zDispatcher.h" />
     <ClInclude Include="src\Game\zEnt.h" />
+    <ClInclude Include="src\Game\zEntButton.h" />
+    <ClInclude Include="src\Game\zEntButtonAsset.h" />
     <ClInclude Include="src\Game\zEntCruiseBubble.h" />
     <ClInclude Include="src\Game\zEntDestructObj.h" />
     <ClInclude Include="src\Game\zEntDestructObjAsset.h" />
@@ -452,6 +454,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Game\zCutsceneMgr.cpp" />
     <ClCompile Include="src\Game\zDispatcher.cpp" />
     <ClCompile Include="src\Game\zEnt.cpp" />
+    <ClCompile Include="src\Game\zEntButton.cpp" />
     <ClCompile Include="src\Game\zEntCruiseBubble.cpp" />
     <ClCompile Include="src\Game\zEntPickup.cpp" />
     <ClCompile Include="src\Game\zEntPlayer.cpp" />
