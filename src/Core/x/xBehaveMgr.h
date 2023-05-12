@@ -42,6 +42,12 @@ enum PSY_BRAIN_STATUS
     PSY_STAT_FORCE = FORCEENUMSIZEINT
 };
 
+enum en_xpsytime
+{
+    XPSY_TYMR_CURGOAL,
+    XPSY_TYMR_NOMORE
+};
+
 struct xPsyche : RyzMemData
 {
 protected:
@@ -62,8 +68,79 @@ protected:
     xBase fakebase;
 
 public:
+    void BrainBegin();
+    void BrainExtend();
+    void BrainEnd();
+    xGoal* AddGoal(S32 gid, void* createData);
+    void FreshWipe();
     xBase* GetClient() { return clt_owner; }
+    void SetOwner(xBase* owner, void* ctxt);
+    void SetNotify(xPSYNote* note) { cb_notice = note; }
+    void KillBrain(xFactory*);
+    void Lobotomy(xFactory*);
+    void Amnesia(S32);
+    S32 IndexInStack(S32 gid) const;
+    S32 IndexInStack(const xGoal* goal) const { return IndexInStack(goal->GetID()); }
+    xGoal* GetCurGoal() const;
+    xGoal* GIDInStack(S32 gid) const;
+    S32 GIDOfActive() const;
+    S32 GIDOfPending() const;
+    S32 GIDOfSafety() const { return gid_safegoal; }
+    void SetSafety(S32 gid) { gid_safegoal = gid; }
+    xGoal* GetPrevRecovery(S32 gid) const;
+    S32 GoalSet(S32 gid, S32);
+    S32 GoalPush(S32 gid, S32);
+    S32 GoalPopToBase(S32 overpend);
+    S32 GoalPopRecover(S32 overpend);
+    S32 GoalPop(S32 gid_popto, S32);
+    S32 GoalSwap(S32 gid, S32);
+    S32 GoalNone(S32, S32 denyExplicit);
+    void SetTopState(en_GOALSTATE state);
+    xGoal* FindGoal(S32 gid);
+    S32 HasGoal(S32 gid) { return FindGoal(gid) != NULL; }
+    void ForceTran(F32 dt, void* updCtxt);
+    S32 Timestep(F32 dt, void* updCtxt);
+    S32 ParseTranRequest(en_trantype trantyp, S32 trangid);
+    S32 TranGoal(F32 dt, void* updCtxt);
+    F32 TimerGet(en_xpsytime tymr);
+    void TimerClear();
+    void TimerUpdate(F32);
+
+    void ImmTranOn() { flg_psyche |= 0x1; }
+    void ImmTranOff() { flg_psyche &= ~0x1; }
+    S32 ImmTranIsOn() { return (flg_psyche & 0x1); }
+    void ExpTranOn() { flg_psyche &= ~0x4; }
+    void ExpTranOff() { flg_psyche |= 0x4; }
+    S32 ExpTranIsOn() { return !(flg_psyche & 0x4); }
+
+    void DBG_HistAdd(S32) {}
+};
+
+struct xBehaveMgr : RyzMemData
+{
+protected:
+    xFactory* goalFactory;
+    xPsyche* psypool;
+    st_XORDEREDARRAY psylist;
+
+public:
+    xBehaveMgr() {}
+    ~xBehaveMgr() {}
+
+    xFactory* GetFactory() { return goalFactory; }
+    void Startup(S32 maxPsyches, S32 maxTypes);
+    void RegBuiltIn();
+    xPsyche* Subscribe(xBase* owner, S32);
+    void UnSubscribe(xPsyche* psy);
+    void ScenePrepare();
+    void SceneFinish();
+    void SceneReset();
 };
 
 void xBehaveMgr_Startup();
 void xBehaveMgr_Shutdown();
+xBehaveMgr* xBehaveMgr_GetSelf();
+xFactory* xBehaveMgr_GoalFactory();
+void xBehaveMgr_ScenePrepare();
+void xBehaveMgr_SceneFinish();
+void xBehaveMgr_SceneReset();

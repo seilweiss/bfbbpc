@@ -26,6 +26,11 @@ void* RyzMemData::operator new(size_t amt, S32 who, RyzMemGrow* growCtxt)
     return mem;
 }
 
+// not present in original game - added to fix warning C4291
+void RyzMemData::operator delete(void*, S32 who, RyzMemGrow* growCtxt)
+{
+}
+
 void RyzMemData::operator delete(void*)
 {
 }

@@ -79,8 +79,8 @@ public:
     }
 
     xBase* GetOwner() const;
-    void Clear();
 
+    virtual void Clear() = 0;
     virtual S32 Enter(F32 dt, void* updCtxt) { return 0; }
     virtual S32 Exit(F32 dt, void* updCtxt) { return 0; }
     virtual S32 Suspend(F32 dt, void* updCtxt) { return 0; }

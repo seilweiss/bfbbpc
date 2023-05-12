@@ -8,6 +8,10 @@ struct RyzMemGrow;
 struct RyzMemData
 {
     void* operator new(size_t amt, S32 who, RyzMemGrow* growCtxt);
+
+    // not present in original game - added to fix warning C4291
+    void operator delete(void*, S32 who, RyzMemGrow* growCtxt); 
+
     void operator delete(void*);
 };
 

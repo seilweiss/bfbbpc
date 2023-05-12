@@ -187,6 +187,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xAnimAsset.h" />
     <ClInclude Include="src\Core\x\xBase.h" />
     <ClInclude Include="src\Core\x\xBaseAsset.h" />
+    <ClInclude Include="src\Core\x\xBehaveGoalSimple.h" />
     <ClInclude Include="src\Core\x\xBehaveMgr.h" />
     <ClInclude Include="src\Core\x\xBehaviour.h" />
     <ClInclude Include="src\Core\x\xbinio.h" />
@@ -385,6 +386,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\iCamera.cpp" />
     <ClCompile Include="src\Core\x\xAnim.cpp" />
     <ClCompile Include="src\Core\x\xBase.cpp" />
+    <ClCompile Include="src\Core\x\xBehaveGoalSimple.cpp" />
     <ClCompile Include="src\Core\x\xBehaveMgr.cpp" />
     <ClCompile Include="src\Core\x\xBehaviour.cpp" />
     <ClCompile Include="src\Core\x\xbinio.cpp" />
