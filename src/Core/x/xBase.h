@@ -14,7 +14,7 @@ struct xBase
     U8 baseType;
     U8 linkCount;
     U16 baseFlags;
-    const xLinkAsset* link;
+    xLinkAsset* link;
     xBaseEventCallback eventFunc;
 };
 

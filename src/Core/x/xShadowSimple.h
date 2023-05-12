@@ -29,3 +29,5 @@ struct xShadowSimpleCache
 };
 
 void xShadowSimple_Init();
+void xShadowSimple_CacheInit(xShadowSimpleCache* cache, xEnt* ent, U8 alpha);
+void xShadowSimple_Add(xShadowSimpleCache* cache, xEnt* ent, F32 radius, F32 ecc);

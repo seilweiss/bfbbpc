@@ -55,7 +55,7 @@ void zEntTriggerUpdate(zEntTrigger* trig, xScene* sc, F32 dt) NONMATCH("https://
     if (!xBaseIsEnabled(trig)) return;
 
     U32 i;
-    const xLinkAsset* link = trig->link;
+    xLinkAsset* link = trig->link;
     xTriggerAsset* tasset = (xTriggerAsset*)(trig->asset + 1);
 
     for (i = 0; i < trig->linkCount; i++) {

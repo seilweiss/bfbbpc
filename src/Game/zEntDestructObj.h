@@ -30,3 +30,6 @@ struct zEntDestructObj : zEnt
     xSFXAsset* sfx_destroy;
     xSFXAsset* sfx_hit;
 };
+
+void zEntDestructObj_Hit(zEntDestructObj* ent, U32 mask);
+U32 zEntDestructObj_GetHit(zEntDestructObj* ent, U32 mask);

@@ -464,7 +464,7 @@ void xEntSetup(xEnt* ent)
     }
     
     for (S32 i = 0; i < ent->linkCount; i++) {
-        const xLinkAsset* la = &ent->link[i];
+        xLinkAsset* la = &ent->link[i];
         if (la->dstEvent == eEventDrivenby) {
             xEnt* dent = (xEnt*)xSceneResolvID(g_xSceneCur, la->dstAssetID);
             if (dent) {

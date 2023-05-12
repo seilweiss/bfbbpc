@@ -3,6 +3,8 @@
 #include "zEnt.h"
 #include "zLasso.h"
 
+struct xEntBoulder;
+
 struct zJumpParam
 {
     F32 PeakHeight;
@@ -282,9 +284,13 @@ typedef enum _tagePlayerStreamSnd
     ePlayerStreamSnd_Total
 } ePlayerStreamSnd;
 
+extern xEntBoulder* boulderVehicle;
+
 void zEntPlayerControlOn(zControlOwner owner);
 void zEntPlayerControlOff(zControlOwner owner);
 S32 zEntPlayer_IsSneaking();
+S32 zEntPlayer_DamageNPCKnockBack(xBase* src, U32 damage, xVec3* npcPos);
+S32 zEntPlayer_Damage(xBase* src, U32 damage);
 void zEntPlayer_StoreCheckPoint(xVec3* pos, F32 rot, U32 initCamID);
 void zEntPlayer_SNDPlayStreamRandom(U32 lower, U32 upper, ePlayerStreamSnd player_snd_start, ePlayerStreamSnd player_snd_end, F32 delay);
 void zEntPlayer_SNDPlayStreamRandom(ePlayerStreamSnd player_snd_start, ePlayerStreamSnd player_snd_end, F32 delay);

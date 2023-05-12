@@ -209,6 +209,8 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xDynAsset.h" />
     <ClInclude Include="src\Core\x\xEnt.h" />
     <ClInclude Include="src\Core\x\xEntAsset.h" />
+    <ClInclude Include="src\Core\x\xEntBoulder.h" />
+    <ClInclude Include="src\Core\x\xEntBoulderAsset.h" />
     <ClInclude Include="src\Core\x\xEntDrive.h" />
     <ClInclude Include="src\Core\x\xEntMotion.h" />
     <ClInclude Include="src\Core\x\xEntMotionAsset.h" />
@@ -233,6 +235,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xLightKit.h" />
     <ClInclude Include="src\Core\x\xLinkAsset.h" />
     <ClInclude Include="src\Core\x\xListItem.h" />
+    <ClInclude Include="src\Core\x\xMarkerAsset.h" />
     <ClInclude Include="src\Core\x\xMath.h" />
     <ClInclude Include="src\Core\x\xMath2.h" />
     <ClInclude Include="src\Core\x\xMath3.h" />
@@ -396,6 +399,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xDebug.cpp" />
     <ClCompile Include="src\Core\x\xDebugTweak.cpp" />
     <ClCompile Include="src\Core\x\xEnt.cpp" />
+    <ClCompile Include="src\Core\x\xEntBoulder.cpp" />
     <ClCompile Include="src\Core\x\xEntDrive.cpp" />
     <ClCompile Include="src\Core\x\xEntMotion.cpp" />
     <ClCompile Include="src\Core\x\xEnv.cpp" />
@@ -456,6 +460,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Game\zEnt.cpp" />
     <ClCompile Include="src\Game\zEntButton.cpp" />
     <ClCompile Include="src\Game\zEntCruiseBubble.cpp" />
+    <ClCompile Include="src\Game\zEntDestructObj.cpp" />
     <ClCompile Include="src\Game\zEntPickup.cpp" />
     <ClCompile Include="src\Game\zEntPlayer.cpp" />
     <ClCompile Include="src\Game\zEntSimpleObj.cpp" />

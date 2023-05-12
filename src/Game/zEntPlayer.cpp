@@ -1,5 +1,7 @@
 #include "zEntPlayer.h"
 
+xEntBoulder* boulderVehicle;
+
 void zEntPlayerControlOn(zControlOwner owner) WIP
 {
 }
@@ -9,6 +11,16 @@ void zEntPlayerControlOff(zControlOwner owner) WIP
 }
 
 S32 zEntPlayer_IsSneaking() WIP
+{
+    return 0;
+}
+
+S32 zEntPlayer_DamageNPCKnockBack(xBase* src, U32 damage, xVec3* npcPos) WIP
+{
+    return 0;
+}
+
+S32 zEntPlayer_Damage(xBase* src, U32 damage) WIP
 {
     return 0;
 }

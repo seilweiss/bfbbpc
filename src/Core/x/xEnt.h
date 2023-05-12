@@ -131,6 +131,7 @@ struct xEnt : xBase
 // Ent flags (xEnt::flags)
 #define k_XENT_IS_VISIBLE ((U8)(1 << 0))
 #define k_XENT_IS_STACKED ((U8)(1 << 1))
+#define k_XENT_0x10 ((U8)(1 << 4))
 #define k_XENT_0x40 ((U8)(1 << 6))
 #define k_XENT_0x80 ((U8)(1 << 7))
 

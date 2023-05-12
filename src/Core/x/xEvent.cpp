@@ -87,7 +87,7 @@ void zEntEvent(xBase* from, U32 fromEvent, xBase* to, U32 toEvent, const F32* to
     }
 
     if (xBaseIsEnabled(to) && to->linkCount) {
-        const xLinkAsset* idx = to->link;
+        xLinkAsset* idx = to->link;
         for (S32 i = 0; i < to->linkCount; i++, idx++) {
             if (toEvent != idx->srcEvent) continue;
             if (idx->chkAssetID != 0 && (!from || idx->chkAssetID != from->id)) continue;
