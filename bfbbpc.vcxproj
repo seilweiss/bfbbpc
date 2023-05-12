@@ -431,6 +431,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xParMgr.cpp" />
     <ClCompile Include="src\Core\x\xpkrsvc.cpp" />
     <ClCompile Include="src\Core\x\xQuickCull.cpp" />
+    <ClCompile Include="src\Core\x\xRMemData.cpp" />
     <ClCompile Include="src\Core\x\xsavegame.cpp" />
     <ClCompile Include="src\Core\x\xScene.cpp" />
     <ClCompile Include="src\Core\x\xScrFx.cpp" />

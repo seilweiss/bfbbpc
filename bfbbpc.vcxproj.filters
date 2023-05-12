@@ -1052,6 +1052,9 @@
     <ClCompile Include="src\Game\zEntDestructObj.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Core\x\xRMemData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="res\bfbbpc.rc">
