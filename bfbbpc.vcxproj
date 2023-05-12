@@ -386,6 +386,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xAnim.cpp" />
     <ClCompile Include="src\Core\x\xBase.cpp" />
     <ClCompile Include="src\Core\x\xBehaveMgr.cpp" />
+    <ClCompile Include="src\Core\x\xBehaviour.cpp" />
     <ClCompile Include="src\Core\x\xbinio.cpp" />
     <ClCompile Include="src\Core\x\xBound.cpp" />
     <ClCompile Include="src\Core\x\xCamera.cpp" />

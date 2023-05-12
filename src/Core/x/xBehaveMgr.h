@@ -44,6 +44,7 @@ enum PSY_BRAIN_STATUS
 
 struct xPsyche : RyzMemData
 {
+protected:
     xBase* clt_owner;
     xPSYNote* cb_notice;
     S32 flg_psyche;
@@ -59,6 +60,9 @@ struct xPsyche : RyzMemData
     S32 cnt_transLastTimestep;
     PSY_BRAIN_STATUS psystat;
     xBase fakebase;
+
+public:
+    xBase* GetClient() { return clt_owner; }
 };
 
 void xBehaveMgr_Startup();
