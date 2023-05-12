@@ -404,6 +404,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xEntMotion.cpp" />
     <ClCompile Include="src\Core\x\xEnv.cpp" />
     <ClCompile Include="src\Core\x\xEvent.cpp" />
+    <ClCompile Include="src\Core\x\xFactory.cpp" />
     <ClCompile Include="src\Core\x\xFFX.cpp" />
     <ClCompile Include="src\Core\x\xFog.cpp" />
     <ClCompile Include="src\Core\x\xFont.cpp" />
