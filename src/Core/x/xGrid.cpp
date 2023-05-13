@@ -53,7 +53,7 @@ void xGridInit(xGrid* grid, const xBox* bounds, U16 nx, U16 nz, U8 ingrid_id) NO
     memset(grid->cells, 0, nx * nz * sizeof(xGridBound*));
 }
 
-void xGridKill(xGrid* grid) WIP
+void xGridKill(xGrid* grid)
 {
     xGridEmpty(grid);
     grid->cells = NULL;
