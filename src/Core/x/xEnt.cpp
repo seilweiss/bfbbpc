@@ -1000,7 +1000,7 @@ void xEntBeginCollide(xEnt* ent, xScene* sc, F32 dt) NONMATCH("https://decomp.me
     ent->collis->env_eidx = 6;
 }
 
-void xEntEndCollide(xEnt* ent, xScene* sc, F32 dt) WIP
+void xEntEndCollide(xEnt* ent, xScene* sc, F32 dt)
 {
     if (ent->collis->post) {
         ent->collis->post(ent, sc, dt, ent->collis);
