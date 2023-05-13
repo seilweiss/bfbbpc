@@ -4,7 +4,7 @@
 #include "zNPCCarry.h"
 #include "zNPCDamage.h"
 
-class zNPCCommon;
+struct zNPCCommon;
 struct zMovePoint;
 
 enum en_NPC_MSG_ID

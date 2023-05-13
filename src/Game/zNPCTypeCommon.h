@@ -135,7 +135,7 @@ enum en_npcparm
     NPC_PARM_FORCEINT = FORCEENUMSIZEINT
 };
 
-class zNPCCommon : public xNPCBasic
+struct zNPCCommon : xNPCBasic
 {
 protected:
     xEntAsset* entass;

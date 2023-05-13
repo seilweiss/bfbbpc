@@ -3,9 +3,18 @@
 #include "xEnt.h"
 #include "xFactory.h"
 
-class xNPCBasic : public xEnt, public xFactoryInst
+// Not present in PS2 DWARF, values unknown
+enum en_npcdcat
 {
-protected:
+};
+
+// Not present in PS2 DWARF, values unknown
+enum en_npcperf
+{
+};
+
+struct xNPCBasic : xEnt, xFactoryInst
+{
     void(*f_setup)(xEnt*);
     void(*f_reset)(xEnt*);
     S32 flg_basenpc : 16;
@@ -20,7 +29,11 @@ protected:
     xEntShadow entShadow_embedded;
     xShadowSimpleCache simpShadow_embedded;
 
-public:
+    xNPCBasic(S32 myType)
+    {
+        myNPCType = myType;
+    }
+
     virtual void Init(xEntAsset* asset);
     virtual void PostInit() {}
     virtual void Setup() {}
@@ -43,4 +56,28 @@ public:
     virtual U8 ColChkByFlags() const { return 0; }
     virtual U8 ColPenByFlags() const { return 0; }
     virtual U8 PhysicsFlags() const { return 0; }
+
+    void RestoreColFlags()
+    {
+        flg_colCheck = ColChkFlags();
+        flg_penCheck = ColPenFlags();
+        chkby = ColChkByFlags();
+        penby = ColPenByFlags();
+        pflags = PhysicsFlags();
+        colFreq = -1;
+    }
+
+    S32 DBG_IsNormLog(en_npcdcat, S32) { return 0; }
+    void DBG_PStatOn(en_npcperf) {}
+    void DBG_PStatCont(en_npcperf) {}
+    void DBG_PStatClear() {}
+    void DBG_HaltOnMe(U32, char*) {}
 };
+
+void NPC_entwrap_setup(xEnt* ent);
+void NPC_entwrap_reset(xEnt* ent);
+void NPC_entwrap_update(xEnt* ent, xScene* xscn, F32 dt_caller);
+void NPC_entwrap_bupdate(xEnt* ent, xVec3* pos);
+void NPC_entwrap_move(xEnt* ent, xScene* xscn, F32 dt, xEntFrame* frm);
+S32 NPC_entwrap_event(xBase* from, xBase* to, U32 toEvent, const F32* toParam, xBase* toParamWidget);
+void NPC_entwrap_render(xEnt* ent);
