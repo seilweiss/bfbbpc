@@ -265,7 +265,7 @@ void zEntEventAllOfType(xBase* from, U32 fromEvent, U32 toEvent, F32* toParam, U
     }
 }
 
-void zEntEventAllOfType(U32 toEvent, U32 type) WIP
+void zEntEventAllOfType(U32 toEvent, U32 type)
 {
     zEntEventAllOfType(NULL, 0, toEvent, NULL, type);
 }
