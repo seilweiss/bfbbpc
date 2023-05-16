@@ -260,6 +260,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xPlatformAsset.h" />
     <ClInclude Include="src\Core\x\xPortalAsset.h" />
     <ClInclude Include="src\Core\x\xQuickCull.h" />
+    <ClInclude Include="src\Core\x\xRenderState.h" />
     <ClInclude Include="src\Core\x\xRMemData.h" />
     <ClInclude Include="src\Core\x\xsavegame.h" />
     <ClInclude Include="src\Core\x\xScene.h" />
@@ -435,6 +436,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\x\xParMgr.cpp" />
     <ClCompile Include="src\Core\x\xpkrsvc.cpp" />
     <ClCompile Include="src\Core\x\xQuickCull.cpp" />
+    <ClCompile Include="src\Core\x\xRenderState.cpp" />
     <ClCompile Include="src\Core\x\xRMemData.cpp" />
     <ClCompile Include="src\Core\x\xsavegame.cpp" />
     <ClCompile Include="src\Core\x\xScene.cpp" />
