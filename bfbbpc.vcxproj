@@ -355,6 +355,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Game\zPickupTable.h" />
     <ClInclude Include="src\Game\zPlatform.h" />
     <ClInclude Include="src\Game\zPortal.h" />
+    <ClInclude Include="src\Game\zRenderState.h" />
     <ClInclude Include="src\Game\zRumble.h" />
     <ClInclude Include="src\Game\zScene.h" />
     <ClInclude Include="src\Game\zShrapnel.h" />
@@ -508,6 +509,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Game\zParEmitter.cpp" />
     <ClCompile Include="src\Game\zPickupTable.cpp" />
     <ClCompile Include="src\Game\zPlatform.cpp" />
+    <ClCompile Include="src\Game\zRenderState.cpp" />
     <ClCompile Include="src\Game\zRumble.cpp" />
     <ClCompile Include="src\Game\zScene.cpp" />
     <ClCompile Include="src\Game\zShrapnel.cpp" />

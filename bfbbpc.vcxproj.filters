@@ -630,6 +630,9 @@
     <ClInclude Include="src\Core\x\xRenderState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\zRenderState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\win\iFile.cpp">
@@ -1071,6 +1074,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Core\x\xRenderState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\zRenderState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
