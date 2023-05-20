@@ -155,3 +155,7 @@ struct NPCMsg
     NPCMsg* next;
     F32 tmr_delay;
 };
+
+void zNPCMsg_SendMsg(en_NPC_MSG_ID msgevent, zNPCCommon* npc_sendto);
+void zNPCMsg_SendMsg(NPCMsg* inmsg, zNPCCommon* npc_sendto);
+void zNPCMsg_SendMsg(NPCMsg* inmsg, F32 delay, zNPCCommon* npc_sendto);

@@ -6,6 +6,32 @@
 
 struct NPCSndTrax;
 
+enum en_mdlvert
+{
+    NPC_MDLVERT_ATTACKBASE,
+    NPC_MDLVERT_ATTACK,
+    NPC_MDLVERT_ATTACK1,
+    NPC_MDLVERT_ATTACK2,
+    NPC_MDLVERT_ATTACK3,
+    NPC_MDLVERT_ATTACK4,
+    NPC_MDLVERT_LOSEYEBALL,
+    NPC_MDLVERT_DMGSMOKE_A,
+    NPC_MDLVERT_DMGSMOKE_B,
+    NPC_MDLVERT_DMGSMOKE_C,
+    NPC_MDLVERT_DMGFLAME_A,
+    NPC_MDLVERT_DMGFLAME_B,
+    NPC_MDLVERT_DMGFLAME_C,
+    NPC_MDLVERT_PROPEL,
+    NPC_MDLVERT_EXHAUST,
+    NPC_MDLVERT_GEN01,
+    NPC_MDLVERT_GEN02,
+    NPC_MDLVERT_GEN03,
+    NPC_MDLVERT_GEN04,
+    NPC_MDLVERT_GEN05,
+    NPC_MDLVERT_NOMORE,
+    NPC_MDLVERT_FORCEINT = FORCEENUMSIZEINT
+};
+
 struct NPCConfig : xListItem<NPCConfig>
 {
     U32 modelID;
@@ -37,7 +63,7 @@ struct NPCConfig : xListItem<NPCConfig>
     F32 rad_shadowRaster;
     F32 rad_dmgSize;
     S32 flg_vert;
-    xModelTag tag_vert[20];
+    xModelTag tag_vert[NPC_MDLVERT_NOMORE];
     xVec3 animFrameRange[9];
     S32 cnt_esteem[5];
     F32 rad_sound;

@@ -26,6 +26,7 @@
 #include "zSurfAsset.h"
 #include "zCollGeom.h"
 #include "zShrapnelAsset.h"
+#include "zNPCTypes.h"
 
 static xEntCollis sBoulderCollis;
 static U32 sBubbleStreakID = 0xDEAD;
@@ -438,7 +439,7 @@ void xEntBoulder_Update(xEntBoulder* ent, xScene* sc, F32 dt) NONMATCH("https://
                 zEntPlayer_SNDPlayStreamRandom(36, 100, ePlayerStreamSnd_BowlComment1, ePlayerStreamSnd_BowlComment5, 0.1f);
 
                 if (ent == globals.player.bubblebowl &&
-                    ((npc->SelfType() & 0xFFFFFF00) != 'NTT\0' || npc->SelfType() == 'NTT4') &&
+                    ((npc->SelfType() & 0xFFFFFF00) != 'NTT\0' || npc->SelfType() == NPC_TYPE_TIKI_STONE) &&
                     ent->timeToLive > 0.05f) {
                     ent->timeToLive = 0.05f;
                 }

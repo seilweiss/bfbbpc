@@ -24,6 +24,15 @@ enum en_LASSO_EVENT
     LASS_EVNT_FORCEINT = FORCEENUMSIZEINT
 };
 
+enum en_lassanim
+{
+    LASS_ANIM_UNKNOWN,
+    LASS_ANIM_GRAB,
+    LASS_ANIM_HOLD,
+    LASS_ANIM_NOMORE,
+    LASS_ANIM_FORCEINT = FORCEENUMSIZEINT
+};
+
 struct zNPCLassoInfo
 {
     en_LASSO_STATUS stage;

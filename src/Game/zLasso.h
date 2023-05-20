@@ -1,6 +1,6 @@
 #pragma once
 
-#include "xModel.h"
+#include "xEnt.h"
 
 struct zLasso
 {
@@ -30,3 +30,5 @@ struct zLasso
     xModelTag tag;
     xModelInstance* model;
 };
+
+void zLasso_AddGuide(xEnt* ent, xAnimState* lassoAnim, xModelInstance* lassoModel);

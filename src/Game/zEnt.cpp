@@ -12,6 +12,7 @@
 #include "zEvent.h"
 #include "zBase.h"
 #include "zNPCTypeCommon.h"
+#include "zNPCTypes.h"
 
 U32 g_hash_xentanim[XENT_AUTOANIM_COUNT] = {};
 
@@ -24,11 +25,11 @@ char* g_strz_xentanim[XENT_AUTOANIM_COUNT] = {
 };
 
 zShadowParams gShadowParams[] = {
-    { 'NTR0', 0.33f, 2.0f },
-    { 'NTR3', 0.0f, 1.25f },
-    { 'NTFA', -0.25f, 0.75f },
-    { 'NTR5', 0.5f, 1.0f },
-    { 'NTB0', 1.0f, 2.0f }
+    { NPC_TYPE_HAMMER,    0.33f, 2.0f  },
+    { NPC_TYPE_GLOVE,     0.0f,  1.25f },
+    { NPC_TYPE_PLANKNPC, -0.25f, 0.75f },
+    { NPC_TYPE_SLEEPY,    0.5f,  1.0f  },
+    { NPC_TYPE_BOSSSANDY, 1.0f,  2.0f  }
 };
 
 inline void checkpoint_collision_hack(zEnt* ent) NONMATCH("https://decomp.me/scratch/etmNs")

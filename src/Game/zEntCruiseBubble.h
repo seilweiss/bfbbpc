@@ -4,4 +4,5 @@
 
 namespace cruise_bubble {
 xAnimTable* anim_table();
+bool active();
 }

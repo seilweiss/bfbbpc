@@ -177,6 +177,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\win\iModel.h" />
     <ClInclude Include="src\Core\win\iPad.h" />
     <ClInclude Include="src\Core\win\iScrFX.h" />
+    <ClInclude Include="src\Core\win\iSnd.h" />
     <ClInclude Include="src\Core\win\iSystem.h" />
     <ClInclude Include="src\Core\win\iTime.h" />
     <ClInclude Include="src\Core\win\iTRC.h" />
@@ -266,6 +267,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xScene.h" />
     <ClInclude Include="src\Core\x\xScrFx.h" />
     <ClInclude Include="src\Core\x\xserializer.h" />
+    <ClInclude Include="src\Core\x\xSFX.h" />
     <ClInclude Include="src\Core\x\xSFXAsset.h" />
     <ClInclude Include="src\Core\x\xShadow.h" />
     <ClInclude Include="src\Core\x\xShadowSimple.h" />
@@ -286,6 +288,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Core\x\xutil.h" />
     <ClInclude Include="src\Core\x\xVec3.h" />
     <ClInclude Include="src\Core\x\xVec3Inlines.h" />
+    <ClInclude Include="src\Game\zAnimFx.h" />
     <ClInclude Include="src\Game\zAnimList.h" />
     <ClInclude Include="src\Game\zAssetTypes.h" />
     <ClInclude Include="src\Game\zBase.h" />
@@ -295,6 +298,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Game\zCameraTweakAsset.h" />
     <ClInclude Include="src\Game\zCamMarker.h" />
     <ClInclude Include="src\Game\zCollGeom.h" />
+    <ClInclude Include="src\Game\zCombo.h" />
     <ClInclude Include="src\Game\zCutsceneMgr.h" />
     <ClInclude Include="src\Game\zDispatcher.h" />
     <ClInclude Include="src\Game\zEnt.h" />
@@ -307,6 +311,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Game\zEntPlayer.h" />
     <ClInclude Include="src\Game\zEntPlayerAnimationTables.h" />
     <ClInclude Include="src\Game\zEntSimpleObj.h" />
+    <ClInclude Include="src\Game\zEntTeleportBox.h" />
     <ClInclude Include="src\Game\zEntTrigger.h" />
     <ClInclude Include="src\Game\zEnv.h" />
     <ClInclude Include="src\Game\zEvent.h" />
@@ -326,14 +331,18 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Game\zNPCCarry.h" />
     <ClInclude Include="src\Game\zNPCConfig.h" />
     <ClInclude Include="src\Game\zNPCDamage.h" />
+    <ClInclude Include="src\Game\zNPCFXCinematic.h" />
     <ClInclude Include="src\Game\zNPCGoalCommon.h" />
     <ClInclude Include="src\Game\zNPCHazard.h" />
     <ClInclude Include="src\Game\zNPCLasso.h" />
     <ClInclude Include="src\Game\zNPCMessenger.h" />
     <ClInclude Include="src\Game\zNPCMgr.h" />
+    <ClInclude Include="src\Game\zNPCSnd.h" />
+    <ClInclude Include="src\Game\zNPCSndLists.h" />
     <ClInclude Include="src\Game\zNPCSndTable.h" />
     <ClInclude Include="src\Game\zNPCSpawner.h" />
     <ClInclude Include="src\Game\zNPCSupplement.h" />
+    <ClInclude Include="src\Game\zNPCSupport.h" />
     <ClInclude Include="src\Game\zNPCTypeAmbient.h" />
     <ClInclude Include="src\Game\zNPCTypeBoss.h" />
     <ClInclude Include="src\Game\zNPCTypeBossPatrick.h" />
@@ -347,6 +356,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Game\zNPCTypeKingJelly.h" />
     <ClInclude Include="src\Game\zNPCTypePrawn.h" />
     <ClInclude Include="src\Game\zNPCTypeRobot.h" />
+    <ClInclude Include="src\Game\zNPCTypes.h" />
     <ClInclude Include="src\Game\zNPCTypeTest.h" />
     <ClInclude Include="src\Game\zNPCTypeTiki.h" />
     <ClInclude Include="src\Game\zNPCTypeVillager.h" />
@@ -382,6 +392,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Core\win\iMemMgr.cpp" />
     <ClCompile Include="src\Core\win\iModel.cpp" />
     <ClCompile Include="src\Core\win\iScrFX.cpp" />
+    <ClCompile Include="src\Core\win\iSnd.cpp" />
     <ClCompile Include="src\Core\win\iSystem.cpp" />
     <ClCompile Include="src\Core\win\iTime.cpp" />
     <ClCompile Include="src\Core\win\iTRC.cpp" />
@@ -463,6 +474,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Game\zCameraFly.cpp" />
     <ClCompile Include="src\Game\zCameraTweak.cpp" />
     <ClCompile Include="src\Game\zCollGeom.cpp" />
+    <ClCompile Include="src\Game\zCombo.cpp" />
     <ClCompile Include="src\Game\zCutsceneMgr.cpp" />
     <ClCompile Include="src\Game\zDispatcher.cpp" />
     <ClCompile Include="src\Game\zEnt.cpp" />
@@ -472,6 +484,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Game\zEntPickup.cpp" />
     <ClCompile Include="src\Game\zEntPlayer.cpp" />
     <ClCompile Include="src\Game\zEntSimpleObj.cpp" />
+    <ClCompile Include="src\Game\zEntTeleportBox.cpp" />
     <ClCompile Include="src\Game\zEntTrigger.cpp" />
     <ClCompile Include="src\Game\zEnv.cpp" />
     <ClCompile Include="src\Game\zEvent.cpp" />
@@ -480,15 +493,21 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Game\zGameState.cpp" />
     <ClCompile Include="src\Game\zGoo.cpp" />
     <ClCompile Include="src\Game\zGrid.cpp" />
+    <ClCompile Include="src\Game\zLasso.cpp" />
     <ClCompile Include="src\Game\zLight.cpp" />
     <ClCompile Include="src\Game\zLOD.cpp" />
     <ClCompile Include="src\Game\zMain.cpp" />
     <ClCompile Include="src\Game\zMenu.cpp" />
     <ClCompile Include="src\Game\zMovePoint.cpp" />
     <ClCompile Include="src\Game\zMusic.cpp" />
+    <ClCompile Include="src\Game\zNPCFXCinematic.cpp" />
     <ClCompile Include="src\Game\zNPCHazard.cpp" />
+    <ClCompile Include="src\Game\zNPCMessenger.cpp" />
     <ClCompile Include="src\Game\zNPCMgr.cpp" />
+    <ClCompile Include="src\Game\zNPCSndLists.cpp" />
+    <ClCompile Include="src\Game\zNPCSndTable.cpp" />
     <ClCompile Include="src\Game\zNPCSupplement.cpp" />
+    <ClCompile Include="src\Game\zNPCSupport.cpp" />
     <ClCompile Include="src\Game\zNPCTypeAmbient.cpp" />
     <ClCompile Include="src\Game\zNPCTypeBoss.cpp" />
     <ClCompile Include="src\Game\zNPCTypeBossPatrick.cpp" />

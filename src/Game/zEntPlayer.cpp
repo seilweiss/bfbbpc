@@ -1,6 +1,7 @@
 #include "zEntPlayer.h"
 
 xEntBoulder* boulderVehicle;
+zCurrentPlayer gCurrentPlayer;
 
 void zEntPlayerControlOn(zControlOwner owner) WIP
 {
@@ -21,6 +22,11 @@ S32 zEntPlayer_DamageNPCKnockBack(xBase* src, U32 damage, xVec3* npcPos) WIP
 }
 
 S32 zEntPlayer_Damage(xBase* src, U32 damage) WIP
+{
+    return 0;
+}
+
+U32 zEntPlayer_MoveInfo() WIP
 {
     return 0;
 }

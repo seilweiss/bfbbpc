@@ -5,4 +5,9 @@ xAnimTable* anim_table() WIP
 {
     return NULL;
 }
+
+bool active() WIP
+{
+    return false;
+}
 }

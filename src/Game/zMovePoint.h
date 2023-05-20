@@ -13,7 +13,7 @@ struct zMovePoint : xMovePoint
     F32 Delay() { return asset->delay; }
     F32 RadiusZone() { return asset->zoneRadius; }
     F32 RadiusArena() { return asset->arenaRadius; }
-    U32 HasSpline() { return spl != NULL; }
+    S32 HasSpline() { return spl != NULL; }
 };
 
 zMovePoint* zMovePoint_GetMemPool(S32 cnt);

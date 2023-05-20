@@ -31,7 +31,7 @@ struct xNPCBasic : xEnt, xFactoryInst
 
     xNPCBasic(S32 myType)
     {
-        myNPCType = myType;
+        this->myNPCType = myType;
     }
 
     virtual void Init(xEntAsset* asset);
@@ -46,7 +46,7 @@ struct xNPCBasic : xEnt, xFactoryInst
     virtual S32 SysEvent(xBase* from, xBase* to, U32 toEvent, const F32* toParam, xBase* toParamWidget, S32* handled) { return 1; }
     virtual void Render() { xEntRender(this); }
 
-    S32 SelfType() const { return myNPCType; }
+    S32 SelfType() const { return this->myNPCType; }
 
     virtual void Save(xSerial* xser) const {}
     virtual void Load(xSerial* xser) {}
@@ -59,12 +59,12 @@ struct xNPCBasic : xEnt, xFactoryInst
 
     void RestoreColFlags()
     {
-        flg_colCheck = ColChkFlags();
-        flg_penCheck = ColPenFlags();
-        chkby = ColChkByFlags();
-        penby = ColPenByFlags();
-        pflags = PhysicsFlags();
-        colFreq = -1;
+        this->flg_colCheck = ColChkFlags();
+        this->flg_penCheck = ColPenFlags();
+        this->chkby = ColChkByFlags();
+        this->penby = ColPenByFlags();
+        this->pflags = PhysicsFlags();
+        this->colFreq = -1;
     }
 
     S32 DBG_IsNormLog(en_npcdcat, S32) { return 0; }
