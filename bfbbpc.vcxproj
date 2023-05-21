@@ -333,6 +333,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Game\zNPCDamage.h" />
     <ClInclude Include="src\Game\zNPCFXCinematic.h" />
     <ClInclude Include="src\Game\zNPCGoalCommon.h" />
+    <ClInclude Include="src\Game\zNPCGoals.h" />
     <ClInclude Include="src\Game\zNPCHazard.h" />
     <ClInclude Include="src\Game\zNPCLasso.h" />
     <ClInclude Include="src\Game\zNPCMessenger.h" />

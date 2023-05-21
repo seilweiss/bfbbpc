@@ -16,6 +16,7 @@
 #include "zNPCSndTable.h"
 #include "zNPCSndLists.h"
 #include "zNPCTypes.h"
+#include "zNPCGoals.h"
 #include "zBase.h"
 #include "zEvent.h"
 #include "zGrid.h"
@@ -622,8 +623,8 @@ S32 zNPCCommon::NPCMessage(NPCMsg* mail)
             this->npcset.useNavSplines = 0;
             break;
         case eEventNPCSetActiveOff:
-            if (psy && psy->HasGoal('NGN7')) {
-                psy->GoalSet('NGN7', 1);
+            if (psy && psy->HasGoal(NPC_GOAL_LIMBO)) {
+                psy->GoalSet(NPC_GOAL_LIMBO, 1);
             }
             break;
         case eEventNPCSetActiveOn:
@@ -660,18 +661,18 @@ S32 zNPCCommon::NPCMessage(NPCMsg* mail)
     case NPC_MID_DAMAGE:
         break;
     case NPC_MID_DEV_ANIMCYCLE:
-        if (this->psy_instinct && this->psy_instinct->HasGoal('NGX1')) {
-            this->psy_instinct->GoalSet('NGX1', 0);
+        if (this->psy_instinct && this->psy_instinct->HasGoal(NPC_GOAL_DEV_ANIMSPIN)) {
+            this->psy_instinct->GoalSet(NPC_GOAL_DEV_ANIMSPIN, 0);
         }
         break;
     case NPC_MID_DEV_ANIMSPIN:
-        if (this->psy_instinct && this->psy_instinct->HasGoal('NGX0')) {
-            this->psy_instinct->GoalSet('NGX0', 0);
+        if (this->psy_instinct && this->psy_instinct->HasGoal(NPC_GOAL_DEV_ANIMCYCLE)) {
+            this->psy_instinct->GoalSet(NPC_GOAL_DEV_ANIMCYCLE, 0);
         }
         break;
     case NPC_MID_DEV_HEROMODE:
-        if (this->psy_instinct && this->psy_instinct->HasGoal('NGX2')) {
-            this->psy_instinct->GoalSet('NGX2', 0);
+        if (this->psy_instinct && this->psy_instinct->HasGoal(NPC_GOAL_DEV_HERO)) {
+            this->psy_instinct->GoalSet(NPC_GOAL_DEV_HERO, 0);
         }
         break;
     case NPC_MID_DEV_DONE:
@@ -3063,22 +3064,22 @@ void zNPCCommon::AddBaseline(xPsyche* psy,
 {
     xGoal* goal;
 
-    goal = psy->AddGoal('NGN0', NULL);
+    goal = psy->AddGoal(NPC_GOAL_IDLE, NULL);
     goal->SetCallbacks(eval_idle, NULL, NULL, NULL);
 
-    goal = psy->AddGoal('NGN1', NULL);
+    goal = psy->AddGoal(NPC_GOAL_WANDER, NULL);
     goal->SetCallbacks(eval_wander, NULL, NULL, NULL);
 
-    goal = psy->AddGoal('NGN2', NULL);
+    goal = psy->AddGoal(NPC_GOAL_PATROL, NULL);
     goal->SetCallbacks(eval_patrol, NULL, NULL, NULL);
 
-    goal = psy->AddGoal('NGN4', NULL);
+    goal = psy->AddGoal(NPC_GOAL_WAITING, NULL);
     goal->SetCallbacks(eval_waiting, NULL, NULL, NULL);
 
-    goal = psy->AddGoal('NGN3', NULL);
+    goal = psy->AddGoal(NPC_GOAL_FIDGET, NULL);
     goal->SetCallbacks(eval_fidget, NULL, NULL, NULL);
 
-    goal = psy->AddGoal('NGN7', NULL);
+    goal = psy->AddGoal(NPC_GOAL_LIMBO, NULL);
 
     this->AddDEVGoals(psy);
 }
@@ -3097,25 +3098,25 @@ void zNPCCommon::AddScripting(xPsyche* psy,
     this->DBG_Name();
 
     if (this->flg_misc & 0x1) {
-        goal = psy->AddGoal('NGS0', NULL);
+        goal = psy->AddGoal(NPC_GOAL_SCRIPT, NULL);
         goal->SetCallbacks(eval_script, NULL, NULL, NULL);
 
-        goal = psy->AddGoal('NGS1', NULL);
+        goal = psy->AddGoal(NPC_GOAL_SCRIPT_ANIM, NULL);
         goal->SetCallbacks(eval_playanim, NULL, NULL, NULL);
 
-        goal = psy->AddGoal('NGS2', NULL);
+        goal = psy->AddGoal(NPC_GOAL_SCRIPT_ATTACK, NULL);
         goal->SetCallbacks(eval_attack, NULL, NULL, NULL);
 
-        goal = psy->AddGoal('NGS3', NULL);
+        goal = psy->AddGoal(NPC_GOAL_SCRIPT_MOVE, NULL);
         goal->SetCallbacks(eval_move, NULL, NULL, NULL);
 
-        goal = psy->AddGoal('NGS5', NULL);
+        goal = psy->AddGoal(NPC_GOAL_SCRIPT_FOLLOW, NULL);
         goal->SetCallbacks(eval_follow, NULL, NULL, NULL);
 
-        goal = psy->AddGoal('NGS6', NULL);
+        goal = psy->AddGoal(NPC_GOAL_SCRIPT_LEAD, NULL);
         goal->SetCallbacks(eval_lead, NULL, NULL, NULL);
 
-        goal = psy->AddGoal('NGS7', NULL);
+        goal = psy->AddGoal(NPC_GOAL_SCRIPT_WAIT, NULL);
         goal->SetCallbacks(eval_wait, NULL, NULL, NULL);
     }
 }
