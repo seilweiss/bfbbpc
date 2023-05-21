@@ -1139,6 +1139,9 @@
     <ClCompile Include="src\Game\zLasso.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\zNPCGoalCommon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="res\bfbbpc.rc">

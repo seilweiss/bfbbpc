@@ -15,13 +15,13 @@ protected:
 public:
     xGoalGeneric(S32 myType) : xGoal(myType) {}
 
-    const char* Name() { return "xGoalGeneric"; }
-    S32 Enter(F32 dt, void* updCtxt);
-    S32 Exit(F32 dt, void* updCtxt);
-    S32 Suspend(F32 dt, void* updCtxt);
-    S32 Resume(F32 dt, void* updCtxt);
-    S32 SysEvent(xBase* from, xBase* to, U32 toEvent, const F32* toParam, xBase* toParamWidget, S32* handled);
-    void Clear() {}
+    virtual const char* Name() { return "xGoalGeneric"; }
+    virtual S32 Enter(F32 dt, void* updCtxt);
+    virtual S32 Exit(F32 dt, void* updCtxt);
+    virtual S32 Suspend(F32 dt, void* updCtxt);
+    virtual S32 Resume(F32 dt, void* updCtxt);
+    virtual S32 SysEvent(xBase* from, xBase* to, U32 toEvent, const F32* toParam, xBase* toParamWidget, S32* handled);
+    virtual void Clear() {}
 };
 
 struct xGoalEmpty : xGoal
@@ -29,8 +29,8 @@ struct xGoalEmpty : xGoal
 public:
     xGoalEmpty(S32 myType) : xGoal(myType) {}
 
-    const char* Name() { return "xGoalEmpty"; }
-    void Clear() {}
+    virtual const char* Name() { return "xGoalEmpty"; }
+    virtual void Clear() {}
 };
 
 void xGoalSimple_RegisterTypes(xFactory* fac);

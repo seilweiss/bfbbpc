@@ -60,6 +60,7 @@ public:
         stat = GOAL_STAT_UNKNOWN;
     }
 
+    const char* Name() { return NULL; }
     xPsyche* GetPsyche() const { return psyche; }
     void SetPsyche(xPsyche* psy) { psyche = psy; }
     S32 GetID() const { return goalID; }
@@ -88,5 +89,4 @@ public:
     virtual S32 EvalRules(en_trantype* trantype, F32 dt, void* updCtxt);
     virtual S32 Process(en_trantype* trantype, F32 dt, void* ctxt, xScene*);
     virtual S32 SysEvent(xBase* from, xBase* to, U32 toEvent, const F32* toParam, xBase* toParamWidget, S32* handled) { return 1; }
-    virtual const char* Name() = 0 { return NULL; }
 };

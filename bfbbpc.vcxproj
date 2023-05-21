@@ -502,6 +502,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Game\zMovePoint.cpp" />
     <ClCompile Include="src\Game\zMusic.cpp" />
     <ClCompile Include="src\Game\zNPCFXCinematic.cpp" />
+    <ClCompile Include="src\Game\zNPCGoalCommon.cpp" />
     <ClCompile Include="src\Game\zNPCHazard.cpp" />
     <ClCompile Include="src\Game\zNPCMessenger.cpp" />
     <ClCompile Include="src\Game\zNPCMgr.cpp" />

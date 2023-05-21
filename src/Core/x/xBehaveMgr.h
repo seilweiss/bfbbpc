@@ -50,7 +50,6 @@ enum en_xpsytime
 
 struct xPsyche : RyzMemData
 {
-protected:
     xBase* clt_owner;
     xPSYNote* cb_notice;
     S32 flg_psyche;
@@ -67,7 +66,6 @@ protected:
     PSY_BRAIN_STATUS psystat;
     xBase fakebase;
 
-public:
     void BrainBegin();
     void BrainExtend();
     void BrainEnd();
