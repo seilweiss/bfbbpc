@@ -1,7 +1,7 @@
 # BFBBPC
 This is a project to decompile and port SpongeBob SquarePants: Battle for Bikini Bottom to Windows. It is based on the GameCube version of the game (the worst version), but some features from the Xbox version (the best version) are planned to be reimplemented, such as post-processing (bloom) and audio effects (reverb in levels such as Mermalair).
 
-I am aiming to have the port completed by October 31, 2023 (the 20 year anniversary of the original game's release). I am not currently looking for contributors, but any support (especially testing) is appreciated! Join the [BFBB Decompilation](https://discord.gg/dVbGFdYU6A) or [Heavy Iron Modding](https://discord.gg/9eAE6UB) Discord servers for more information and progress updates.
+I am not currently looking for contributors, but any support (especially testing) is appreciated! Join the [BFBB Decompilation](https://discord.gg/dVbGFdYU6A) or [Heavy Iron Modding](https://discord.gg/9eAE6UB) Discord servers for more information and progress updates.
 
 This project is not based on the [BFBB Decomp Project](https://github.com/bfbbdecomp/bfbb) since all of the decompiled code so far has been written from the ground up, but much of my knowledge about this game and reverse engineering in general is from contributing to that project.
 
