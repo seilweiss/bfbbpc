@@ -332,9 +332,9 @@ static void zMainLoop() WIP
 
             zMenuSetup();
 
-            WIPBLOCK{
-                xFX_SceneEnter(globals.sceneCur->env->geom->world);
-            };
+#if ENABLE_WIP_CODE
+            xFX_SceneEnter(globals.sceneCur->env->geom->world);
+#endif
 
             newGameSceneID = zMenuLoop();
 

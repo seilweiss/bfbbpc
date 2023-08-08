@@ -24,9 +24,9 @@ void zMenuInit(U32 theSceneID) WIP
 
     xCameraInit(&globals.camera, FB_XRES, FB_YRES);
     zCameraReset(&globals.camera);
-    WIPBLOCK{
-        xCameraSetScene(&globals.camera, globals.sceneCur);
-    };
+#if ENABLE_WIP_CODE
+    xCameraSetScene(&globals.camera, globals.sceneCur);
+#endif
 
     zMusicInit();
 }

@@ -49,4 +49,5 @@ typedef double F64;
 // (these don't do anything to the code, but they can be Ctrl+F'd easily)
 #define WIP // Function is not fully implemented/decomped yet
 #define NONMATCH(decompme) // Function is fully decomped, but not matching (must have decomp.me link!)
-#define WIPBLOCK if (0) // Use to disable part of a function, usually code that depends on unimplemented functions
+
+#define ENABLE_WIP_CODE 0 // Use to disable part of a function, usually code that depends on unimplemented functions
