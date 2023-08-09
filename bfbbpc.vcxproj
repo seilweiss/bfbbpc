@@ -332,6 +332,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClInclude Include="src\Game\zNPCConfig.h" />
     <ClInclude Include="src\Game\zNPCDamage.h" />
     <ClInclude Include="src\Game\zNPCFXCinematic.h" />
+    <ClInclude Include="src\Game\zNPCGlyph.h" />
     <ClInclude Include="src\Game\zNPCGoalCommon.h" />
     <ClInclude Include="src\Game\zNPCGoals.h" />
     <ClInclude Include="src\Game\zNPCHazard.h" />
@@ -502,6 +503,7 @@ if exist "bin\sbpcM.exe" copy /y "bin\sbpcM.exe" "bin\sb.exe"</Command>
     <ClCompile Include="src\Game\zMovePoint.cpp" />
     <ClCompile Include="src\Game\zMusic.cpp" />
     <ClCompile Include="src\Game\zNPCFXCinematic.cpp" />
+    <ClCompile Include="src\Game\zNPCGlyph.cpp" />
     <ClCompile Include="src\Game\zNPCGoalCommon.cpp" />
     <ClCompile Include="src\Game\zNPCHazard.cpp" />
     <ClCompile Include="src\Game\zNPCMessenger.cpp" />

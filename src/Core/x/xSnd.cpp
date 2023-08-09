@@ -23,6 +23,10 @@ U32 xSndPlay3D(U32 id, F32 vol, F32 pitch, U32 priority, U32 flags, const xVec3*
     return 0;
 }
 
+void xSndStop(U32 snd) WIP
+{
+}
+
 void xSndStopChildren(U32 pid) WIP
 {
 }

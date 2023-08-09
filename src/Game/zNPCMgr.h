@@ -1,6 +1,7 @@
 #pragma once
 
-#include "types.h"
+#include "xordarray.h"
 
+st_XORDEREDARRAY* zNPCMgr_GetNPCList();
 void zNPCMgr_Startup();
 void zNPCMgr_Shutdown();
